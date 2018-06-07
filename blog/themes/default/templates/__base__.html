@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ config.0 }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//cdn.bootcss.com/uikit/2.25.0/css/uikit.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/main.css'%}" />
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/uikit/2.25.0/js/uikit.js"></script>{% block beforehead %}{# 在这里写一下js脚本什么的 #}{% endblock %}
+
+</head>
+
+<body>
+    <div class="uk-grid">
+        <div style="position: fixed;top: 0px;left: 0px;margin: 0px;padding: 0px;" class="uk-width-1-4">
+            {% block menu %}{# 左边300px宽度的菜单栏 #} {% endblock %}
+            <div style="height: 180px; background-color: gray "></div>
+            <div class="uk-container-center uk-text-center">
+                <img src="//tva1.sinaimg.cn/crop.318.608.1137.1137.180/3c1b9c69jw8f1ptze8k4hj21kw1ekakh.jpg" alt="头像" class="large-profilePhoto uk-border-circle"
+                    style="margin: -70px 0 0 0 ">
+            </div>
+            <div class="uk-container-center uk-text-center">
+                <h2 class="uk-h2">
+                    <a href="#">{{ config.1 }}</a>
+                </h2>
+            </div>
+            <div class="uk-container-center uk-text-center">
+                <p>{{ config.2 }}</p>
+            </div>
+            <div class="uk-container-center uk-text-center">
+                <ul class="uk-nav">
+                    <li>
+                        <a href="#"> 主页 </a>
+                    </li>
+                    <li>
+                        <a href="#"> 随笔 </a>
+                    </li>
+                    <li>
+                        <a href="#"> 杂谈 </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="uk-container-center uk-text-center">
+                <br>
+                <p>
+                    <a href="#">所有文章</a>/
+                    <a href="#">友联</a>/
+                    <a href="#">关于我</a>
+                </p>
+            </div>
+            <br>
+            <br>
+            <div class="uk-container-center uk-text-center">
+                <p>
+                    <a href="{% static 'img/qq.jpg' %}" target="_blank" style="color: cadetblue">
+                        <i class="uk-icon-justify uk-icon-small uk-icon-qq"></i>
+                    </a>
+                    &ensp;
+                    <a href="https://www.facebook.com/profile.php?id=100011073490738" style="color: cadetblue">
+                        <i class="uk-icon-justify uk-icon-small uk-icon-facebook"></i>
+                    </a>
+                    &ensp;
+                    <a href="{% static 'img/weibo.jpg' %}" target="_blank" style="color: cadetblue">
+                        <i class="uk-icon-justify uk-icon-small uk-icon-weibo"></i>
+                    </a>
+                    &ensp;
+                    <a href="https://github.com/fslong520" target="_blank" style="color: cadetblue">
+                        <i class="uk-icon-justify uk-icon-small uk-icon-github"></i>
+                    </a>
+                </p>
+
+            </div>
+        </div>
+        <div class="uk-width-3-4" style="position: relative; left: 25%;padding: 0px;">
+            {# 右边1/3宽度的菜单栏 #} {% block content %} {# 正文部分 #} {% endblock %}
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+<article class="uk-article">
+    <h1 class="uk-article-title">{{ article.title }}</h1>
+    <p class="uk-article-meta">由
+        <a>{{ article.user }}</a>于{{ article.pubTime | date:"F j, Y"}}发表在
+        <a>{{ article.cloumn }}</a>栏目中。</p>
+    <p class="uk-article-lead">{{ article.intro }}</p>
+    <p>{{ article.content }}</p>
+    <hr class="uk-article-divider"> {% include 'comment.html' %}{% for comment in article.comments %} {% include 'comment.html' %} {% endfor %}
+</article>
