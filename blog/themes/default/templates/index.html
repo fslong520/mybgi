@@ -1,22 +1,24 @@
 {% extends '__base__.html' %} {% block content %}
 <div style="height: 600px; margin-left: 47px; ">
+    {% for article in articles %}
     <div class="uk-panel uk-panel-box uk-panel-box-primary-hover" style="margin-top: 20px;" >
         <article class="uk-article">
             <h1 class="uk-article-title uk-panel-title">
-                <a href="#">{{ article.title }}测试</a>
+                <a href="#">{{ article.title }}</a>
             </h1>
             <p class="uk-article-meta">由
                 <a>
-                    <strong>{{ article.user }}fslong</strong>
-                </a>于{{ article.pubTime | date:"F j, Y"}}2018年6月4日发表在
+                    <strong>{{ article.user }}</strong>
+                </a>于{{ article.pubTime | date:"F j, Y"}}发表在
                 <a>
-                    <strong>{{ article.cloumn }}测试</strong>
+                    <strong>{{ article.column }}</strong>
                 </a>栏目中。</p>
-            <p class="uk-article-lead">{{ article.intro }}这是简介。</p>
-            <p>{{ article.content }}测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本</p>
+            <p class="uk-article-lead">{{ article.intro }}</p>
+            <p>{{ article.content }}</p>
             <a style="color:cornflowerblue">继续阅读</a>
         </article>
     </div>
+    {% endfor %}
     <div class="uk-panel uk-panel-box uk-panel-box-primary-hover" style="margin-top: 20px;">
         <article class="uk-article">
             <h1 class="uk-article-title uk-panel-title">

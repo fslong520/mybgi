@@ -2,7 +2,8 @@ import configparser
 import os
 
 from django.shortcuts import render
-path = os.path.dirname(os.path.abspath(__file__))
+
+from blog.models import Article, Column, Comment, User
 
 
 class Config(object):
@@ -20,7 +21,8 @@ class Config(object):
             self. user = None
 
 
-def index(request):
+def setConfigList():
+    path = os.path.dirname(os.path.abspath(__file__))
     configPath = os.path.join(path, 'config.ini')
     config = Config(configPath)
     if config.blog:
@@ -28,7 +30,42 @@ def index(request):
                       config.user['name'], config.user['intro'], ]
     else:
         configList = ''
-    context = {'config': configList, }
+    return configList
+
+
+configList = setConfigList()
+
+
+def getAllArticle():
+    try:
+        return Article.objects.all()
+    except:
+        return None
+
+
+def getAllUser():
+    try:
+        return User.objects.all()
+    except:
+        return None
+
+
+def getAllColumn():
+    try:
+        return Column.objects.all()
+    except:
+        return None
+
+
+def getAllComment():
+    try:
+        return Comment.objects.all()
+    except:
+        return None
+
+
+def index(request):
+    context = {'config': configList, 'articles': getAllArticle()}
     return render(request, 'index.html', context=context)
 
 # Create your views here.
