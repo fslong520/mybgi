@@ -1,7 +1,7 @@
 {% extends '__base__.html' %} {% block content %}
-<div style="height: 600px; margin-left: 47px; ">
+<div style="height: 600px; margin-right: 20px;">
     {% for article in articles %}
-    <div class="uk-panel uk-panel-box uk-panel-box-primary-hover" style="margin-top: 20px;" >
+    <div class="uk-panel uk-panel-box uk-panel-box-primary-hover" style="margin-top: 20px;">
         <article class="uk-article">
             <h1 class="uk-article-title uk-panel-title">
                 <a href="#">{{ article.title }}</a>
@@ -15,7 +15,7 @@
                 </a>栏目中。</p>
             <p class="uk-article-lead">{{ article.intro }}</p>
             <p>{{ article.content }}</p>
-            <a style="color:cornflowerblue">继续阅读</a>
+            <a style="color:cornflowerblue" href="{{ article.get_absolute_url }}/blog/{{ article.id }}">继续阅读</a>
         </article>
     </div>
     {% endfor %}
@@ -68,7 +68,7 @@
             <p class="uk-article-lead">{{ article.intro }}这是简介。</p>
             <p>{{ article.content }}测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本</p>
             <a style="color:cornflowerblue">继续阅读</a>
-        </article>
+        </article>        
     </div>
     <div class="uk-text-center">
         <p>
@@ -97,5 +97,6 @@
             </span>
         </li>
     </ul>
+
 </div>
 {% endblock %}

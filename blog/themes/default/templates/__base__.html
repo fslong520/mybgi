@@ -15,13 +15,13 @@
 </head>
 
 <body>
-    <div class="uk-grid">
-        <div style="position: fixed;top: 0px;left: 0px;margin: 0px;padding: 0px;" class="uk-width-1-4">
-            {% block menu %}{# 左边300px宽度的菜单栏 #} {% endblock %}
+    <div class="uk-grid" style="padding-left: 20px">
+
+        <div class="uk-width-medium-1-4 uk-hidden-small" style="margin-top: 20px;">
+            {% block menu %}{# PC端左边的菜单栏 #} {% endblock %}
             <div style="height: 180px; background-color: gray "></div>
             <div class="uk-container-center uk-text-center">
-                <img src="//tva1.sinaimg.cn/crop.318.608.1137.1137.180/3c1b9c69jw8f1ptze8k4hj21kw1ekakh.jpg" alt="头像" class="large-profilePhoto uk-border-circle"
-                    style="margin: -70px 0 0 0 ">
+                <img src="{{ config.3 }}" alt="头像" class="large-profilePhoto uk-border-circle" style="margin: -70px 0 0 0 ">
             </div>
             <div class="uk-container-center uk-text-center">
                 <h2 class="uk-h2">
@@ -34,7 +34,7 @@
             <div class="uk-container-center uk-text-center">
                 <ul class="uk-nav">
                     <li>
-                        <a href="#"> 主页 </a>
+                        <a href="{{ article.get_absolute_url }}/blog/"> 主页 </a>
                     </li>
                     <li>
                         <a href="#"> 随笔 </a>
@@ -47,7 +47,7 @@
             <div class="uk-container-center uk-text-center">
                 <br>
                 <p>
-                    <a href="#">所有文章</a>/
+                    <a href="{{ article.get_absolute_url }}/blog/">所有文章</a>/
                     <a href="#">友联</a>/
                     <a href="#">关于我</a>
                 </p>
@@ -75,7 +75,50 @@
 
             </div>
         </div>
-        <div class="uk-width-3-4" style="position: relative; left: 25%;padding: 0px;">
+        {# 手机端顶部的菜单栏 #}
+        <nav class="uk-navbar uk-visible-small uk-hidden-medium uk-width-1-1" >
+            <ul class="uk-navbar-nav">
+                <li class="uk-parent" data-uk-dropdown="">
+                    <a class="uk-navbar-toggle uk-display-inline"></a>
+                    <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom">
+                        <ul class="uk-nav uk-nav-navbar">
+                            <li>
+                                <ul class="uk-nav uk-nav-navbar">
+                                    <li>
+                                        <a href="{{ article.get_absolute_url }}/blog/"> 主页 </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> 随笔 </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> 杂谈 </a>
+                                    </li>
+                                    <li>
+                                        <hr class="uk-list-divider">
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="uk-nav uk-nav-navbar">
+                                    <li>
+                                        <a href="{{ article.get_absolute_url }}/blog/">所有文章</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">友联</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">关于我</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+            </ul>
+            <div class="uk-navbar-center uk-navbar-content uk-text-large">{{ config.0 }}</div>
+        </nav>
+        <div class="uk-width-medium-3-4 uk-width-small" style="padding-left: 20px">
             {# 右边1/3宽度的菜单栏 #} {% block content %} {# 正文部分 #} {% endblock %}
         </div>
     </div>

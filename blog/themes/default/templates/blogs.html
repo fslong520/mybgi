@@ -1,1 +1,37 @@
-{% include 'blog.html' %}{% for article in articles %} {% include 'blog.html' %} {% endfor %}
+{% extends '__base__.html' %}{% block content %}
+
+<div style="height: 600px; margin-right: 20px; ">
+    {% for article in articles %}
+    <div class="uk-panel uk-panel-box uk-panel-box-primary-hover" style="margin-top: 20px;">
+        <article class="uk-article">
+            <h1 class="uk-article-title uk-panel-title">
+                <a href="#">{{ article.title }}</a>
+            </h1>
+            <p class="uk-article-meta">由
+                <a>
+                    <strong>{{ article.user }}</strong>
+                </a>于{{ article.pubTime | date:"F j, Y"}}发表在
+                <a>
+                    <strong>{{ article.column }}</strong>
+                </a>栏目中。</p>
+            <p class="uk-article-lead">{{ article.intro }}</p>
+            <p>{{ article.content }}</p>
+            <hr class="uk-divider-small">
+            <ul class="uk-comment-list">
+                <li>
+                    <article class="uk-comment">
+                        <header class="uk-comment-header">
+                            <img class="uk-comment-avatar" style="max-width: 100px;" src="{{ comment.user.avatar }}{{ config.3 }}" alt="头像">
+                            <h4 class="uk-comment-title uk-text-top">{{ comment.title }}评论标题</h4>
+                            <div class="uk-comment-meta">|发表于{{ comment.pubTime }}2018年6月4日</div>
+                            <hr class="uk-divider-small">
+                            <div class="uk-comment-body uk-text-bottom">评论测试!</div>
+                        </header>                        
+                    </article>
+                </li>
+            </ul>
+        </article>
+    </div>
+</div>
+
+{% endfor %}{% endblock %}

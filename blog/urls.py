@@ -19,4 +19,5 @@ from blog.themes.default import views as themesViews
 
 urlpatterns = [
     path('', themesViews.index),
+    path('<int:id>', themesViews.getArticleById),
 ]
