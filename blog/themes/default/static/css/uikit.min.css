@@ -3314,39 +3314,7 @@ ul.uk-nav-sub {
     color: #999
 }
 
-.uk-pagination {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -20px;
-    padding: 0;
-    list-style: none
-}
 
-.uk-pagination>* {
-    flex: none;
-    padding-left: 20px;
-    position: relative
-}
-
-.uk-pagination>*>* {
-    display: block;
-    color: #999;
-    transition: color .1s ease-in-out
-}
-
-.uk-pagination>*>:focus,
-.uk-pagination>*>:hover {
-    color: #666;
-    text-decoration: none
-}
-
-.uk-pagination>.uk-active>* {
-    color: #666
-}
-
-.uk-pagination>.uk-disabled>* {
-    color: #999
-}
 
 .uk-tab {
     display: flex;
@@ -9709,70 +9677,70 @@ iframe.uk-cover {
     color: rgba(255, 255, 255, .5)
 }
 
-.uk-card-primary.uk-card-body .uk-pagination>*>*,
-.uk-card-primary>:not([class*=uk-card-media]) .uk-pagination>*>*,
-.uk-card-secondary.uk-card-body .uk-pagination>*>*,
-.uk-card-secondary>:not([class*=uk-card-media]) .uk-pagination>*>*,
-.uk-light .uk-pagination>*>*,
-.uk-offcanvas-bar .uk-pagination>*>*,
-.uk-overlay-primary .uk-pagination>*>*,
-.uk-section-primary:not(.uk-preserve-color) .uk-pagination>*>*,
-.uk-section-secondary:not(.uk-preserve-color) .uk-pagination>*>*,
-.uk-tile-primary:not(.uk-preserve-color) .uk-pagination>*>*,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-pagination>*>* {
+.uk-card-primary.uk-card-body >*>*,
+.uk-card-primary>:not([class*=uk-card-media]) >*>*,
+.uk-card-secondary.uk-card-body *>*,
+.uk-card-secondary>:not([class*=uk-card-media]) >*>*,
+.uk-light >*>*,
+.uk-offcanvas-bar >*>*,
+.uk-overlay-primary >*>*,
+.uk-section-primary:not(.uk-preserve-color) >*>*,
+.uk-section-secondary:not(.uk-preserve-color) >*>*,
+.uk-tile-primary:not(.uk-preserve-color) >*>*,
+.uk-tile-secondary:not(.uk-preserve-color) >*>* {
     color: rgba(255, 255, 255, .5)
 }
 
-.uk-card-primary.uk-card-body .uk-pagination>*>:focus,
-.uk-card-primary.uk-card-body .uk-pagination>*>:hover,
-.uk-card-primary>:not([class*=uk-card-media]) .uk-pagination>*>:focus,
-.uk-card-primary>:not([class*=uk-card-media]) .uk-pagination>*>:hover,
-.uk-card-secondary.uk-card-body .uk-pagination>*>:focus,
-.uk-card-secondary.uk-card-body .uk-pagination>*>:hover,
-.uk-card-secondary>:not([class*=uk-card-media]) .uk-pagination>*>:focus,
-.uk-card-secondary>:not([class*=uk-card-media]) .uk-pagination>*>:hover,
-.uk-light .uk-pagination>*>:focus,
-.uk-light .uk-pagination>*>:hover,
-.uk-offcanvas-bar .uk-pagination>*>:focus,
-.uk-offcanvas-bar .uk-pagination>*>:hover,
-.uk-overlay-primary .uk-pagination>*>:focus,
-.uk-overlay-primary .uk-pagination>*>:hover,
-.uk-section-primary:not(.uk-preserve-color) .uk-pagination>*>:focus,
-.uk-section-primary:not(.uk-preserve-color) .uk-pagination>*>:hover,
-.uk-section-secondary:not(.uk-preserve-color) .uk-pagination>*>:focus,
-.uk-section-secondary:not(.uk-preserve-color) .uk-pagination>*>:hover,
-.uk-tile-primary:not(.uk-preserve-color) .uk-pagination>*>:focus,
-.uk-tile-primary:not(.uk-preserve-color) .uk-pagination>*>:hover,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-pagination>*>:focus,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-pagination>*>:hover {
+.uk-card-primary.uk-card-body >*>:focus,
+.uk-card-primary.uk-card-body >*>:hover,
+.uk-card-primary>:not([class*=uk-card-media]) >*>:focus,
+.uk-card-primary>:not([class*=uk-card-media]) >*>:hover,
+.uk-card-secondary.uk-card-body >*>:focus,
+.uk-card-secondary.uk-card-body >*>:hover,
+.uk-card-secondary>:not([class*=uk-card-media]) >*>:focus,
+.uk-card-secondary>:not([class*=uk-card-media]) >*>:hover,
+.uk-light >*>:focus,
+.uk-light >*>:hover,
+.uk-offcanvas-bar >*>:focus,
+.uk-offcanvas-bar >*>:hover,
+.uk-overlay-primary >*>:focus,
+.uk-overlay-primary >*>:hover,
+.uk-section-primary:not(.uk-preserve-color) >*>:focus,
+.uk-section-primary:not(.uk-preserve-color) >*>:hover,
+.uk-section-secondary:not(.uk-preserve-color) >*>:focus,
+.uk-section-secondary:not(.uk-preserve-color) >*>:hover,
+.uk-tile-primary:not(.uk-preserve-color) >*>:focus,
+.uk-tile-primary:not(.uk-preserve-color) >*>:hover,
+.uk-tile-secondary:not(.uk-preserve-color) >*>:focus,
+.uk-tile-secondary:not(.uk-preserve-color) >*>:hover {
     color: rgba(255, 255, 255, .7)
 }
 
-.uk-card-primary.uk-card-body .uk-pagination>.uk-active>*,
-.uk-card-primary>:not([class*=uk-card-media]) .uk-pagination>.uk-active>*,
-.uk-card-secondary.uk-card-body .uk-pagination>.uk-active>*,
-.uk-card-secondary>:not([class*=uk-card-media]) .uk-pagination>.uk-active>*,
-.uk-light .uk-pagination>.uk-active>*,
-.uk-offcanvas-bar .uk-pagination>.uk-active>*,
-.uk-overlay-primary .uk-pagination>.uk-active>*,
-.uk-section-primary:not(.uk-preserve-color) .uk-pagination>.uk-active>*,
-.uk-section-secondary:not(.uk-preserve-color) .uk-pagination>.uk-active>*,
-.uk-tile-primary:not(.uk-preserve-color) .uk-pagination>.uk-active>*,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-pagination>.uk-active>* {
+.uk-card-primary.uk-card-body >.uk-active>*,
+.uk-card-primary>:not([class*=uk-card-media]) >.uk-active>*,
+.uk-card-secondary.uk-card-body >.uk-active>*,
+.uk-card-secondary>:not([class*=uk-card-media]) >.uk-active>*,
+.uk-light >.uk-active>*,
+.uk-offcanvas-bar >.uk-active>*,
+.uk-overlay-primary >.uk-active>*,
+.uk-section-primary:not(.uk-preserve-color) >.uk-active>*,
+.uk-section-secondary:not(.uk-preserve-color) >.uk-active>*,
+.uk-tile-primary:not(.uk-preserve-color) >.uk-active>*,
+.uk-tile-secondary:not(.uk-preserve-color) >.uk-active>* {
     color: rgba(255, 255, 255, .7)
 }
 
-.uk-card-primary.uk-card-body .uk-pagination>.uk-disabled>*,
-.uk-card-primary>:not([class*=uk-card-media]) .uk-pagination>.uk-disabled>*,
-.uk-card-secondary.uk-card-body .uk-pagination>.uk-disabled>*,
-.uk-card-secondary>:not([class*=uk-card-media]) .uk-pagination>.uk-disabled>*,
-.uk-light .uk-pagination>.uk-disabled>*,
-.uk-offcanvas-bar .uk-pagination>.uk-disabled>*,
-.uk-overlay-primary .uk-pagination>.uk-disabled>*,
-.uk-section-primary:not(.uk-preserve-color) .uk-pagination>.uk-disabled>*,
-.uk-section-secondary:not(.uk-preserve-color) .uk-pagination>.uk-disabled>*,
-.uk-tile-primary:not(.uk-preserve-color) .uk-pagination>.uk-disabled>*,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-pagination>.uk-disabled>* {
+.uk-card-primary.uk-card-body >.uk-disabled>*,
+.uk-card-primary>:not([class*=uk-card-media]) >.uk-disabled>*,
+.uk-card-secondary.uk-card-body >.uk-disabled>*,
+.uk-card-secondary>:not([class*=uk-card-media]) >.uk-disabled>*,
+.uk-light >.uk-disabled>*,
+.uk-offcanvas-bar >.uk-disabled>*,
+.uk-overlay-primary >.uk-disabled>*,
+.uk-section-primary:not(.uk-preserve-color) >.uk-disabled>*,
+.uk-section-secondary:not(.uk-preserve-color) >.uk-disabled>*,
+.uk-tile-primary:not(.uk-preserve-color) >.uk-disabled>*,
+.uk-tile-secondary:not(.uk-preserve-color) >.uk-disabled>* {
     color: rgba(255, 255, 255, .5)
 }
 

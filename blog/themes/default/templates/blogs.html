@@ -14,22 +14,38 @@
                 <a>
                     <strong>{{ article.column }}</strong>
                 </a>栏目中。</p>
-            <p class="uk-article-lead">{{ article.intro }}</p>
-            <p>{{ article.content }}</p>
-            <hr class="uk-divider-small">
+            <p>{{ article.content | safe }}</p>
+            <br>
+            <form action="" method="post" class="uk-form">
+                <fieldset data-uk-margin>
+                    <legend>发表评论</legend>
+                    <input type="text" hidden="hidden" value="{{ article.title }}">
+                    <div class="uk-grid">
+                        <div class="uk-width-4-5">
+                            <textarea name="commentText" placeholder="请输入评论" class="uk-width-1-1" style="height: 50px;"></textarea>
+                        </div>
+                        <div class=" uk-width-1-5">
+                            <input type="submit" value="点击评论" class="uk-input" style="height: 50px;">
+                        </div>
+                    </div>
+                    {% csrf_token %}
+                </fieldset>
+            </form>
+            <hr class="uk-divider-small"> {% for comment in comment %}
             <ul class="uk-comment-list">
                 <li>
                     <article class="uk-comment">
                         <header class="uk-comment-header">
                             <img class="uk-comment-avatar" style="max-width: 100px;" src="{{ comment.user.avatar }}{{ config.3 }}" alt="头像">
-                            <h4 class="uk-comment-title uk-text-top">{{ comment.title }}评论标题</h4>
                             <div class="uk-comment-meta">|发表于{{ comment.pubTime }}2018年6月4日</div>
                             <hr class="uk-divider-small">
                             <div class="uk-comment-body uk-text-bottom">评论测试!</div>
-                        </header>                        
+                        </header>
                     </article>
                 </li>
             </ul>
+            {% endfor %}
+
         </article>
     </div>
 </div>

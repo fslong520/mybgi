@@ -7,16 +7,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ config.0 }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="//cdn.bootcss.com/uikit/2.25.0/css/uikit.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/main.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}" />
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/uikit/2.25.0/css/uikit.css" />
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/uikit/2.25.0/js/uikit.js"></script>{% block beforehead %}{# 在这里写一下js脚本什么的 #}{% endblock %}
+    <script src="{% static 'js/uikit.min.js' %}"></script>{% block beforehead %}{# 在这里写一下js脚本什么的 #}{% endblock %}
+    <!-- Codemirror 和 marked 依赖 -->
+    <link rel="stylesheet" href="{% static 'codemirror/lib/codemirror.css' %}">
+    <script src="{% static 'codemirror/lib/codemirror.js' %}"></script>
+    <script src="{% static 'codemirror/mode/markdown/markdown.js' %}"></script>
+    <script src="{% static 'codemirror/addon/mode/overlay.js' %}"></script>
+    <script src="{% static 'codemirror/mode/xml/xml.js' %}"></script>
+    <script src="{% static 'codemirror/mode/gfm/gfm.js' %}"></script>
+    <script src="{% static 'marked/lib/marked.js' %}"></script>
+
+    <!-- HTML 编辑器的 CSS 与 JavaScript -->
+    <link rel="stylesheet" href="{% static 'css/components/htmleditor.css' %}">
+    <script src="{% static 'js/components/htmleditor.js' %}"></script>
+
 
 </head>
 
 <body>
-    <div class="uk-grid" style="padding-left: 20px">
-
+    <div class="uk-grid" style="padding-left: 20px" >
         <div class="uk-width-medium-1-4 uk-hidden-small" style="margin-top: 20px;">
             {% block menu %}{# PC端左边的菜单栏 #} {% endblock %}
             <div style="height: 180px; background-color: gray "></div>
@@ -34,7 +47,8 @@
             <div class="uk-container-center uk-text-center">
                 <ul class="uk-nav">
                     <li>
-                        <a href="{{ article.get_absolute_url }}/blog/"> 主页 </a>
+                        <a href="{{ article.get_absolute_url }}/blog/">
+                            <i class="uk-icon-home"></i> 主页 </a>
                     </li>
                     <li>
                         <a href="#"> 随笔 </a>
@@ -76,7 +90,7 @@
             </div>
         </div>
         {# 手机端顶部的菜单栏 #}
-        <nav class="uk-navbar uk-visible-small uk-hidden-medium uk-width-1-1" >
+        <nav class="uk-navbar uk-visible-small uk-hidden-medium uk-width-1-1">
             <ul class="uk-navbar-nav">
                 <li class="uk-parent" data-uk-dropdown="">
                     <a class="uk-navbar-toggle uk-display-inline"></a>
@@ -118,7 +132,7 @@
             </ul>
             <div class="uk-navbar-center uk-navbar-content uk-text-large">{{ config.0 }}</div>
         </nav>
-        <div class="uk-width-medium-3-4 uk-width-small" style="padding-left: 20px">
+        <div class="uk-width-medium-3-4" style="padding-left: 20px">
             {# 右边1/3宽度的菜单栏 #} {% block content %} {# 正文部分 #} {% endblock %}
         </div>
     </div>

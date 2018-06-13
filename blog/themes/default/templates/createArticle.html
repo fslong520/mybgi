@@ -1,0 +1,37 @@
+{% extends '__base__.html' %}{% block content %}
+<form action="" method="post" class="uk-form uk-form-horizontal" style="margin:20px; ">
+    <fieldset>
+        <div class="uk-form-row uk-grid">
+            <div class="uk-width-medium-1-2">
+                <input type="text" name="title" id="title" class="uk-input" style="height: 40px;" placeholder="标题">
+            </div>
+            <div class="uk-width-medium-1-2">
+                <div class="uk-grid">
+                    <div class="uk-visible-small uk-text-center">
+                        <label for="column" class="uk-form-label uk-text-middle">所属专栏</label>
+                    </div>
+                    <div class="uk-hidden-small uk-width-medium-2-10">
+                        <label for="column" class="uk-form-label uk-text-middle">
+                            <strong>所属专栏</strong>
+                        </label>
+                    </div>
+                    <div class="uk-width-medium-8-10">
+                        <select name="column" id="column" class="uk-select">
+                            {% for column in columns %}
+                            <option>{{ column }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-from-row">
+            <hr class="uk-divider-icon">
+            <textarea name="content" id="content" class="uk-textarea uk-width-1-1" data-uk-htmleditor="{markdown:true}">在这里输入正文内容，使用的是markdown语法，可以点击右上角的预览按钮进行预览。</textarea>
+            <br>
+            <input type="submit" value="点击保存" class="uk-input">
+        </div>
+    </fieldset>
+</form>
+
+{% endblock %}

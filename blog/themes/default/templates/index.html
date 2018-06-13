@@ -9,13 +9,16 @@
             <p class="uk-article-meta">由
                 <a>
                     <strong>{{ article.user }}</strong>
-                </a>于{{ article.pubTime | date:"F j, Y"}}发表在
+                </a>于{{ article.pubTime | date:"Y年n月j日 "}}发表在
                 <a>
                     <strong>{{ article.column }}</strong>
                 </a>栏目中。</p>
-            <p class="uk-article-lead">{{ article.intro }}</p>
-            <p>{{ article.content }}</p>
-            <a style="color:cornflowerblue" href="{{ article.get_absolute_url }}/blog/{{ article.id }}">继续阅读</a>
+            <p>{{ article.content | safe }}</p>
+            <div class="uk-text-right">
+                <a style="color:cornflowerblue" href="{{ article.get_absolute_url }}/blog/{{ article.id }}">
+                    <i class="uk-text-large">继续阅读</i>
+                </a>
+            </div>
         </article>
     </div>
     {% endfor %}
@@ -68,7 +71,7 @@
             <p class="uk-article-lead">{{ article.intro }}这是简介。</p>
             <p>{{ article.content }}测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本</p>
             <a style="color:cornflowerblue">继续阅读</a>
-        </article>        
+        </article>
     </div>
     <div class="uk-text-center">
         <p>
@@ -77,26 +80,27 @@
             </a>本作品采用
             <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议
             </a>进行许可。
+            <ul class="uk-pagination">
+                <li>
+                    <a href="">
+                        <i class="uk-icon-angle-double-left"></i>
+                    </a>
+                </li>
+                <li class="uk-active">
+                    <span>1</span>
+                </li>
+                <li class="uk-disabled">
+                    <span>2</span>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="uk-icon-angle-double-right"></i>
+                    </a>
+                </li>
+            </ul>
         </p>
     </div>
-    <ul class="uk-pagination">
-        <li>
-            <a href="">
-                <i class="uk-icon-angle-double-left"></i>
-            </a>
-        </li>
-        <li class="uk-active">
-            <span>1</span>
-        </li>
-        <li class="uk-disabled">
-            <span>2</span>
-        </li>
-        <li>
-            <span>
-                <i class="uk-icon-angle-double-right"></i>
-            </span>
-        </li>
-    </ul>
+
 
 </div>
 {% endblock %}

@@ -15,8 +15,10 @@ def mdToHtml(articles):
             'markdown.extensions.headerid', 'markdown.extensions.meta', 'markdown.extensions.nl2br', 'markdown.extensions.sane_lists', 'markdown.extensions.smart_strong', 'markdown.extensions.smarty', 'markdown.extensions.tables', 'markdown.extensions.toc', 'markdown.extensions.wikilinks']
     for article in articles:
         article.content = markdown.markdown(article.content, extensions=exts)
-
+    return articles
 # 配置信息的类：
+
+
 class Config(object):
     def __init__(self, configPath):
         config = configparser.ConfigParser()
@@ -84,7 +86,15 @@ def getAllComment():
 
 # 首页：
 def index(request):
-    context = {'config': configList, 'articles': getAllArticle()}
+    articles = getAllArticle()
+    # 截断文章显示：
+    for article in articles:
+        if len(article.content) > 300:
+            article.content = article.content[0:300]+'...'
+    # 逆序排序文章：
+    articles = articles[::-1]
+    articles = mdToHtml(articles)
+    context = {'config': configList, 'articles': articles}
     return render(request, 'index.html', context=context)
 
 
@@ -94,5 +104,18 @@ def getArticleById(request, id):
         article = Article.objects.get(id=id)
     except:
         article = None
-    context = {'config': configList, 'articles': [article]}
+    articles = mdToHtml([article])
+    try:
+        comment = Comment.objects.filter(article=article)
+    except:
+        comment = None
+    context = {'config': configList,
+               'articles': articles, 'comment': comment, }
     return render(request, 'blogs.html', context=context)
+
+
+# 创建文章：
+def createAritcle(request):
+    context = {'config': configList,
+               'users': getAllUser(), 'columns': getAllColumn()}
+    return render(request, 'createArticle.html', context=context)
