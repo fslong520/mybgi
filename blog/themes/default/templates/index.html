@@ -4,7 +4,7 @@
     <div class="uk-panel uk-panel-box uk-panel-box-primary-hover" style="margin-top: 20px;">
         <article class="uk-article">
             <h1 class="uk-article-title uk-panel-title">
-                <a href="#">{{ article.title }}</a>
+                <a href="{{ article.get_absolute_url }}/blog/{{ article.id }}" style="font-size: 80%">{{ article.title }}</a>
             </h1>
             <p class="uk-article-meta">由
                 <a>
@@ -22,57 +22,6 @@
         </article>
     </div>
     {% endfor %}
-    <div class="uk-panel uk-panel-box uk-panel-box-primary-hover" style="margin-top: 20px;">
-        <article class="uk-article">
-            <h1 class="uk-article-title uk-panel-title">
-                <a href="#">{{ article.title }}测试</a>
-            </h1>
-            <p class="uk-article-meta">由
-                <a>
-                    <strong>{{ article.user }}fslong</strong>
-                </a>于{{ article.pubTime | date:"F j, Y"}}2018年6月4日发表在
-                <a>
-                    <strong>{{ article.cloumn }}测试</strong>
-                </a>栏目中。</p>
-            <p class="uk-article-lead">{{ article.intro }}这是简介。</p>
-            <p>{{ article.content }}测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本</p>
-            <a style="color:cornflowerblue">继续阅读</a>
-        </article>
-    </div>
-    <div class="uk-panel uk-panel-box uk-panel-box-primary-hover" style="margin-top: 20px;">
-        <article class="uk-article">
-            <h1 class="uk-article-title uk-panel-title">
-                <a href="#">{{ article.title }}测试</a>
-            </h1>
-            <p class="uk-article-meta">由
-                <a>
-                    <strong>{{ article.user }}fslong</strong>
-                </a>于{{ article.pubTime | date:"F j, Y"}}2018年6月4日发表在
-                <a>
-                    <strong>{{ article.cloumn }}测试</strong>
-                </a>栏目中。</p>
-            <p class="uk-article-lead">{{ article.intro }}这是简介。</p>
-            <p>{{ article.content }}测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本</p>
-            <a style="color:cornflowerblue">继续阅读</a>
-        </article>
-    </div>
-    <div class="uk-panel uk-panel-box uk-panel-box-primary-hover" style="margin-top: 20px;">
-        <article class="uk-article">
-            <h1 class="uk-article-title uk-panel-title">
-                <a href="#">{{ article.title }}测试</a>
-            </h1>
-            <p class="uk-article-meta">由
-                <a>
-                    <strong>{{ article.user }}fslong</strong>
-                </a>于{{ article.pubTime | date:"F j, Y"}}2018年6月4日发表在
-                <a>
-                    <strong>{{ article.cloumn }}测试</strong>
-                </a>栏目中。</p>
-            <p class="uk-article-lead">{{ article.intro }}这是简介。</p>
-            <p>{{ article.content }}测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本</p>
-            <a style="color:cornflowerblue">继续阅读</a>
-        </article>
-    </div>
     <div class="uk-text-center">
         <p>
             <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">

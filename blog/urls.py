@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+
 from blog.themes.default import views as themesViews
 
 urlpatterns = [
     path('', themesViews.index),
     path('<int:id>', themesViews.getArticleById),
-    path('ca',themesViews.createAritcle)
+    path('ca', themesViews.createAritcle),
+    path('cc', themesViews.createComment),
+    path('signin', themesViews.signin),
+    path('signout', themesViews.signout),
+    path('mu', themesViews.manageUser),
+    path('reg', themesViews.register),
 ]

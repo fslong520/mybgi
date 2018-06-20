@@ -1,5 +1,5 @@
 {% extends '__base__.html' %}{% block content %}
-<form action="" method="post" class="uk-form uk-form-horizontal" style="margin:20px; ">
+<form action="save" method="post" class="uk-form uk-form-horizontal" style="margin:20px; ">
     <fieldset>
         <div class="uk-form-row uk-grid">
             <div class="uk-width-medium-1-2">
@@ -32,6 +32,7 @@
             <input type="submit" value="点击保存" class="uk-input">
         </div>
     </fieldset>
+    {% csrf_token %}
 </form>
 
 {% endblock %}

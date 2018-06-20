@@ -1,51 +1,179 @@
-{% extends '__base__.html' %}{% block content %}
+{% extends '__base__.html' %} {% block beforehead %}
+<script>
+    function validateEmail(email) {
+        var re = /^[a-z0-9\.\_\-]+\@[a-z0-9\-\_]+(\.[a-z0-9\-\_]+){1,4}$/
+        return re.test(email.toLowerCase());
+    }
 
+    function register() {
+        let username = $("input[name='usernameReg']").val();
+        let email = $("input[name='emailReg']").val();
+        let password = $("input[name='passwordReg']").val();
+        let password1 = $("input[name='password1Reg']").val();
+        if (!username) {
+            alert("用户名不能为空!");
+            return false;
+        }
+        if (!validateEmail(email.trim().toLowerCase())) {
+            alert('请输入正确的邮箱地址。');
+            return false;
+            //return $form.showFormError('请输入正确的邮箱地址。');
+        }
+        if (password.length < 6) {
+            alert('密码长度至少为6个字符。');
+            return false;
+            //return $form.showFormError('密码长度至少为6个字符。');
+        }
+        if (password !== password1) {
+            alert('两次输入的密码不匹配。');
+            return false;
+            //return $form.showFormError('密码不匹配。');
+        }
+        username = username.trim().toLowerCase();
+        passwd = CryptoJS.SHA1(username + ':' + password).toString();
+        $("input[name='passwordReg']").val(passwd);
+        $("input[name='password1Reg']").val(passwd);
+        return true;
+        //alert(username)
+    }
+
+    function signin() {
+        let username = $("input[name='username']").val();
+        let password = $("input[name='password']").val();
+        if (!username) {
+            alert("用户名不能为空!");
+            return false;
+        }
+        if (password.length < 6) {
+            alert('密码长度至少为6个字符。');
+            return false;
+            //return $form.showFormError('密码长度至少为6个字符。');
+        }
+        username = username.trim().toLowerCase();
+        passwd = CryptoJS.SHA1(username + ':' + password).toString();
+        $("input[name='password']").val(passwd);
+        //document.cookie = "name=" + username;
+        return true
+    }
+</script> {% endblock %} {% block content %}
 <div style="height: 600px; margin-right: 20px; ">
     {% for article in articles %}
     <div class="uk-panel uk-panel-box uk-panel-box-primary-hover" style="margin-top: 20px;">
         <article class="uk-article">
-            <h1 class="uk-article-title uk-panel-title">
-                <a href="#">{{ article.title }}</a>
+            <h1 class="uk-article-title uk-panel-title uk-text-center">
+                <a href="{{ article.get_absolute_url }}/blog/{{ article.id }}" style="font-size: 80%">{{ article.title }}</a>
             </h1>
             <p class="uk-article-meta">由
                 <a>
                     <strong>{{ article.user }}</strong>
-                </a>于{{ article.pubTime | date:"F j, Y"}}发表在
+                </a>于{{ article.pubTime | date:"Y年n月j日 "}}发表在
                 <a>
                     <strong>{{ article.column }}</strong>
                 </a>栏目中。</p>
             <p>{{ article.content | safe }}</p>
             <br>
-            <form action="" method="post" class="uk-form">
+            <form action="cc" method="post" class="uk-form">
                 <fieldset data-uk-margin>
-                    <legend>发表评论</legend>
-                    <input type="text" hidden="hidden" value="{{ article.title }}">
-                    <div class="uk-grid">
-                        <div class="uk-width-4-5">
-                            <textarea name="commentText" placeholder="请输入评论" class="uk-width-1-1" style="height: 50px;"></textarea>
-                        </div>
-                        <div class=" uk-width-1-5">
-                            <input type="submit" value="点击评论" class="uk-input" style="height: 50px;">
-                        </div>
-                    </div>
-                    {% csrf_token %}
+                    <article class="uk-comment">
+                        <header>
+                            {% if user %}
+                            <img class="uk-comment-avatar" src="{{ user.profilePhoto }}" style="max-width: 100px;">
+                            <a class="uk-comment-title" href="{{ article.get_absolute_url }}/blog/mu">{{ user.name }}</a>
+                            <hr class="uk-divider-small">
+                            <div class="uk-grid uk-comment-body">
+                                <textarea name="commentText" class="uk-width-medium-5-6" placeholder="请输入评论"></textarea>
+                                <div class="uk-width-medium-1-6" style="margin: 0px;padding-left: 10px">
+                                    <input type="submit" value="点击评论" class="uk-input" style="height: 50px;">
+                                </div>
+                            </div>
+                            {% else %}
+                            <!-- 触发模态对话框的锚 -->
+                            <a href="#signinForm" class="uk-comment-title" data-uk-modal>登陆后可发表评论！</a>
+                            {% endif %}
+                        </header>
+                        <input type="text" hidden="hidden" value="{{ article.title }}" name="articleTitle">{% csrf_token %}
+                    </article>
                 </fieldset>
             </form>
-            <hr class="uk-divider-small"> {% for comment in comment %}
+
+            <!-- 触发模态对话框的按钮  <button class="uk-button" data-uk-modal="{target:'#my-id'}">登陆</button>-->
+            <!-- 模态对话框 -->
+            <div id="signinForm" class="uk-modal">
+                <div class="uk-modal-dialog" style="width: 400px">
+                    <button class="uk-modal-close uk-close" type="button"></button>
+                    <form class="uk-form" method="POST" action="signin" onsubmit="return signin()">
+                        <fieldset>
+                            <div class="uk-modal-header">
+                                <p class="uk-text-large uk-text-center">请登陆后再操作哟!</p>
+                            </div>
+                            <div class="uk-width-1-1">
+                                <div class="uk-form-row">
+                                    <input type="text" name="username" placeholder="请输入你的用户名！" class="uk-width-1-1 uk-text-large">
+                                </div>
+                                <div class="uk-form-row">
+                                    <input type="password" name="password" placeholder="在这里填密码，千万不要告诉别人！" class="uk-width-1-1 uk-text-large">
+                                </div>
+                                <div class="uk-modal-footer uk-text-right">
+                                    <a class="uk-button" type="button" href="#regForm" data-uk-modal>注册</a>
+                                    <button class="uk-button uk-button-primary" type="submit">登陆</button>
+                                </div>
+                                <input type="text" hidden="hidden" value="{{ article.title }}" name="articleTitle"> {% csrf_token %}
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <!-- 模态对话框 -->
+            <div id="regForm" class="uk-modal" onsubmit="return register()">
+                <div class="uk-modal-dialog" style="width: 400px">
+                    <button class="uk-modal-close uk-close" type="button"></button>
+                    <form class="uk-form" method="POST" action="reg">
+                        <fieldset>
+                            <div class="uk-modal-header">
+                                <p class="uk-text-large uk-text-center">欢迎注册(☆▽☆)!</p>
+                            </div>
+                            <div class="uk-width-1-1">
+                                <div class="uk-form-row">
+                                    <input type="text" name="usernameReg" placeholder="请输入你的用户名！" class="uk-width-1-1 uk-text-large">
+                                </div>
+                                <div class="uk-form-row">
+                                    <input type="text" name="emailReg" placeholder="请输入你的邮箱！" class="uk-width-1-1 uk-text-large">
+                                </div>
+                                <div class="uk-form-row">
+                                    <input type="password" name="passwordReg" placeholder="在这里填密码，千万不要告诉别人！" class="uk-width-1-1 uk-text-large">
+                                </div>
+                                <div class="uk-form-row">
+                                    <input type="password" name="password1Reg" placeholder="重新输入密码，当然也不能告诉别人！" class="uk-width-1-1 uk-text-large">
+                                </div>
+                                <div class="uk-form-row">
+                                    <input type="text" name="profilePhoto" placeholder="请输入你头像的地址，不输入就是默认的！" class="uk-width-1-1 uk-text-large">
+                                </div>
+                                <div class="uk-modal-footer uk-text-right">
+                                    <button class="uk-button uk-button-primary" type="submit" data-uk-modal>注册</button>
+                                </div>
+                                {% csrf_token %}
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <hr class="uk-nav-divider"> {% for comment in comments %}
             <ul class="uk-comment-list">
                 <li>
                     <article class="uk-comment">
                         <header class="uk-comment-header">
-                            <img class="uk-comment-avatar" style="max-width: 100px;" src="{{ comment.user.avatar }}{{ config.3 }}" alt="头像">
-                            <div class="uk-comment-meta">|发表于{{ comment.pubTime }}2018年6月4日</div>
-                            <hr class="uk-divider-small">
-                            <div class="uk-comment-body uk-text-bottom">评论测试!</div>
+                            <img class="uk-comment-avatar" style="max-width: 100px;" src="{{ comment.user.avatar }}{{ comment.user.profilePhoto }}" alt="头像">
+                            <div class="uk-comment-meta uk-grid">
+                                <div class="uk-text-left uk-width-medium-1-2" style="padding: 0px">{{ comment.user.name }}发表于{{ comment.pubTime }}</div>
+                                <div class="uk-text-right uk-width-medium-1-2">{{ comment.floor }}#</div>
+                            </div>
+                            <hr class="uk-divider-small uk-text-left">
+                            <div class="uk-comment-body uk-text-bottom">{{ comment.content }}</div>
                         </header>
                     </article>
                 </li>
             </ul>
             {% endfor %}
-
         </article>
     </div>
 </div>

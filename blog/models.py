@@ -6,6 +6,12 @@ from django.db import models
 class User(models.Model):
     objects = models.Manager()
     name = models.CharField('姓名', max_length=255, default='匿名')
+    email = models.EmailField('Email', max_length=255,
+                              default='test@example.cpm')
+    password = models.CharField('密码', max_length=255, default='admin')
+    profilePhoto = models.TextField(
+        '头像', default='//tva1.sinaimg.cn/crop.318.608.1137.1137.180/3c1b9c69jw8f1ptze8k4hj21kw1ekakh.jpg')
+    isAdmin = models.BooleanField('管理员权限', default=False)
 
     class Meta:
         verbose_name = '小伙伴'
@@ -55,6 +61,9 @@ class Comment(models.Model):
     article = models.ForeignKey(
         Article, on_delete=models.SET_DEFAULT, default=1)
     content = models.TextField('评论', default='')
+    pubTime = models.DateTimeField('发表时间', auto_now_add=True)
+    changeTime = models.DateTimeField('修改时间', auto_now=True)
+    floor = models.IntegerField('楼层', default='0')
 
     class Meta:
         verbose_name = '评论'

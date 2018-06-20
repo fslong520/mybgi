@@ -7,11 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ config.0 }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}" />
     <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/uikit/2.25.0/css/uikit.css" />
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="{% static 'js/uikit.min.js' %}"></script>{% block beforehead %}{# 在这里写一下js脚本什么的 #}{% endblock %}
+    <script src="{% static 'js/uikit.min.js' %}"></script>
+    <script src="{% static 'js/CryptoJS.js' %}"></script>
     <!-- Codemirror 和 marked 依赖 -->
     <link rel="stylesheet" href="{% static 'codemirror/lib/codemirror.css' %}">
     <script src="{% static 'codemirror/lib/codemirror.js' %}"></script>
@@ -23,13 +24,13 @@
 
     <!-- HTML 编辑器的 CSS 与 JavaScript -->
     <link rel="stylesheet" href="{% static 'css/components/htmleditor.css' %}">
-    <script src="{% static 'js/components/htmleditor.js' %}"></script>
+    <script src="{% static 'js/components/htmleditor.js' %}"></script> {% block beforehead %}{# 在这里写一下js脚本什么的 #}{% endblock %}
 
 
 </head>
 
 <body>
-    <div class="uk-grid" style="padding-left: 20px" >
+    <div class="uk-grid" style="padding-left: 20px">
         <div class="uk-width-medium-1-4 uk-hidden-small" style="margin-top: 20px;">
             {% block menu %}{# PC端左边的菜单栏 #} {% endblock %}
             <div style="height: 180px; background-color: gray "></div>
@@ -95,7 +96,7 @@
                 <li class="uk-parent" data-uk-dropdown="">
                     <a class="uk-navbar-toggle uk-display-inline"></a>
                     <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-bottom">
-                        <ul class="uk-nav uk-nav-navbar">
+                        <ul class="uk-nav uk-nav-navbar" style="padding-left: 20px">
                             <li>
                                 <ul class="uk-nav uk-nav-navbar">
                                     <li>
@@ -133,7 +134,10 @@
             <div class="uk-navbar-center uk-navbar-content uk-text-large">{{ config.0 }}</div>
         </nav>
         <div class="uk-width-medium-3-4" style="padding-left: 20px">
-            {# 右边1/3宽度的菜单栏 #} {% block content %} {# 正文部分 #} {% endblock %}
+            {% if message %}
+            <div class="uk-alert uk-alert-success" style="margin-right: 20px;margin-top: 20px" data-uk-alert="">
+                <a href="" class="uk-alert-close uk-close" style="margin-top: -10px"></a>{{ message }} </div>
+            {% endif %} {% block content %} {# 正文部分 #} {% endblock %}
         </div>
     </div>
 

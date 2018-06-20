@@ -5,6 +5,7 @@ import markdown
 from django.shortcuts import render
 
 from blog.models import Article, Column, Comment, User
+from django.http.response import HttpResponseRedirect
 
 # Create your views here.
 
@@ -32,8 +33,12 @@ class Config(object):
             self.user['profilePhoto'] = config.get(
                 'user', 'profilePhoto')
         except:
-            self.blog = None
-            self. user = None
+            self.blog = {}
+            self.user = {}
+            self.blog['name'] = '明月不归尘'
+            self.user['name'] = 'fslong'
+            self.user['intro'] = '君子藏器于身，待时而动'
+            self.user['profilePhoto'] = '//tva1.sinaimg.cn/crop.318.608.1137.1137.180/3c1b9c69jw8f1ptze8k4hj21kw1ekakh.jpg'
 
 
 # 设置配置信息的函数：
@@ -106,11 +111,22 @@ def getArticleById(request, id):
         article = None
     articles = mdToHtml([article])
     try:
-        comment = Comment.objects.filter(article=article)
+        comments = Comment.objects.filter(article=article)
+        # comments.objects.order_by('pubTime')
+        i = 1
+        for comment in comments:
+            comment.floor = i
+            i += 1
     except:
-        comment = None
+        comments = None
+    try:
+        username = request.session.get('name')
+        user = User.objects.get(name=username)
+    except:
+        username = None
+        user = None
     context = {'config': configList,
-               'articles': articles, 'comment': comment, }
+               'articles': articles, 'comments': comments, 'user': user, }
     return render(request, 'blogs.html', context=context)
 
 
@@ -119,3 +135,135 @@ def createAritcle(request):
     context = {'config': configList,
                'users': getAllUser(), 'columns': getAllColumn()}
     return render(request, 'createArticle.html', context=context)
+
+
+# 创建评论：
+def createComment(request):
+    if request.method == 'POST':
+        username = request.session.get('name')
+        articleTitle = request.POST.get('articleTitle', '')
+        content = request.POST.get('commentText', '')
+        comment = Comment()
+        try:
+            user = User.objects.get(name=username)
+            article = Article.objects.get(title=articleTitle)
+            comment.user = user
+            comment.article = article
+            comment.content = content
+            comment.save()
+            comment.floor = len(Comment.objects.filter(article=article))+1
+            articles = mdToHtml([article])
+            try:
+                comments = Comment.objects.filter(article=article)
+                # comments.objects.order_by('pubTime')
+                i = 1
+                for comment in comments:
+                    comment.floor = i
+                    i += 1
+            except:
+                comments = None
+            try:
+                username = request.session.get('name')
+                user = User.objects.get(name=username)
+            except:
+                username = None
+                user = None
+            context = {'config': configList,
+                       'articles': articles, 'comments': comments, 'user': user, 'message': '评论发表成功！'}
+            return render(request, 'blogs.html', context=context)
+        except:
+            context = {'config': configList, 'message': '失败了'}
+            return render(request, 'index.html', context=context)
+    else:
+        context = {'config': configList, }
+        return render(request, 'index.html', context=context)
+
+
+# 登陆页面：
+def signin(request):
+    if request.method == 'POST':
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        articleTitle = request.POST.get('articleTitle', '')
+        try:
+            user = User.objects.get(name=username)
+            if user.password == password:
+                request.session['name'] = username
+                message = '登陆成功，你现在拥有了一些神奇能力！'
+            else:
+                message = '密码错了呢！'
+        except:
+            message = '呀，你还没注册呢！'
+        finally:
+            article = Article.objects.get(title=articleTitle)
+            articles = mdToHtml([article])
+            try:
+                comments = Comment.objects.filter(article=article)
+                # comments.objects.order_by('pubTime')
+                i = 1
+                for comment in comments:
+                    comment.floor = i
+                    i += 1
+            except:
+                comments = None
+            try:
+                username = request.session.get('name')
+                user = User.objects.get(name=username)
+            except:
+                username = None
+                user = None
+            context = {'config': configList,
+                       'articles': articles, 'comments': comments, 'user': user, 'message': message}
+            return render(request, 'blogs.html', context=context)
+
+
+# 注销：
+def signout(request):
+    request.session['name'] = None
+    message = '注销成功，谢谢使用！'
+    articles = getAllArticle()
+    # 截断文章显示：
+    for article in articles:
+        if len(article.content) > 300:
+            article.content = article.content[0:300]+'...'
+    # 逆序排序文章：
+    articles = articles[::-1]
+    articles = mdToHtml(articles)
+    context = {'config': configList, 'message': message, 'articles': articles}
+    return render(request, 'index.html', context=context)
+
+
+# 注册页面：
+def register(request):
+    username = request.POST.get('usernameReg', '')
+    password = request.POST.get('passwordReg', '')
+    email = request.POST.get('emailReg', '')
+    profilePhoto = request.POST.get('profilePhoto', '')
+
+    if profilePhoto == '':
+        profilePhoto = '/static/img/deafaultprofilePhoto.png'
+    user = User()
+    user.name = username
+    user.password = password
+    user.email = email
+    user.profilePhoto = profilePhoto
+    try:
+        userInDB = User.objects.get(name=username)
+    except:
+        userInDB = None
+    if userInDB:
+        message = '非常抱歉，你已经注册过了！'
+    else:
+        user.save()
+        message = '哈哈！注册成功了啦（原谅老夫的少女心）！'
+        request.session['name'] = user.name
+    sessionName = request.session.get('name')
+    context = {'config': configList,
+               'message': message, 'session': sessionName}
+    return render(request, 'test.html', context={'context': context})
+
+
+# 用户管理：
+def manageUser(request):
+    context = {'config': configList, }
+    return render(request, 'manage_user.html', context=context)
