@@ -25,6 +25,12 @@ urlpatterns = [
     path('cc', themesViews.createComment),
     path('signin', themesViews.signin),
     path('signout', themesViews.signout),
-    path('mu', themesViews.manageUser),
+    path('manage', themesViews.manage),
     path('reg', themesViews.register),
+    path('mu', themesViews.manageUser),
+    path('editComment/<int:id>', themesViews.manage),
+    path('deleteComment/<int:id>', themesViews.manage),
+    path('editBlog/<int:id>', themesViews.manage),
+    path('deleteBlog/<int:id>', themesViews.manage),
+    path('checkPassword', themesViews.checkPassword),
 ]

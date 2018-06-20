@@ -1,0 +1,77 @@
+{% extends '__base__.html' %} {% block content %}
+<div class="uk-grid">
+    <div class="uk-width-1-1" id="checkPassword">
+        <form class="uk-form uk-text-center uk-width-medium-1-2" onsubmit="return false">
+            <fieldset>
+                <div class="uk-modal-header">
+                    <p class="uk-text-large uk-text-center" id="tips">首先请使用原密码进行认证！</p>
+                </div>
+                <div class="uk-width-1-1">
+                    <div class="uk-form-row">
+                        <input type="text" name="username" placeholder="请输入你的用户名！" class="uk-width-1-1 uk-text-large">
+                    </div>
+                    <div class="uk-form-row">
+                        <input type="password" name="password" placeholder="在这里填密码，千万不要告诉别人！" class="uk-width-1-1 uk-text-large">
+                    </div>
+                    <div class="uk-form-row">
+                        <input type="password" name="newPassword" hidden="hidden" placeholder="在这里填入新密码，当然千万不要告诉别人！" class="uk-width-1-1 uk-text-large">
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-button-primary" id="check">验证账户信息</button>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-button-primary" hidden="hidden" id="set">修改密码</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<script>
+    $.ajaxSetup({
+        data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+    });
+    $("#check").click(function () {
+        let username = $("input[name='username']").val();
+        let password = $("input[name='password']").val();
+        if (!username) {
+            alert("用户名不能为空!");
+            return false;
+        }
+        if (password.length < 6) {
+            alert('密码长度至少为6个字符。');
+            return false;
+            //return $form.showFormError('密码长度至少为6个字符。');
+        }
+        username = username.trim().toLowerCase();
+        password = CryptoJS.SHA1(username + ':' + password).toString();
+        $.ajax({
+            url: "/blog/checkPassword",
+            type: "POST",
+            data: {
+                "username": username,
+                "password": password
+            },
+            success: function (data1) {
+                if (data1) {
+                    alert("认证通过,请继续下一步！");
+                    //如果修改密码，那么显示修改密码框！
+                    if ("{{ changePassword }}") {
+                        $("#tips").text("修改密码！")
+
+                    }
+                    if ("{{ changeProfilePhoto }}") {
+
+                    }
+                } else {
+                    alert("认证失败，请重试！")
+                }
+            }
+        })
+    })
+</script>
+
+
+{% endblock %}

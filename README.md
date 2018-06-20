@@ -18,6 +18,16 @@
 ## 二、以下是开发日志，倒序书写： 
 ### 2018.06.20
 1. 部署到了阿里云，欢迎访问：[明月不归尘](https://fslong.xyz) ；
+2. 编写用户管理页；
+3. 加入使用Ajax验证账户密码；
+4. 由于django使用了csrf_token，用Ajax直接发送post请求会被拒绝，因此需要在使用Ajax之前加入以下代码（不能在文件中，必须在要使用Ajax的地方）：  
+```javascript
+$.ajaxSetup({
+    data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+    },
+});
+```
 ### 2018.06.18
 1. 完成了登陆和注册页面；
 2. 完成了发表评论和显示评论；

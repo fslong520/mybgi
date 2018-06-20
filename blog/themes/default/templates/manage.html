@@ -1,0 +1,167 @@
+{% extends '__base__.html' %} {% block content %}
+<div class="uk-grid uk-width-1-1" style="margin-top: 20px;margin-right: 20px;">
+    <div class="uk-width-1-1 uk-text-center">
+        <h1 class="uk-text-primary">用户总览</h1>
+    </div>
+    <div class="uk-width-1-1">
+        <h3>1、用户信息</h3>
+    </div>
+    <div class="uk-width-1-1" style="margin-left: 20px">
+        <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed uk-text-center">
+            <thead>
+                <tr>
+                    <td>
+                        <b>用户名</b>
+                    </td>
+                    <td>
+                        <b>电子邮箱</b>
+                    </td>
+                    <td>
+                        <b>注册时间</b>
+                    </td>
+                    <td colspan="2">
+                        <b>管理</b>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="uk-text-middle">{{ user.name }}</td>
+                    <td class="uk-text-middle">{{ user.email }}</td>
+                    <td class="uk-text-middle">{{ user.regTime }}</td>
+                    <td style="width: 200px">
+                        <form action="mu" class="uk-form" method="POST">
+                            <fieldset>
+                                <div class="uk-grid">
+                                    <select name="manageFunction" id="" class="uk-select uk-width-1-2">
+                                        <option value="changePassword">修改密码</option>
+                                        <option value="changeProfilePhoto">修改头像</option>
+                                        <option value="signOut">注销</option>
+                                    </select>
+                                    <input type="submit" value="执行" class="uk-input uk-width-1-2">
+                                </div>
+                            </fieldset>
+                            {% csrf_token %}
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+        <hr class="uk-table-divider">
+    </div>
+    <br>
+    <div class="uk-width-1-1">
+        <h3>2、文章总数&ensp;/
+            <span style="font-size: 0.8em">{{ lens.0 }}</span>
+        </h3>
+    </div>
+    <div class="uk-width-1-1" style="margin-left: 20px">
+        <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed uk-text-center">
+            <thead>
+                <tr>
+                    <td>
+                        <b>文章id</b>
+                    </td>
+                    <td>
+                        <b>标题/摘要</b>
+                    </td>
+                    <td>
+                        <b>作者</b>
+                    </td>
+                    <td>
+                        <b>发表时间</b>
+                    </td>
+                    <td>
+                        <b>最后修改</b>
+                    </td>
+                    <td>
+                        <b>操作</b>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in articles %}
+                <tr>
+                    <td>{{ article.id }}</td>
+                    <td class="uk-text-left">{{ article.title }}</td>
+                    <td>{{ article.author }}</td>
+                    <td>{{ article.pubTime}}</td>
+                    <td>{{ article.changeTime }}</td>
+                    <td>
+                        <a href="editBlog/{{ article.id }}">
+                            <i class="uk-icon-edit"></i>
+                        </a>
+                        <a href="deleteBlog/{{ article.id }}">
+                            <i class="uk-icon-trash-o"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+        <hr class="uk-table-divider">
+    </div>
+    <br>
+    <div class="uk-width-1-1">
+        <h3>3、评论总数&ensp;/
+            <span style="font-size: 0.8em">{{ lens.1 }}</span>
+        </h3>
+    </div>
+    <div class="uk-width-1-1" style="margin-left: 20px">
+        <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed uk-text-center">
+            <thead>
+                <tr>
+                    <td>
+                        <b>评论id</b>
+                    </td>
+                    <td>
+                        <b>评论内容</b>
+                    </td>
+                    <td>
+                        <b>所在文章</b>
+                    </td>
+                    <td>
+                        <b>用户</b>
+                    </td>
+                    <td>
+                        <b>发表时间</b>
+                    </td>
+                    <td>
+                        <b>最后修改</b>
+                    </td>
+                    <td>
+                        <b>操作</b>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for comment in comments %}
+                <tr>
+                    <td>{{ comment.id }}</td>
+                    <td class="uk-text-left">{{ comment.content |safe }}</td>
+                    <td class="uk-text-left">
+                        <p class="uk-text-truncate" style="width: 200px">{{ comment.article }}</p>
+                    </td>
+                    <td>{{ comment.user }}</td>
+                    <td>{{ comment.pubTime}}</td>
+                    <td>{{ comment.changeTime }}</td>
+                    <td>
+                        <a href="editComment/{{ comment.id }}">
+                            <i class="uk-icon-edit"></i>
+                        </a>
+                        <a href="deleteComment/{{ comment.id }}">
+                            <i class="uk-icon-trash-o"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot></tfoot>
+
+        </table>
+
+    </div>
+</div>
+{% endblock %}

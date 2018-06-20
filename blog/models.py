@@ -12,6 +12,7 @@ class User(models.Model):
     profilePhoto = models.TextField(
         '头像', default='//tva1.sinaimg.cn/crop.318.608.1137.1137.180/3c1b9c69jw8f1ptze8k4hj21kw1ekakh.jpg')
     isAdmin = models.BooleanField('管理员权限', default=False)
+    regTime=models.DateTimeField('注册时间', auto_now_add=True)
 
     class Meta:
         verbose_name = '小伙伴'
@@ -67,6 +68,7 @@ class Comment(models.Model):
 
     class Meta:
         verbose_name = '评论'
+        ordering = ['pubTime']
 
     def __str__(self):
         return self.content

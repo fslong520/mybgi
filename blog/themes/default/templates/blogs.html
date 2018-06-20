@@ -78,7 +78,7 @@
                         <header>
                             {% if user %}
                             <img class="uk-comment-avatar" src="{{ user.profilePhoto }}" style="max-width: 100px;">
-                            <a class="uk-comment-title" href="{{ article.get_absolute_url }}/blog/mu">{{ user.name }}</a>
+                            <a class="uk-comment-title" href="{{ article.get_absolute_url }}/blog/manage">{{ user.name }}</a>
                             <hr class="uk-divider-small">
                             <div class="uk-grid uk-comment-body">
                                 <textarea name="commentText" class="uk-width-medium-5-6" placeholder="请输入评论"></textarea>
@@ -151,7 +151,7 @@
                                 <div class="uk-modal-footer uk-text-right">
                                     <button class="uk-button uk-button-primary" type="submit" data-uk-modal>注册</button>
                                 </div>
-                                {% csrf_token %}
+                                <input type="text" hidden="hidden" value="{{ article.title }}" name="articleTitle">{% csrf_token %}
                             </div>
                         </fieldset>
                     </form>
@@ -168,7 +168,7 @@
                                 <div class="uk-text-right uk-width-medium-1-2">{{ comment.floor }}#</div>
                             </div>
                             <hr class="uk-divider-small uk-text-left">
-                            <div class="uk-comment-body uk-text-bottom">{{ comment.content }}</div>
+                            <div class="uk-comment-body uk-text-bottom">{{ comment.content |safe }}</div>
                         </header>
                     </article>
                 </li>

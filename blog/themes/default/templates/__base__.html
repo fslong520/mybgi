@@ -25,7 +25,18 @@
     <!-- HTML 编辑器的 CSS 与 JavaScript -->
     <link rel="stylesheet" href="{% static 'css/components/htmleditor.css' %}">
     <script src="{% static 'js/components/htmleditor.js' %}"></script> {% block beforehead %}{# 在这里写一下js脚本什么的 #}{% endblock %}
+    <style type="text/css">
+        p {
+            font-size: 1.1em;
+        }
 
+        a {
+            font-size: 1.1em;
+        }
+        span{
+            font-size: 1.1em;
+        }
+    </style>
 
 </head>
 
@@ -135,8 +146,8 @@
         </nav>
         <div class="uk-width-medium-3-4" style="padding-left: 20px">
             {% if message %}
-            <div class="uk-alert uk-alert-success" style="margin-right: 20px;margin-top: 20px" data-uk-alert="">
-                <a href="" class="uk-alert-close uk-close" style="margin-top: -10px"></a>{{ message }} </div>
+            <div class="uk-alert uk-alert-success uk-text-center" style="margin-right: 20px;margin-top: 20px" data-uk-alert="">
+                <a href="" class="uk-alert-close uk-close " style="margin-top: -10px"></a>{{ message }} </div>
             {% endif %} {% block content %} {# 正文部分 #} {% endblock %}
         </div>
     </div>
