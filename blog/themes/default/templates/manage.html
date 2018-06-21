@@ -1,7 +1,7 @@
 {% extends '__base__.html' %} {% block content %}
 <div class="uk-grid uk-width-1-1" style="margin-top: 20px;margin-right: 20px;">
     <div class="uk-width-1-1 uk-text-center">
-        <h1 class="uk-text-primary">用户总览</h1>
+        <h3 class="uk-text-primary">欢迎{{ user.name }}</h3>
     </div>
     <div class="uk-width-1-1">
         <h3>1、用户信息</h3>
@@ -49,12 +49,21 @@
             <tfoot></tfoot>
         </table>
         <hr class="uk-table-divider">
+        <br>
     </div>
-    <br>
-    <div class="uk-width-1-1">
-        <h3>2、文章总数&ensp;/
-            <span style="font-size: 0.8em">{{ lens.0 }}</span>
-        </h3>
+    <div class="uk-width-1-1 uk-grid">
+        <div class=" uk-width-1-2">
+            <h3>2、文章总数&ensp;/
+                <span style="font-size: 0.8em">{{ lens.0 }}</span>
+            </h3>
+        </div>
+        {% if user.isAdmin %}
+        <div class="uk-width-1-2 uk-text-right">
+            <a href="/blog/ca">新增博文
+                <i class="uk-icon-plus uk-icon-align-right" style="padding-right: 0px"></i>
+            </a>
+        </div>
+        {% endif %}
     </div>
     <div class="uk-width-1-1" style="margin-left: 20px">
         <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed uk-text-center">
@@ -84,7 +93,9 @@
                 {% for article in articles %}
                 <tr>
                     <td>{{ article.id }}</td>
-                    <td class="uk-text-left">{{ article.title }}</td>
+                    <td class="uk-text-left">
+                        <a href="/blog/{{ article.id }}">{{ article.title }}</a>
+                    </td>
                     <td>{{ article.author }}</td>
                     <td>{{ article.pubTime}}</td>
                     <td>{{ article.changeTime }}</td>
@@ -142,16 +153,15 @@
                     <td>{{ comment.id }}</td>
                     <td class="uk-text-left">{{ comment.content |safe }}</td>
                     <td class="uk-text-left">
-                        <p class="uk-text-truncate" style="width: 200px">{{ comment.article }}</p>
+                        <p class="uk-text-truncate" style="width: 200px">
+                            <a href="/blog/{{ comment.article.id }}">{{ comment.article.title }}</a>
+                        </p>
                     </td>
                     <td>{{ comment.user }}</td>
                     <td>{{ comment.pubTime}}</td>
                     <td>{{ comment.changeTime }}</td>
                     <td>
-                        <a href="editComment/{{ comment.id }}">
-                            <i class="uk-icon-edit"></i>
-                        </a>
-                        <a href="deleteComment/{{ comment.id }}">
+                        <a onclick="deletComment('{{ comment.id }}')">
                             <i class="uk-icon-trash-o"></i>
                         </a>
                     </td>
@@ -159,8 +169,26 @@
                 {% endfor %}
             </tbody>
             <tfoot></tfoot>
-
         </table>
+        <script>
+            function deletComment(id) {
+                $.ajaxSetup({
+                    data: {
+                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                    },
+                });
+                $.ajax({
+                    url: "/blog/deleteComment",
+                    type: "POST",
+                    data: { 'id': id },
+                    success: function (data1) {
+                        alert(data1)
+                        window.location="/blog/manage"
+                    }
+                });
+
+            }
+        </script>
 
     </div>
 </div>

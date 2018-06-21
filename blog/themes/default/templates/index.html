@@ -6,7 +6,7 @@
             <h1 class="uk-article-title uk-panel-title">
                 <a href="{{ article.get_absolute_url }}/blog/{{ article.id }}" style="font-size: 80%">{{ article.title }}</a>
             </h1>
-            <p class="uk-article-meta">由
+            <p class="uk-article-meta">由管理员
                 <a>
                     <strong>{{ article.user }}</strong>
                 </a>于{{ article.pubTime | date:"Y年n月j日 "}}发表在
@@ -29,7 +29,7 @@
             </a>本作品采用
             <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议
             </a>进行许可。
-            <ul class="uk-pagination">
+            <ul class="uk-pagination" hidden="hidden">
                 <li>
                     <a href="">
                         <i class="uk-icon-angle-double-left"></i>

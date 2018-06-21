@@ -117,6 +117,7 @@ def getArticleById(request, id):
         for comment in comments:
             comment.floor = i
             i += 1
+        comments = mdToHtml(comments)
     except:
         comments = None
     try:
@@ -125,7 +126,6 @@ def getArticleById(request, id):
     except:
         username = None
         user = None
-    comments = mdToHtml(comments)
     context = {'config': configList,
                'articles': articles, 'comments': comments, 'user': user, }
     return render(request, 'blogs.html', context=context)
@@ -133,49 +133,72 @@ def getArticleById(request, id):
 
 # 创建文章：
 def createAritcle(request):
-    context = {'config': configList,
-               'users': getAllUser(), 'columns': getAllColumn()}
-    return render(request, 'createArticle.html', context=context)
+    if request.method == 'POST':
+        username = request.session.get('name')
+        user = User.objects.get(name=username)
+        article = Article()
+        title = request.POST.get('title')
+        author = request.POST.get('author')
+        content = request.POST.get('content')
+        columnname = request.POST.get('column')
+        column = Column.objects.get(name=columnname)
+        article.author = author
+        article.title = title
+        article.content = content
+        article.column = column
+        article.user = user
+        article.save()
+        articles = mdToHtml([article])
+        try:
+            comments = Comment.objects.filter(article=article)
+            # comments.objects.order_by('pubTime')
+            i = 1
+            for comment in comments:
+                comment.floor = i
+                i += 1
+            comments = mdToHtml(comments)
+        except:
+            comments = None
+        context = {'config': configList,
+                   'articles': articles, 'comments': comments, 'user': user, 'message': '新增文章成功，你今天的每份努力，明天都会获得更多，加油！'}
+        return render(request, 'blogs.html', context=context)
+    else:
+        username = request.session.get('name')
+        try:
+            user = User.objects.get(name=username)
+        except:
+            user = None
+        columns = getAllColumn()
+        context = {'config': configList, 'user': user, 'columns': columns, }
+        return render(request, 'createArticle.html', context=context)
 
 
 # 创建评论：
 def createComment(request):
     if request.method == 'POST':
         username = request.session.get('name')
-        articleTitle = request.POST.get('articleTitle', '')
+        articleid = request.POST.get('articleid', '')
         content = request.POST.get('commentText', '')
         comment = Comment()
-        try:
-            user = User.objects.get(name=username)
-            article = Article.objects.get(title=articleTitle)
-            comment.user = user
-            comment.article = article
-            comment.content = content
-            comment.save()
-            comment.floor = len(Comment.objects.filter(article=article))+1
-            articles = mdToHtml([article])
-            try:
-                comments = Comment.objects.filter(article=article)
-                # comments.objects.order_by('pubTime')
-                i = 1
-                for comment in comments:
-                    comment.floor = i
-                    i += 1
-            except:
-                comments = None
-            try:
-                username = request.session.get('name')
-                user = User.objects.get(name=username)
-            except:
-                username = None
-                user = None
-            comments = mdToHtml(comments)
-            context = {'config': configList,
-                       'articles': articles, 'comments': comments, 'user': user, 'message': '评论发表成功！'}
-            return render(request, 'blogs.html', context=context)
-        except:
-            context = {'config': configList, 'message': '失败了'}
-            return render(request, 'index.html', context=context)
+        user = User.objects.get(name=username)
+        article = Article.objects.get(id=articleid)
+        comment.user = user
+        comment.article = article
+        comment.content = content
+        comment.save()
+        comment.floor = len(Comment.objects.filter(article=article))+1
+        articles = mdToHtml([article])
+        comments = Comment.objects.filter(article=article)
+        # comments.objects.order_by('pubTime')
+        i = 1
+        for comment in comments:
+            comment.floor = i
+            i += 1
+        comments = mdToHtml(comments)
+        context = {'config': configList,
+                   'articles': articles, 'comments': comments, 'user': user, 'message': '评论发表成功！'}
+        return render(request, 'blogs.html', context=context)
+
     else:
         context = {'config': configList, }
         return render(request, 'index.html', context=context)
@@ -186,7 +209,7 @@ def signin(request):
     if request.method == 'POST':
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
-        articleTitle = request.POST.get('articleTitle', '')
+        articleid = request.POST.get('articleid', '')
         try:
             user = User.objects.get(name=username)
             if user.password == password:
@@ -197,7 +220,7 @@ def signin(request):
         except:
             message = '呀，你还没注册呢！'
         finally:
-            article = Article.objects.get(title=articleTitle)
+            article = Article.objects.get(id=articleid)
             articles = mdToHtml([article])
             try:
                 comments = Comment.objects.filter(article=article)
@@ -226,7 +249,7 @@ def register(request):
     password = request.POST.get('passwordReg', '')
     email = request.POST.get('emailReg', '')
     profilePhoto = request.POST.get('profilePhoto', '')
-    articleTitle = request.POST.get('articleTitle', '')
+    articleid = request.POST.get('articleid', '')
     if username == '' or password == '' or email == '':
         message = '输入错误了，快说你是怎么进的这个页面！'
     else:
@@ -247,7 +270,7 @@ def register(request):
             user.save()
             message = '哈哈！注册成功了啦（原谅老夫的少女心）！'
             request.session['name'] = user.name
-    article = Article.objects.get(title=articleTitle)
+    article = Article.objects.get(id=articleid)
     articles = mdToHtml([article])
     try:
         comments = Comment.objects.filter(article=article)
@@ -271,6 +294,7 @@ def register(request):
 
 # 用户总览：
 def manage(request):
+    message = request.GET.get('message', '')
     sessionName = request.session.get('name')
     try:
         user = User.objects.get(name=sessionName)
@@ -285,19 +309,16 @@ def manage(request):
             articles = None
             comments = None
             lens = None
-        finally:
-            message = '欢迎%s，在下面你可以对你的账号进行管理。' % user.name
     else:
         articles = None
         comments = None
         lens = None
-        message = None
     for comment in comments:
         if len(comment.content) > 30:
             comment.content = comment.content[0:30]+'...'
     comments = mdToHtml(comments)
     context = {'config': configList, 'user': user,
-               'articles': articles, 'comments': comments, 'lens': lens, 'message': message, }
+               'articles': articles, 'comments': comments, 'lens': lens, 'message': message}
     return render(request, 'manage.html', context=context)
 
 
@@ -351,15 +372,18 @@ def manageUser(request):
         return render(request, 'index.html', context=context)
 
 
-# 验证密码是否正确：
-def checkPassword(request):
+# 修改密码：
+def changePassword(request):
     username = request.POST.get('username', None)
     password = request.POST.get('password', None)
+    newPassword = request.POST.get('newPassword', None)
     if username:
         try:
             user = User.objects.get(name=username)
             if user.password == password:
                 request.session['name'] = username
+                user.password = newPassword
+                user.save()
                 return HttpResponse(True)
             else:
                 return HttpResponse(False)
@@ -367,3 +391,97 @@ def checkPassword(request):
             return HttpResponse(False)
     else:
         return HttpResponse(False)
+
+
+# 修改头像：
+def changeProfilePhoto(request):
+    username = request.POST.get('username', None)
+    password = request.POST.get('password', None)
+    newProfilePhoto = request.POST.get('newProfilePhoto', None)
+    if username:
+        try:
+            user = User.objects.get(name=username)
+            if user.password == password:
+                request.session['name'] = username
+                user.profilePhoto = newProfilePhoto
+                user.save()
+                return HttpResponse(True)
+            else:
+                return HttpResponse(False)
+        except:
+            return HttpResponse(False)
+    else:
+        return HttpResponse(False)
+
+
+# 修改文章页：
+def manageBlogEdit(request, id):
+    if request.method == "POST":
+        username = request.session.get('name')
+        user = User.objects.get(name=username)
+        article = Article.objects.get(id=id)
+        title = request.POST.get('title')
+        author = request.POST.get('author')
+        content = request.POST.get('content')
+        columnname = request.POST.get('column')
+        column = Column.objects.get(name=columnname)
+        try:
+            article.author = author
+            article.title = title
+            article.content = content
+            article.column = column
+            article.save()
+            return HttpResponse(True)
+        except:
+            return HttpResponse(False)
+    else:
+        sessionName = request.session.get('name')
+        try:
+            user = User.objects.get(name=sessionName)
+        except:
+            user = None
+        article = Article.objects.get(id=id)
+        message = '修改文章！'
+        columns = getAllColumn()
+        for i in range(len(columns)):
+            if columns[i] == article.column:
+                columnid = i
+        context = {'config': configList,
+                   'message': message, 'article': article, 'user': user, 'columns': columns, 'columnid': columnid, }
+        return render(request, 'manageBlogEdit.html', context=context)
+
+
+def deleteBlog(request, id):
+    article = Article.objects.get(id=id)
+    article.delete()
+    return HttpResponseRedirect('/blog/manage?message=删除成功，谢谢！')
+
+
+def deleteComment(request):
+    id = request.POST.get('id')
+    comment = Comment.objects.get(id=id)
+    comment.delete()
+    return HttpResponse('评论删除成功！')
+
+
+def getArticleByColumn(request):
+    columnname = request.GET.get('column')
+    if columnname == 'others':
+        articles = getAllArticle()
+        others = []
+        for article in articles:
+            if article.column.name not in ['博客', '随笔']:
+                others.append(article)
+        articles = others
+    else:
+        column = Column.objects.get(name=columnname)
+        articles = Article.objects.filter(column=column)
+    # 截断文章显示：
+    for article in articles:
+        if len(article.content) > 300:
+            article.content = article.content[0:300]+'...'
+    # 逆序排序文章：
+    articles = articles[::-1]
+    articles = mdToHtml(articles)
+    context = {'config': configList, 'articles': articles}
+    return render(request, 'index.html', context=context)

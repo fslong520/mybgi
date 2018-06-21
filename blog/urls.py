@@ -28,9 +28,11 @@ urlpatterns = [
     path('manage', themesViews.manage),
     path('reg', themesViews.register),
     path('mu', themesViews.manageUser),
-    path('editComment/<int:id>', themesViews.manage),
-    path('deleteComment/<int:id>', themesViews.manage),
-    path('editBlog/<int:id>', themesViews.manage),
-    path('deleteBlog/<int:id>', themesViews.manage),
-    path('checkPassword', themesViews.checkPassword),
+    path('deleteComment', themesViews.deleteComment),
+    path('editBlog/<int:id>', themesViews.manageBlogEdit),
+    path('deleteBlog/<int:id>', themesViews.deleteBlog),
+    path('changePassword', themesViews.changePassword),
+    path('changeProfilePhoto', themesViews.changeProfilePhoto),
+    path('blogsByColumn', themesViews.getArticleByColumn),
+
 ]

@@ -60,7 +60,7 @@ class Comment(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.SET_DEFAULT, default=1)
     article = models.ForeignKey(
-        Article, on_delete=models.SET_DEFAULT, default=1)
+        Article, on_delete=models.CASCADE, default=1)
     content = models.TextField('评论', default='')
     pubTime = models.DateTimeField('发表时间', auto_now_add=True)
     changeTime = models.DateTimeField('修改时间', auto_now=True)

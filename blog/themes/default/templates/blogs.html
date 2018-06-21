@@ -63,7 +63,7 @@
             <h1 class="uk-article-title uk-panel-title uk-text-center">
                 <a href="{{ article.get_absolute_url }}/blog/{{ article.id }}" style="font-size: 80%">{{ article.title }}</a>
             </h1>
-            <p class="uk-article-meta">由
+            <p class="uk-article-meta">由管理员
                 <a>
                     <strong>{{ article.user }}</strong>
                 </a>于{{ article.pubTime | date:"Y年n月j日 "}}发表在
@@ -77,7 +77,7 @@
                     <article class="uk-comment">
                         <header>
                             {% if user %}
-                            <img class="uk-comment-avatar" src="{{ user.profilePhoto }}" style="max-width: 100px;">
+                            <img class="uk-comment-avatar" src="{{ user.profilePhoto }}" style="max-width: 100px;max-height: 100px;">
                             <a class="uk-comment-title" href="{{ article.get_absolute_url }}/blog/manage">{{ user.name }}</a>
                             <hr class="uk-divider-small">
                             <div class="uk-grid uk-comment-body">
@@ -91,7 +91,7 @@
                             <a href="#signinForm" class="uk-comment-title" data-uk-modal>登陆后可发表评论！</a>
                             {% endif %}
                         </header>
-                        <input type="text" hidden="hidden" value="{{ article.title }}" name="articleTitle">{% csrf_token %}
+                        <input type="text" hidden="hidden" value="{{ article.id }}" name="articleid">{% csrf_token %}
                     </article>
                 </fieldset>
             </form>
@@ -117,7 +117,7 @@
                                     <a class="uk-button" type="button" href="#regForm" data-uk-modal>注册</a>
                                     <button class="uk-button uk-button-primary" type="submit">登陆</button>
                                 </div>
-                                <input type="text" hidden="hidden" value="{{ article.title }}" name="articleTitle"> {% csrf_token %}
+                                <input type="text" hidden="hidden" value="{{ article.id }}" name="articleid"> {% csrf_token %}
                             </div>
                         </fieldset>
                     </form>
@@ -151,7 +151,7 @@
                                 <div class="uk-modal-footer uk-text-right">
                                     <button class="uk-button uk-button-primary" type="submit" data-uk-modal>注册</button>
                                 </div>
-                                <input type="text" hidden="hidden" value="{{ article.title }}" name="articleTitle">{% csrf_token %}
+                                <input type="text" hidden="hidden" value="{{ article.id }}" name="articleid">{% csrf_token %}
                             </div>
                         </fieldset>
                     </form>
@@ -162,7 +162,7 @@
                 <li>
                     <article class="uk-comment">
                         <header class="uk-comment-header">
-                            <img class="uk-comment-avatar" style="max-width: 100px;" src="{{ comment.user.avatar }}{{ comment.user.profilePhoto }}" alt="头像">
+                            <img class="uk-comment-avatar" style="max-width: 100px; max-height: 100px" src="{{ comment.user.avatar }}{{ comment.user.profilePhoto }}" alt="头像">
                             <div class="uk-comment-meta uk-grid">
                                 <div class="uk-text-left uk-width-medium-1-2" style="padding: 0px">{{ comment.user.name }}发表于{{ comment.pubTime }}</div>
                                 <div class="uk-text-right uk-width-medium-1-2">{{ comment.floor }}#</div>

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ config.0 }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
     <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}" />
     <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/uikit/2.25.0/css/uikit.css" />
@@ -33,7 +33,8 @@
         a {
             font-size: 1.1em;
         }
-        span{
+
+        span {
             font-size: 1.1em;
         }
     </style>
@@ -63,10 +64,13 @@
                             <i class="uk-icon-home"></i> 主页 </a>
                     </li>
                     <li>
-                        <a href="#"> 随笔 </a>
+                        <a href="blogsByColumn?column=博客"> 博客 </a>
                     </li>
                     <li>
-                        <a href="#"> 杂谈 </a>
+                        <a href="blogsByColumn?column=随笔"> 随笔 </a>
+                    </li>
+                    <li>
+                        <a href="blogsByColumn?column=others"> 杂谈 </a>
                     </li>
                 </ul>
             </div>
@@ -74,8 +78,9 @@
                 <br>
                 <p>
                     <a href="{{ article.get_absolute_url }}/blog/">所有文章</a>/
-                    <a href="#">友联</a>/
-                    <a href="#">关于我</a>
+                    <a id="showReference">友联</a>
+                    <!-- 触发模态对话框的锚 -->
+                    <a href="#aboutMe" data-uk-modal>关于我</a>
                 </p>
             </div>
             <br>
@@ -102,7 +107,7 @@
             </div>
         </div>
         {# 手机端顶部的菜单栏 #}
-        <nav class="uk-navbar uk-visible-small uk-hidden-medium uk-width-1-1">
+        <nav class="uk-navbar uk-visible-small uk-hidden-medium uk-width-1-1" style="padding: 0px">
             <ul class="uk-navbar-nav">
                 <li class="uk-parent" data-uk-dropdown="">
                     <a class="uk-navbar-toggle uk-display-inline"></a>
@@ -114,10 +119,13 @@
                                         <a href="{{ article.get_absolute_url }}/blog/"> 主页 </a>
                                     </li>
                                     <li>
-                                        <a href="#"> 随笔 </a>
+                                        <a href="blogsByColumn?column=博客"> 博客 </a>
                                     </li>
                                     <li>
-                                        <a href="#"> 杂谈 </a>
+                                        <a href="blogsByColumn?column=随笔"> 随笔 </a>
+                                    </li>
+                                    <li>
+                                        <a href="blogsByColumn?column=others"> 杂谈 </a>
                                     </li>
                                     <li>
                                         <hr class="uk-list-divider">
@@ -130,10 +138,11 @@
                                         <a href="{{ article.get_absolute_url }}/blog/">所有文章</a>
                                     </li>
                                     <li>
-                                        <a href="#">友联</a>
+                                        <a id="showReference2">友联</a>
                                     </li>
                                     <li>
-                                        <a href="#">关于我</a>
+                                        <!-- 触发模态对话框的锚 -->
+                                        <a href="#aboutMe" data-uk-modal>关于我</a>
                                     </li>
                                 </ul>
                             </li>
@@ -144,14 +153,53 @@
             </ul>
             <div class="uk-navbar-center uk-navbar-content uk-text-large">{{ config.0 }}</div>
         </nav>
-        <div class="uk-width-medium-3-4" style="padding-left: 20px">
+        <div class="uk-width-medium-3-4" style="padding:20px;display: none" id="reference">
+            <div class="uk-width-1-1 uk-text-center uk-list-space">
+                <h2>参考文献</h2>
+                <br>
+                <ol class="uk-text-left uk-list uk-list-line">
+                    <li>
+                        <a href="http://www.w3school.com.cn/jquery/jquery_hide_show.asp">1、jQuery 效果 - 隐藏和显示</a>
+                    </li>
+                    <li>
+                        <a href="http://www.w3school.com.cn/jquery/event_click.asp">2、jQuery 事件 - click() 方法</a>
+                    </li>
+                    <li>
+                        <a href="www.getuikit.net/docs/base.html">3、uikit中文文档</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="uk-width-medium-3-4" style="padding-left: 20px" id="contentDiv">
             {% if message %}
             <div class="uk-alert uk-alert-success uk-text-center" style="margin-right: 20px;margin-top: 20px" data-uk-alert="">
-                <a href="" class="uk-alert-close uk-close " style="margin-top: -10px"></a>{{ message }} </div>
+                <a class="uk-alert-close uk-close " style="margin-top: -10px"></a>{{ message }} </div>
             {% endif %} {% block content %} {# 正文部分 #} {% endblock %}
         </div>
+        <!-- 模态对话框 -->
+        <div id="aboutMe" class="uk-modal">
+            <div class="uk-modal-dialog">
+                <a class="uk-modal-close uk-close"></a>
+                <div class="uk-modal-header">
+                    <h3>关于我</h3>
+                </div>
+                <span>&emsp;&emsp;一个野生码农，正寻求转行机会，同时也希望我的博客能帮到你。下面有我的联系方式，如果有需求请联系我！</span>
+            </div>
+        </div>
     </div>
+    <script>
+        $(function () {
+            $("#showReference").click(function () {
+                $("#reference").slideToggle()
+                $("#contentDiv").slideToggle()
+            })
+            $("#showReference2").click(function () {
+                $("#reference").slideToggle()
+                $("#contentDiv").slideToggle()
+            })
+        })
 
+    </script>
 </body>
 
 </html>
