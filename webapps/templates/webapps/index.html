@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WebAPPs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/js/uikit-icons.min.js"></script>
+
+</head>
+
+<body>
+    <div class="uk-grid uk-text-center" id="navbar">
+        <nav class="uk-width-1-1 uk-navbar-container" uk-navbar style="z-index: 10086;">
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active">
+                        <a href="#">
+                            <span class="uk-text-bold">WebAPPs</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="#" style="color: black">
+                            <span uk-icon="icon: menu ;"></span>
+                        </a>
+                        <div class="uk-navbar-dropdown" style="margin-top: 0px">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active">
+                                    <a href="../blog/">博客</a>
+                                </li>
+                                <li>
+                                    <a href="../webapps/">WebAPPs</a>
+                                </li>
+                                <li>
+                                    <a href="//fslong.xyz/aboutme.html">个人简历</a>
+                                </li>
+                                <li>
+                                    <a href="//github.com/fslong520/mybgi/">下载源码</a>
+                                </li>
+                                <li>
+                                    <a id="showIntro">简要说明</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <script>
+            $(function () {
+                var text1 =
+                    '<div class="uk-alert-success uk-text-center" uk-alert style="margin: 0px" id="intro" style="display: none"><a class="uk-alert-close" uk-close></a><p>这里主要是平时写的一些小型程序归类，以此来记录学习历程，其中包括比如爬虫、api等，万一有小伙伴需要，也可在此处查找使用。</p></div>'
+                $("#showIntro").click(function () {
+                    $("#navbar").after(text1);
+                });
+            });
+        </script>
+    </div>
+    <div class="uk-child-width-expand@s" uk-grid>
+        <div class="uk-grid-item-match">
+            <div class="uk-card uk-card-default uk-card-body">
+                <h3>必应美图</h3>
+                <hr class="uk-divider-small">
+                <div class="uk-width-1-1 uk-text-center">
+                    <img id="bingPic" src="{{ picDict.url }}" alt="" style="max-height: 270px;">
+                </div>
+                <p class="uk-text-center">CopyRight:
+                    <span id="copyright">{{ picDict.copyright }}</span>
+                </p>
+                <div class="uk-text-center uk-width-1-1" style="margin-left:0px;">
+                    <div >
+                        <input type="date" value="2014-01-13" id="date" class="uk-input" style="max-width: 100px; height: 40px;">
+                        <a id="picUrl" class="uk-text-middle" href="{{ picDict.url }}">访问大图</a>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(function () {
+                    var nowDate = new Date();
+                    var month = nowDate.getMonth() + 1;
+                    var day = nowDate.getDate();
+                    if (month < 10) {
+                        month = '0' + month;
+                    }
+                    if (day < 10) {
+                        day = '0' + day;
+                    }
+                    var date1 = nowDate.getFullYear() + "-" + month + "-" + day
+                    $("#date").val(date1);
+                    $("#date").change(function () {
+                        var date2 = $("#date").val();
+
+                        function getDays(date1, date2) {
+                            var date1Str = date1.split("-"); //将日期字符串分隔为数组,数组元素分别为年.月.日  
+                            //根据年 . 月 . 日的值创建Date对象  
+                            var date1Obj = new Date(date1Str[0], (date1Str[1] - 1), date1Str[2]);
+                            var date2Str = date2.split("-");
+                            var date2Obj = new Date(date2Str[0], (date2Str[1] - 1), date2Str[2]);
+                            var t1 = date1Obj.getTime();
+                            var t2 = date2Obj.getTime();
+                            var dateTime = 1000 * 60 * 60 * 24; //每一天的毫秒数  
+                            var minusDays = Math.floor(((t2 - t1) / dateTime)); //计算出两个日期的天数差  
+                            var days = Math.abs(minusDays); //取绝对值  
+                            return days;
+                        }
+                        idx = getDays(date1, date2);
+                        if (idx > 7) {
+                            alert("最多获取七天前的数据哟！");
+                            return false;
+                        }
+                        if (idx < 0) {
+                            alert("未来的数据我怎么可能有！");
+                            return false;
+                        }
+                        $.ajax({
+                            url: "/webapps/getBingPicUrl",
+                            type: "GET",
+                            data: {
+                                "idx": idx,
+                            },
+                            success: function (data1) {
+                                if (data1) {
+                                    $("#bingPic").attr("src", data1["url"]);
+                                    $("#picUrl").attr("src", data1["url"]);
+                                    $("#copyright").attr("src", data1["copyright"]);
+                                } else {}
+                            }
+                        });
+                    });
+                });
+            </script>
+        </div>
+        <div class="uk-grid-item-match">
+            <div class="uk-card uk-card-default uk-card-body">
+                <h3>天气</h3>
+                <p>
+                    未完待续...
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% block content %} {% endblock %}
+</body>
+
+</html>

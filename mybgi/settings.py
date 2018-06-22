@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'webapps'
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 修改此处来定义模板位置：
-        'DIRS': [os.path.join(BASE_DIR, 'blog', 'themes', 'default', 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'blog', 'themes', 'default', 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
