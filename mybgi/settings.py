@@ -124,7 +124,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # 修改此处来定义静态文件位置：
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'blog', 'themes', 'default'),
+    os.path.join(BASE_DIR, 'blog', 'themes', 'default','static'),
 ]
 # 修改此处来定义收集静态文件的位置：
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
