@@ -15,7 +15,7 @@ def getCity(cityName):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17692'}
     params = {'cityname': cityName, }
     cityRef = requests.get(url=url, params=params, headers=headers)
-    cityContent = cityRef.content.decode('utf-8')
+    cityContent = cityRef.text
     cityJson = cityContent[1:-1]
     cityDict = json.loads(cityJson)
     cityList = []
@@ -74,7 +74,7 @@ def getWether(cityName='北京'):
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17692'}
         try:
             cityWeatherPage = requests.get(
-                url=url, headers=headers, timeout=8).content.decode('utf-8')
+                url=url, headers=headers, timeout=8).text
             cityWeatherPagePyQuery = pyquery.PyQuery(cityWeatherPage)
             weather = str(cityWeatherPagePyQuery('.todayRight script'))
             weather = str2json(weather)
@@ -177,7 +177,7 @@ def getWttr(cityName=''):
     params = {'lang': 'zh'}
     try:
         cityWeatherPage = requests.get(
-            url, params=params, headers=headers, timeout=8).content.decode('utf-8')
+            url, params=params, headers=headers, timeout=8).text
         cityWeatherPagePyQuery = pyquery.PyQuery(cityWeatherPage)
         return cityWeatherPagePyQuery('pre')
     except:
