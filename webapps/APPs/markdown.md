@@ -1,0 +1,1 @@
+1. http://urbanair.msra.cn/U_Air/ChangeCity?CityId=271&Standard=0 微软亚洲研究院http://urbanair.msra.cn 实时天气接口，城市的id在`UAir.CityId.js`文件中可以查询；
