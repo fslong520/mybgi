@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'webapps'
+    'webapps',
+    'apis',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 修改此处来定义模板位置：
-        'DIRS': [os.path.join(BASE_DIR, 'blog', 'themes', 'default', 'templates'),],
+        'DIRS': [os.path.join(BASE_DIR, 'blog', 'themes', 'default', 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,7 +124,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # 修改此处来定义静态文件位置：
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'blog', 'themes', 'default', 'static'),
+    os.path.join(BASE_DIR, 'blog', 'themes', 'default'),
 ]
 # 修改此处来定义收集静态文件的位置：
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

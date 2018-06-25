@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TestApis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/js/uikit-icons.min.js"></script>
+</head>
+
+<body>
+    <div id="showapiresult">
+        <input type="text" name="cityname" id="" pattern="请输入要查询天气的城市名称">
+        <div id="weather"></div>
+        <script>
+            $("input[name='cityname']").change(function () {
+                $("#weather").text("")
+                $(function () {
+                    $.ajax({
+                        url: "/apis/getweather",
+                        type: "GET",
+                        data: {
+                            "cityname": $("input[name='cityname']").val(),
+                        },
+                        success: function (data1) {
+                            if (data1) {
+                                for (var key in data1) {
+                                    $("#weather").append(data1[key]["city"][2] + "七天内天气预报：")
+                                    for (var key1 in data1[key]["weatherList"]) {
+                                        $("#weather").append("<p><span>&emsp;&emsp;时间：" + data1[key]["weatherList"][key1]["time"] + "，天气：" + data1[key]["weatherList"][key1]["weatherInfo"] + "，温度：" + data1[key]["weatherList"][key1]["temperature"] + "℃ ，湿度：" + data1[key]["weatherList"][key1]["humanity"] + "% ," + data1[key]["weatherList"][key1]["wind"] + "</span></p>")
+                                    }
+                                }
+                            } else { }
+                        }
+                    });
+                })
+
+            })
+
+        </script>
+    </div>
+</body>
+
+</html>
