@@ -1,1 +1,1 @@
-1. http://urbanair.msra.cn/U_Air/ChangeCity?CityId=271&Standard=0 微软亚洲研究院http://urbanair.msra.cn 实时天气接口，城市的id在`UAir.CityId.js`文件中可以查询；
+1. http://urbanair.msra.cn/U_Air/ChangeCity?CityId=271&Standard=0 微软亚洲研究院http://urbanair.msra.cn 实时天气接口，Cityid在`UAir.CityId.js`文件中可以查询，Standard表示空气质量系数的评判标准，会影响API指标（具体含义尚不知晓，但官网目前用的是0）；
