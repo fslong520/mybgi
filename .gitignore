@@ -10,6 +10,7 @@ Desktop.ini
 *.egg-info
 dist
 build
+__pycache__
 
 # My configurations:
 db.sqlite3
