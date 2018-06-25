@@ -10,7 +10,7 @@
                 <a>
                     <strong>{{ article.user }}</strong>
                 </a>于{{ article.pubTime | date:"Y年n月j日 "}}发表在
-                <a>
+                <a href="blogsByColumn?column={{ article.column.name }}">
                     <strong>{{ article.column }}</strong>
                 </a>栏目中。</p>
             <p>{{ article.content | safe }}</p>
