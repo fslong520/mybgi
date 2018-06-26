@@ -20,7 +20,7 @@
 
 <body>
     <div class="uk-grid uk-text-center" id="navbar">
-        <nav class="uk-width-1-1 uk-navbar-container" uk-navbar style="z-index: 10086;">
+        <nav class="uk-width-1-1 uk-navbar-container" uk-navbar>
             <div class="uk-navbar-left">
                 <ul class="uk-navbar-nav">
                     <li class="uk-active">
@@ -37,7 +37,7 @@
                             <span uk-icon="icon: menu ;"></span>
                         </a>
                         <div class="uk-navbar-dropdown" style="margin-top: 0px">
-                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <ul class="uk-nav uk-navbar-dropdown-nav"  style="z-index: 10086;">
                                 <li class="uk-active">
                                     <a href="../blog/">博客</a>
                                 </li>
@@ -70,6 +70,60 @@
         </script>
     </div>
     <div style="padding-left: 20px;padding-right: 20px; padding-top: 20px;">
+        <div class="uk-child-width-1-1@s" uk-grid>
+            <div class="uk-grid-item-match">
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h3>视频播放测试</h3>
+                    <div class="uk-grid ">
+                        <div class="uk-width-1-6@s"></div>
+                        <div class="uk-width-1-2@s uk-text-center">
+                            <input type="text" name="videoUrl" id="" placeholder="在这里填写要播放的视频的地址" class=" uk-input">
+                        </div>
+                        <div class="uk-text-left uk-width-1-6@s">
+                            <a id="playVideo" type="button" href="#modal-center" class="uk-button-primary uk-text-middle" style="height: 40px;" uk-toggle>播放</a>
+                        </div>
+                        <div class="uk-width-1-6@s"></div>
+                    </div>
+                    <div id="modal-center" class="uk-modal-container" uk-modal="center: true;bg-close:false;">
+                        <div class="uk-modal-dialog">
+                            <button class="uk-modal-close-outside" type="button" onclick="closeVideo()" uk-close></button>
+                            <iframe src="" id="videoFrame" frameborder="0" style="min-height: 600px;width: 100%;"></iframe>
+                        </div>
+                    </div>
+                    <script>
+                        function closeVideo() {
+                            $("#videoFrame").attr("src", "");                            
+                        }
+                        $(function () {
+                            $("#playVideo").click(function () {
+                                videoUrl = $("input[name='videoUrl']").val();
+                                if (videoUrl == "") {
+                                    alert("喂，先输入网址再播放呀！");
+                                    return false;
+                                }
+                                $.ajax({
+                                    url: "getVideo",
+                                    type: "GET",
+                                    data: {
+                                        'url': videoUrl,
+                                    },
+                                    success: function (data) {
+                                        if (data) {
+                                            $("#videoFrame").attr("src", data);
+                                        } else {
+                                            alert("非常抱歉，播放失败！")
+                                        }
+
+                                    }
+
+                                })
+
+                            })
+                        })
+                    </script>
+                </div>
+            </div>
+        </div>
         <div class="uk-child-width-1-1@s" uk-grid>
             <div class="uk-grid-item-match">
                 <div class="uk-card uk-card-default uk-card-body">
@@ -146,7 +200,7 @@
                                         $("#bingPic").attr("src", data1["url"]);
                                         $("#picUrl").attr("href", data1["url"]);
                                         $("#copyright").text(data1["copyright"]);
-                                    } else { }
+                                    } else {}
                                 }
                             });
                         });
