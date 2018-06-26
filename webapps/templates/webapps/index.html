@@ -108,7 +108,7 @@
                                         'url': videoUrl,
                                     },
                                     success: function (data) {
-                                        if (data) {
+                                        if (data != "False") {
                                             $("#videoFrame").attr("src", data);
                                         } else {
                                             alert("非常抱歉，播放失败！")

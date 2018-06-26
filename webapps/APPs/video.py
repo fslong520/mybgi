@@ -8,6 +8,7 @@ import json
 def getVideo(videoUrl):
 
     referer = 'http://jiexi.071811.cc/jx.php?url='+videoUrl
+    '''
     url = 'http://jiexi.071811.cc/api/xit.php'
     if 'iqiyi' in videoUrl:
         try:
@@ -25,8 +26,10 @@ def getVideo(videoUrl):
             if req['success'] == '1':
                 return 'http://jiexi.071811.cc'+req['url']
             else:
-                return req
+                return False
         except:
             return False
     else:
         return referer
+    '''
+    return referer
