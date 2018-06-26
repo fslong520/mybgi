@@ -37,7 +37,7 @@
                             <span uk-icon="icon: menu ;"></span>
                         </a>
                         <div class="uk-navbar-dropdown" style="margin-top: 0px">
-                            <ul class="uk-nav uk-navbar-dropdown-nav"  style="z-index: 10086;">
+                            <ul class="uk-nav uk-navbar-dropdown-nav" style="z-index: 10086;">
                                 <li class="uk-active">
                                     <a href="../blog/">博客</a>
                                 </li>
@@ -92,7 +92,7 @@
                     </div>
                     <script>
                         function closeVideo() {
-                            $("#videoFrame").attr("src", "");                            
+                            $("#videoFrame").attr("src", "");
                         }
                         $(function () {
                             $("#playVideo").click(function () {
@@ -102,7 +102,7 @@
                                     return false;
                                 }
                                 $.ajax({
-                                    url: "getVideo",
+                                    url: "/webapps/getVideo",
                                     type: "GET",
                                     data: {
                                         'url': videoUrl,
@@ -123,8 +123,6 @@
                     </script>
                 </div>
             </div>
-        </div>
-        <div class="uk-child-width-1-1@s" uk-grid>
             <div class="uk-grid-item-match">
                 <div class="uk-card uk-card-default uk-card-body">
                     <h3>天气</h3>
