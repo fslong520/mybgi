@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+' 天气模块 '
+
+__author__ = 'fslong'
+
 import json
 import pickle
 import re
@@ -159,6 +163,7 @@ def getWttr(cityName=''):
         url = 'http://wttr.in/'
     else:
         cityList = getCity(cityName)
+        '''
         for i in range(len(cityList)):
             print('%s:%s' % (i+1, cityList[i][2]))
         if len(cityList) > 1:
@@ -171,6 +176,8 @@ def getWttr(cityName=''):
                 return False
         else:
             city = cityList[0]
+        '''
+        city=cityList[0]
         url = 'http://wttr.in/'+city[5]
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17692'}
@@ -182,4 +189,6 @@ def getWttr(cityName=''):
         return cityWeatherPagePyQuery('pre')
     except:
         return '查询失败。'
-# print(getWttr())
+
+if __name__=='__main__':
+    print(getCity(input('cityname:')))

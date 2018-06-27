@@ -1,17 +1,42 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import requests
-import pyquery
+
+' 根据ip获取地址模块 '
+
+__author__ = 'fslong'
+
 import json
+import re
+
+import pyquery
+import requests
 
 
-def getAdressByIP(ip='47.106.197.182'):
-    url = 'https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?query='+ip+'&co=&resource_id=6006&t=1529930205766&ie=utf8&oe=gbk&cb=op_aladdin_callback&format=json&tn=baidu&cb=jQuery110208006588187590413_1529929325310&_=1529929325336'
+def getAdressByIP(ip='123.125.71.38'):
+    url = 'https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?query='+ip + \
+        '&co=&resource_id=6006&t=1529930205766&ie=utf8&oe=gbk&cb=op_aladdin_callback&format=json&tn=baidu&cb=jQuery110208006588187590413_1529929325310&_=1529929325336'
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17692'}
     data = {}
-    req = requests.get(url,data=data,headers=headers,timeout=8).text
-    return(req)
-    
-print(getAdressByIP())
+    req = requests.get(url, data=data, headers=headers, timeout=8).text
+    req = re.match(r'(.*\()(.*)(\)\;)', req)
+    reqDict = json.loads(req[2])
+    cityName = reqDict['data'][0]['location'].split(' ')[0]
+    cityName1 = re.match(r'(.*)(省)(.*)', cityName[0:-1])
+    cityName2 = re.match(r'(.*)(自治区)(.*)', cityName[0:-1])
+    cityName3 = re.match(r'(.*)(市)(.*)', cityName[0:-1])
+    if cityName1:
+        cityName = cityName1[3]
+        # print(cityName+'\n')
+    elif cityName2:
+        cityName = cityName2[3]
+        # print(cityName+'\n')
+    elif cityName3:
+        cityName = cityName3[3]
+        # print(cityName+'\n')
 
+    return(cityName)
+
+
+if __name__ == '__main__':
+    print(getAdressByIP())

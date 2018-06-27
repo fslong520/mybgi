@@ -1,7 +1,8 @@
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
 
-from webapps.APPs import bingPic, weather
+from webapps.APPs import bingPic
+from webapps.APPs import getWeather as weather
 
 
 # Create your views here.
