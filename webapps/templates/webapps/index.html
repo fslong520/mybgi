@@ -18,8 +18,8 @@
 
 </head>
 
-<body>
-    <div class="uk-grid uk-text-center" id="navbar">
+<body style=" width: 100%;height: 100%; padding: 0px;margin: 0px;">
+    <div class="uk-grid uk-text-center uk-width-1-1" id="navbar" style="position: fixed;left: 0px;top: 0px; z-index: 1000;margin-left: 0px">
         <nav class="uk-width-1-1 uk-navbar-container" uk-navbar>
             <div class="uk-navbar-left">
                 <ul class="uk-navbar-nav">
@@ -33,7 +33,7 @@
             <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav">
                     <li>
-                        <a href="#" style="color: black">
+                        <a style="color: black">
                             <span uk-icon="icon: menu ;"></span>
                         </a>
                         <div class="uk-navbar-dropdown" style="margin-top: 0px">
@@ -53,6 +53,9 @@
                                 <li>
                                     <a id="showIntro">简要说明</a>
                                 </li>
+                                <li>
+                                    <a href="#menuDiv" id="menu" uk-toggle>目录</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -69,9 +72,32 @@
             });
         </script>
     </div>
-    <div style="padding-left: 20px;padding-right: 20px; padding-top: 20px;">
+    <div id="menuDiv" uk-modal="center: true;">
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-outside" type="button" uk-close></button>
+            <div class="uk-modal-title">
+                <h3 class="uk-h3 uk-text-center">目录</h3>
+            </div>
+            <hr>
+            <div class="uk-modal-body">
+                <ul class="uk-list uk-list-striped">
+                    <li>
+                        <a href="#videoDiv">1、播放视频</a>
+                    </li>
+                    <li>
+                        <a href="#weatherDiv">2、天气</a>
+                    </li>
+                    <li>
+                        <a href="#bingPicDiv">3、必应美图</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div style="padding-left: 20px;padding-right: 20px; padding-top: 20px; margin-top: 80px;">
         <div class="uk-child-width-1-1@s" uk-grid>
-            <div class="uk-grid-item-match">
+            <div id="videoDiv" class="uk-grid-item-match">
                 <div class="uk-card uk-card-default uk-card-body">
                     <h3>视频播放测试</h3>
                     <div class="uk-grid ">
@@ -123,7 +149,7 @@
                     </script>
                 </div>
             </div>
-            <div class="uk-grid-item-match">
+            <div id="weatherDiv" class="uk-grid-item-match">
                 <div class="uk-card uk-card-default uk-card-body">
                     <h3>天气</h3>
                     <div class="uk-width-1-1 weather">
@@ -132,7 +158,7 @@
                     <p class="uk-text-center">目前是检测用户ip地址，然后再进行判断位置，所以天气信息目前只能精确到你所在城市市中心（默认数据是市中心），关于天气信息API接口如有需要，请联系本人索取，暂时不打算在网站上公布，谢谢合作。</p>
                 </div>
             </div>
-            <div class="uk-grid-item-match" style="max-height: 520px;">
+            <div class="uk-grid-item-match" style="max-height: 520px;" id="bingPicDiv">
                 <div class="uk-card uk-card-default uk-card-body">
                     <h3>必应美图</h3>
                     <hr class="uk-divider-small">
@@ -198,7 +224,7 @@
                                         $("#bingPic").attr("src", data1["url"]);
                                         $("#picUrl").attr("href", data1["url"]);
                                         $("#copyright").text(data1["copyright"]);
-                                    } else {}
+                                    } else { }
                                 }
                             });
                         });

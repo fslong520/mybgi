@@ -16,7 +16,7 @@
     <script src="{% static 'blog/js/uikit.min.js' %}"></script>
     <script src="{% static 'blog/js/CryptoJS.js' %}"></script>
     <!-- Codemirror 和 marked 依赖 -->
-    <link rel="stylesheet" href="{% static 'codemirror/lib/codemirror.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/codemirror/lib/codemirror.css' %}">
     <script src="{% static 'blog/codemirror/lib/codemirror.js' %}"></script>
     <script src="{% static 'blog/codemirror/mode/markdown/markdown.js' %}"></script>
     <script src="{% static 'blog/codemirror/addon/mode/overlay.js' %}"></script>
@@ -25,8 +25,8 @@
     <script src="{% static 'blog/marked/lib/marked.js' %}"></script>
 
     <!-- HTML 编辑器的 CSS 与 JavaScript -->
-    <link rel="stylesheet" href="{% static 'css/components/htmleditor.css' %}">
-    <script src="{% static 'js/components/htmleditor.js' %}"></script> {% block beforehead %}{# 在这里写一下js脚本什么的 #}{% endblock %}
+    <link rel="stylesheet" href="{% static 'blog/css/components/htmleditor.css' %}">
+    <script src="{% static 'blog/js/components/htmleditor.js' %}"></script> {% block beforehead %}{# 在这里写一下js脚本什么的 #}{% endblock %}
     <style type="text/css">
         p {
             font-size: 1.1em;
