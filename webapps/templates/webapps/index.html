@@ -78,8 +78,8 @@
             <div class="uk-modal-title">
                 <h3 class="uk-h3 uk-text-center">目录</h3>
             </div>
-            <hr>
-            <div class="uk-modal-body">
+            <hr style="margin:0px;">
+            <div class="uk-modal-body" style="padding-top: 0px;">
                 <ul class="uk-list uk-list-striped">
                     <li>
                         <a href="#videoDiv">1、播放视频</a>
@@ -100,15 +100,13 @@
             <div id="videoDiv" class="uk-grid-item-match">
                 <div class="uk-card uk-card-default uk-card-body">
                     <h3>视频播放测试</h3>
-                    <div class="uk-grid ">
-                        <div class="uk-width-1-6@s"></div>
-                        <div class="uk-width-1-2@s uk-text-center">
-                            <input type="text" name="videoUrl" id="" placeholder="在这里填写要播放的视频的地址" class=" uk-input">
+                    <div class="uk-grid " style="margin-bottom: 70px;">
+                        <div class="uk-width-5-6@s uk-text-center">
+                            <input type="text" name="videoUrl" id="" placeholder="在这里填写要播放的视频的地址，仅用于视频测试播放，如不能使用，应该是接口出了问题，请与我联系修复，谢谢使用。" class=" uk-input">
                         </div>
                         <div class="uk-text-center uk-width-1-6@s" style="padding-top: 4px">
                             <a id="playVideo" type="button" href="#modal-center" class="uk-button-primary uk-text-middle" style="height: 40px;" uk-toggle>播放</a>
                         </div>
-                        <div class="uk-width-1-6@s"></div>
                     </div>
                     <div id="modal-center" class="uk-modal-container" uk-modal="center: true;bg-close:false;">
                         <div class="uk-modal-dialog">
