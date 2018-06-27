@@ -79,8 +79,8 @@
             <div class="uk-container-center uk-text-center">
                 <br>
                 <p>
-                    <a href="{{ article.get_absolute_url }}/blog/">所有文章</a>/
-                    <a id="showReference">友联</a>
+                    <a href="{{ article.get_absolute_url }}/blog/">所有文章&ensp;</a>
+                    <a id="showReference">友联&ensp;</a>
                     <!-- 触发模态对话框的锚 -->
                     <a href="#aboutMe" data-uk-modal>关于我</a>
                 </p>
@@ -156,7 +156,7 @@
             <div class="uk-navbar-center uk-navbar-content uk-text-large">{{ config.0 }}</div>
         </nav>
         {% include 'reference.html'%}
-        <div class="uk-width-medium-3-4" style="padding-left: 20px" id="contentDiv">
+        <div class="uk-width-medium-3-4" style="padding-left: 20px;" id="contentDiv">
             {% if message %}
             <div class="uk-alert uk-alert-success uk-text-center" style="margin-right: 20px;margin-top: 20px" data-uk-alert="">
                 <a class="uk-alert-close uk-close " style="margin-top: -10px"></a>{{ message }} </div>
