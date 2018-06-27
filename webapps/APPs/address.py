@@ -12,7 +12,7 @@ import pyquery
 import requests
 
 
-def getAdressByIP(ip='123.125.71.38'):
+def getAdressByIP(ip='112.103.201.146'):
     url = 'https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?query='+ip + \
         '&co=&resource_id=6006&t=1529930205766&ie=utf8&oe=gbk&cb=op_aladdin_callback&format=json&tn=baidu&cb=jQuery110208006588187590413_1529929325310&_=1529929325336'
     headers = {
@@ -20,19 +20,19 @@ def getAdressByIP(ip='123.125.71.38'):
     data = {}
     req = requests.get(url, data=data, headers=headers, timeout=8).text
     req = re.match(r'(.*\()(.*)(\)\;)', req)
-    reqDict = json.loads(req[2])
+    reqDict = json.loads(req.group(2))
     cityName = reqDict['data'][0]['location'].split(' ')[0]
     cityName1 = re.match(r'(.*)(省)(.*)', cityName[0:-1])
     cityName2 = re.match(r'(.*)(自治区)(.*)', cityName[0:-1])
     cityName3 = re.match(r'(.*)(市)(.*)', cityName[0:-1])
     if cityName1:
-        cityName = cityName1[3]
+        cityName = cityName1.group(3)
         # print(cityName+'\n')
     elif cityName2:
-        cityName = cityName2[3]
+        cityName = cityName2.group(3)
         # print(cityName+'\n')
     elif cityName3:
-        cityName = cityName3[3]
+        cityName = cityName3.group(3)
         # print(cityName+'\n')
 
     return(cityName)

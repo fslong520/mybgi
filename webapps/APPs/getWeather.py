@@ -162,8 +162,9 @@ def getWttr(cityName=''):
         city = ''
         url = 'http://wttr.in/'
     else:
-        cityList = getCity(cityName)
         '''
+        cityList = getCity(cityName)
+        
         for i in range(len(cityList)):
             print('%s:%s' % (i+1, cityList[i][2]))
         if len(cityList) > 1:
@@ -176,9 +177,9 @@ def getWttr(cityName=''):
                 return False
         else:
             city = cityList[0]
+        city = cityList[0]
         '''
-        city=cityList[0]
-        url = 'http://wttr.in/'+city[5]
+        url = 'http://wttr.in/'+cityName
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17692'}
     params = {'lang': 'zh'}
@@ -190,5 +191,6 @@ def getWttr(cityName=''):
     except:
         return '查询失败。'
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     print(getCity(input('cityname:')))
