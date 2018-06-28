@@ -78,19 +78,19 @@ class Port(object):
             }, {
                 'id': 'port17',
                 'url': "http://jx.598110.com/zuida.php?url=",
-                'title': "综合线路③"
+                'title': "综合线路12"
             }, {
                 'id': 'port18',
                 'url': "http://jx.598110.com/duo/index.php?url=",
-                'title': "综合线路12"
+                'title': "综合线路13"
             }, {
                 'id': 'port19',
                 'url': "http://jx.598110.com/index.php?url=",
-                'title': "综合线路13"
+                'title': "综合线路14"
             }, {
                 'id': 'port20',
                 'url': "https://jx.biaoge.tv/?url=",
-                'title': "综合线路14"
+                'title': "综合线路15"
             }, ]
 
 
