@@ -5,31 +5,105 @@ import pyquery
 import json
 
 
-def getVideo(videoUrl):
+class Port(object):
+    def __init__(self):
+        self.ports = [
+            {'id': 'port0',
+                'url': "https://api.daidaitv.com/index/?url=",
+                'title': "综合线路"
+             }, {
+                'id': 'port1',
+                'url': "http://xlyy100.com/xlyy.php?url=",
+                'title': "综合线路1"
+            }, {
+                'id': 'port2',
+                'url': "http://api.baiyug.cn/vip/index.php?url=",
+                'title': "综合线路2"
+            }, {
+                'id': 'port3',
+                'url': "http://www.sonimei.cn/?url=",
+                'title': "综合线路3"
+            }, {
+                'id': 'port4',
+                'url': "https://api.varse.org/?url=",
+                'title': "腾讯接口1"
+            }, {
+                'id': 'port5',
+                'url': "https://jx.maoyun.tv/index.php?id=",
+                'title': "腾讯接口2"
+            }, {
+                'id': 'port6',
+                'url': "http://pupudy.com/play?make=url&id=",
+                'title': "综合线路4"
+            }, {
+                'id': 'port7',
+                'url': "http://www.qxyingyuan.vip/play?make=url&id=",
+                'title': "优酷接口1"
+            }, {
+                'id': 'port8',
+                'url': "http://appapi.svipv.kuuhui.com/svipjx/liulanqichajian/browserplugin/qhjx/qhjx.php?id=",
+                'title': "综合线路5"
+            }, {
+                'id': 'port9',
+                'url': "http://api.xfsub.com/index.php?url=",
+                'title': "1905优先接口"
+            }, {
+                'id': 'port10',
+                'url': "https://jiexi.071811.cc/jx.php?url=",
+                'title': "综合线路6"
+            }, {
+                'id': 'port11',
+                'url': "http://www.sfsft.com/admin.php?url=",
+                'title': "综合线路7"
+            }, {
+                'id': 'port12',
+                'url': "http://q.z.vip.totv.72du.com/?url=",
+                'title': "综合线路8"
+            }, {
+                'id': 'port13',
+                'url': "http://aikan-tv.com/?url=",
+                'title': "综合线路9(不太稳定)"
+            }, {
+                'id': 'port14',
+                'url': "http://jx.api.163ren.com/vod.php?url=",
+                'title': "腾讯接口3"
+            }, {
+                'id': 'port15',
+                'url': "http://www.wmxz.wang/video.php?url=",
+                'title': "综合线路10"
+            }, {
+                'id': 'port16',
+                'url': "http://v.renrenfabu.com/jiexi.php?url=",
+                'title': "综合线路11"
+            }, {
+                'id': 'port17',
+                'url': "http://jx.598110.com/zuida.php?url=",
+                'title': "综合线路③"
+            }, {
+                'id': 'port18',
+                'url': "http://jx.598110.com/duo/index.php?url=",
+                'title': "综合线路12"
+            }, {
+                'id': 'port19',
+                'url': "http://jx.598110.com/index.php?url=",
+                'title': "综合线路13"
+            }, {
+                'id': 'port20',
+                'url': "https://jx.biaoge.tv/?url=",
+                'title': "综合线路13"
+            }, ]
 
-    referer = 'https://api.daidaitv.com/index/?url='+videoUrl
-    # 另外的接口：jx.598110.com/index.php?url=
+
+def getVideo(videoUrl, portId):
+    ports = Port().ports
+    port = ''
+    for i in ports:
+        if i['id'] == portId:
+            port = i['url']
+            break
+
+    referer = port+videoUrl
     '''
-    {url: "http://goudidiao.com/?url=", title: "综合线路④"},
-    {url: "http://api.baiyug.cn/vip/index.php?url=", title: "综合线路⑤"},
-    {url: "http://www.sonimei.cn/?url=", title: "综合线路⑥"},
-    {url: "https://api.vparse.org/?url=", title: "腾讯接口①"},
-    {url: "https://jx.maoyun.tv/index.php?id=", title: "腾讯接口②"},
-    {url: "http://pupudy.com/play?make=url&id=", title: "综合线路⑦"},
-    {url: "http://www.qxyingyuan.vip/play?make=url&id=", title: "优酷接口①"},
-    {url: "http://appapi.svipv.kuuhui.com/svipjx/liulanqichajian/browserplugin/qhjx/qhjx.php?id=", title: "综合线路"},
-    {url: "http://api.xfsub.com/index.php?url=", title: "1905优先接口"},
-    {url: "https://jiexi.071811.cc/jx.php?url=", title: "综合线路⑧"},
-    {url: "http://www.sfsft.com/admin.php?url=", title: "综合线路⑨"},
-    {url: "http://q.z.vip.totv.72du.com/?url=", title: "综合线路⑩"},
-    {url: "http://aikan-tv.com/?url=", title: "综合线路⑪(不太稳定)"},
-    {url: "http://jx.api.163ren.com/vod.php?url=", title: "腾讯接口①"},
-    {url: "http://www.wmxz.wang/video.php?url=", title: "综合线路⑫"},
-    {url: "http://v.renrenfabu.com/jiexi.php?url=", title: "综合线路⑬"},
-    {url: "http://jx.598110.com/zuida.php?url=", title: "综合线路③"},
-    {url: "http://jx.598110.com/duo/index.php?url=", title: "综合线路②"},
-    {url: "http://jx.598110.com/index.php?url=", title: "综合线路①"}
-    url = 'http://jiexi.071811.cc/api/xit.php'
 
     if 'iqiyi' in videoUrl:
         try:

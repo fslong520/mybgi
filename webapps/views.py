@@ -7,6 +7,7 @@ from .APPs import address, bingPic, getWeather, video
 
 
 def index(request):
+    ports = video.Port().ports
     if request.META.get('HTTP_X_FORWARDED_FOR', '') != '':
         ip = request.META['HTTP_X_FORWARDED_FOR']
     else:
@@ -17,7 +18,7 @@ def index(request):
         cityName = address.getAdressByIP(ip=ip)
     picDict = bingPic.getBingPicUrl()
     weatherStr = str(getWeather.getWttr(cityName=cityName))
-    context = {'picDict': picDict, 'weatherStr': weatherStr, }
+    context = {'picDict': picDict, 'weatherStr': weatherStr, 'ports': ports, }
     return render(request, 'webapps/index.html', context=context)
 
 
@@ -28,8 +29,9 @@ def getBingPicUrl(request):
 
 
 def getVideo(request):
-    url = request.GET.get('url', 0)
-    videoUrl = video.getVideo(url)
+    url = request.GET.get('url', '')
+    portId = request.GET.get('port', 'port0')
+    videoUrl = video.getVideo(url, portId)
     if videoUrl != False:
         return HttpResponse(videoUrl)
     else:
