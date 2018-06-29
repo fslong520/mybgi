@@ -58,7 +58,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 修改此处来定义模板位置：
-        'DIRS': [os.path.join(BASE_DIR, 'blog', 'themes', 'default', 'templates'), ],
+        'DIRS': [os.path.join(BASE_DIR, 'blog', 'themes', 'default', 'templates'), os.path.join(BASE_DIR, 'webapps', 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

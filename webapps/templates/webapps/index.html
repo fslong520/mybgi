@@ -56,192 +56,65 @@
             });
         </script>
     </div>
+    <div id="menuDiv" style="max-width: 200px;" uk-offcanvas="mode: push;">
+        <div class="uk-offcanvas-bar" style=" background-color: white">
+            <ul class="uk-nav uk-nav-default">
+                <li>
+                    <a href="../blog/" style="color: darkslategrey">个人博客</a>
+                </li>
+                <li>
+                    <a href="//fslong.xyz/aboutme.html" style="color: darkslategrey">个人简历</a>
+                </li>
+                <li>
+                    <a href="//github.com/fslong520/mybgi/" style="color: darkslategrey">下载源码</a>
+                </li>
+                <li>
+                    <a id="showIntro" style="color: darkslategrey">简要说明</a>
+                </li>
+                <li style="color: black">应用目录</li>
+                <li class="uk-parent">
+                    <ul class="uk-nav-sub">
+                        <li>
+                            <a href="#videoDiv" style="color: darkslategrey">1、播放视频</a>
+                        </li>
+                        <li>
+                            <a href="#weatherDiv" style="color: darkslategrey">2、天气</a>
+                        </li>
+                        <li>
+                            <a href="#bingPicDiv" style="color: darkslategrey">3、必应美图</a>
+                        </li>
+                        <li>
+                            <a href="#byte2strDiv" style="color: darkslategrey">4、byte转string</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <div style="padding-left: 20px;padding-right: 20px; padding-top: 20px; margin-top: 80px;">
-        <div id="menuDiv" style="max-width: 200px;" uk-offcanvas="mode: push;">
-            <div class="uk-offcanvas-bar" style=" background-color: white">
-                <ul class="uk-nav uk-nav-default">
-                    <li>
-                        <a href="../blog/" style="color: darkslategrey">个人博客</a>
-                    </li>
-                    <li>
-                        <a href="//fslong.xyz/aboutme.html" style="color: darkslategrey">个人简历</a>
-                    </li>
-                    <li>
-                        <a href="//github.com/fslong520/mybgi/" style="color: darkslategrey">下载源码</a>
-                    </li>
-                    <li>
-                        <a id="showIntro" style="color: darkslategrey">简要说明</a>
-                    </li>
-                    <li style="color: black">应用目录</li>
-                    <li class="uk-parent">
-                        <ul class="uk-nav-sub">
-                            <li>
-                                <a href="#videoDiv" style="color: darkslategrey">1、播放视频</a>
-                            </li>
-                            <li>
-                                <a href="#weatherDiv" style="color: darkslategrey">2、天气</a>
-                            </li>
-                            <li>
-                                <a href="#bingPicDiv" style="color: darkslategrey">3、必应美图</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+        <div>
+            功能列表
         </div>
+
         <div class="uk-child-width-1-1@s" uk-grid style="overflow: hidden;">
             <div id="videoDiv" class="uk-grid-item-match">
-                <div class="uk-card uk-card-default uk-card-body">
-                    <h3>视频播放测试</h3>
-                    <div class="uk-grid " style="margin-bottom: 70px;">
-                        <div class="uk-width-2-3@s uk-text-center">
-                            <input type="text" name="videoUrl" id="" placeholder="在这里填写要播放的视频的地址，仅用于视频测试播放，如不能使用，应该是接口出了问题，请与我联系修复，谢谢使用。" class=" uk-input">
-                        </div>
-                        <div class="uk-text-center uk-width-1-3@s uk-grid" style="padding: 0px;margin: 0px;">
-                            <div class="uk-text-center uk-width-2-3@s" style="padding-left: 20px;">
-                                <select name="" id="videoPort" class="uk-select">
-                                    {% for port in ports %}
-                                    <option value="{{ port.id }}">{{ port.title }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="uk-text-center uk-width-1-3@s" style="padding-top: 4px;padding-left: 20px;">
-                                <a id="playVideo" type="button" href="#modal-center" class="uk-button-primary uk-text-middle" style="height: 40px;" uk-toggle>播放</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="modal-center" class="uk-modal-container" uk-modal="center: true;bg-close:false;">
-                        <div class="uk-modal-dialog">
-                            <button class="uk-modal-close-outside" type="button" onclick="closeVideo()" uk-close></button>
-                            <iframe src="" id="videoFrame" frameborder="0" style="min-height: 600px;width: 100%;"></iframe>
-                        </div>
-                    </div>
-                    <script>
-                        function closeVideo() {
-                            $("#videoFrame").attr("src", "");
-                        }
-                        $(function () {
-                            $("#playVideo").click(function () {
-                                var videoUrl = $("input[name='videoUrl']").val();
-                                var port = $("#videoPort").val()
-                                if (port == '') {
-                                    port = 'port0'
-                                }
-                                if (videoUrl == "") {
-                                    alert("喂，先输入网址再播放呀！");
-                                    return false;
-                                }
-                                $.ajax({
-                                    url: "/webapps/getVideo",
-                                    type: "GET",
-                                    data: {
-                                        'url': videoUrl,
-                                        'port': port,
-                                    },
-                                    success: function (data) {
-                                        if (data != "False") {
-                                            $("#videoFrame").attr("src", data);
-                                        } else {
-                                            alert("非常抱歉，播放失败！")
-                                        }
-
-                                    }
-
-                                })
-
-                            })
-                        })
-                    </script>
-                </div>
+                <!--视频解析-->
+                {% include 'webapps/video.html' %}
             </div>
             <div id="weatherDiv" class="uk-grid-item-match">
-                <div class="uk-card uk-card-default uk-card-body">
-                    <h3>天气</h3>
-                    <div class="uk-width-1-1 weather">
-                        {{ weatherStr |safe }}
-                    </div>
-                    <p class="uk-text-center">目前是检测用户ip地址，然后再进行判断位置，所以天气信息目前只能精确到你所在城市市中心（默认数据是市中心），关于天气信息API接口如有需要，请联系本人索取，暂时不打算在网站上公布，谢谢合作。</p>
-                </div>
+                <!--天气-->
+                {% include 'webapps/weather.html' %}
             </div>
             <div class="uk-grid-item-match" style="max-height: 520px;" id="bingPicDiv">
+                <!--必应美图-->
+                {% include 'webapps/bingPic.html' %}
+            </div>
+            <div class="uk-grid-item-match" id="byte2strDiv">
                 <div class="uk-card uk-card-default uk-card-body">
-                    <h3>必应美图</h3>
-                    <hr class="uk-divider-small">
+                    <h3>byte转string</h3>
                     <div class="uk-width-1-1 uk-text-center">
-                        <img id="bingPic" src="{{ picDict.url }}" alt="">
-                    </div>
-                    <p class="uk-text-center">CopyRight:
-                        <span id="copyright">{{ picDict.copyright }}</span>
-                    </p>
-                    <div class="uk-text-center uk-width-1-1" style="margin-left:0px;">
-                        <div>
-                            <input type="date" value="2014-01-13" id="date" class="uk-input" style="max-width: 100px; height: 40px;">
-                            <a id="picUrl" class="uk-text-middle" href="{{ picDict.url }}">访问大图</a>
-                        </div>
-                    </div>
-                </div>
-                <script>
-                    $(function () {
-                        var nowDate = new Date();
-                        var month = nowDate.getMonth() + 1;
-                        var day = nowDate.getDate();
-                        if (month < 10) {
-                            month = '0' + month;
-                        }
-                        if (day < 10) {
-                            day = '0' + day;
-                        }
-                        var date1 = nowDate.getFullYear() + "-" + month + "-" + day
-                        $("#date").val(date1);
-                        $("#date").change(function () {
-                            var date2 = $("#date").val();
-
-                            function getDays(date1, date2) {
-                                var date1Str = date1.split("-"); //将日期字符串分隔为数组,数组元素分别为年.月.日  
-                                //根据年 . 月 . 日的值创建Date对象  
-                                var date1Obj = new Date(date1Str[0], (date1Str[1] - 1), date1Str[2]);
-                                var date2Str = date2.split("-");
-                                var date2Obj = new Date(date2Str[0], (date2Str[1] - 1), date2Str[2]);
-                                var t1 = date1Obj.getTime();
-                                var t2 = date2Obj.getTime();
-                                var dateTime = 1000 * 60 * 60 * 24; //每一天的毫秒数  
-                                var minusDays = Math.floor(((t2 - t1) / dateTime)); //计算出两个日期的天数差  
-                                var days = Math.abs(minusDays); //取绝对值  
-                                return days;
-                            }
-                            idx = getDays(date1, date2);
-                            if (idx > 7) {
-                                alert("最多获取七天前的数据哟！");
-                                return false;
-                            }
-                            if (idx < 0) {
-                                alert("未来的数据我怎么可能有！");
-                                return false;
-                            }
-                            $.ajax({
-                                url: "/webapps/getBingPicUrl",
-                                type: "GET",
-                                data: {
-                                    "idx": idx,
-                                },
-                                success: function (data1) {
-                                    if (data1) {
-                                        $("#bingPic").attr("src", data1["url"]);
-                                        $("#picUrl").attr("href", data1["url"]);
-                                        $("#copyright").text(data1["copyright"]);
-                                    } else { }
-                                }
-                            });
-                        });
-                    });
-                </script>
-                <div class="uk-grid-item-match">
-                    <div class="uk-card uk-card-default uk-card-body">
-                        <h3>待续</h3>
-                        <div class="uk-width-1-1 uk-text-center">
-                            。。。。
-                        </div>
+                        。。。。
                     </div>
                 </div>
             </div>
