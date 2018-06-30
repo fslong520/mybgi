@@ -85,7 +85,10 @@ def getVideo(videoUrl, portId):
         if i['id'] == portId:
             port = i['url']
             break
-
+    if videoUrl.startswith('http'):
+        pass
+    else:
+        videoUrl='http://'+videoUrl 
     referer = port+videoUrl
     '''
 
