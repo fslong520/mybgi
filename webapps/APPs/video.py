@@ -8,56 +8,53 @@ import json
 class Port(object):
     def __init__(self):
         self.ports = [
-            {'id': 'port0',
-                'url': "http://api.51ckm.com/jx.php?url=",
-                'title': "综合线路，清晰度不错，所以作为默认"
-             }, {
+            {
                 'id': 'port1',
-                'url': "http://xlyy100.com/xlyy.php?url=",
+                'url': "yun.baiyug.cn/vip/index.php?url=",
                 'title': "综合线路1"
             },
-             {
+            {
                 'id': 'port2',
-                'url': "http://youkus.baiyug.cn:3647/vip_all/index.php?url=",
+                'url': "http://xlyy100.com/xlyy.php?url=",
                 'title': "综合线路2，支持网盘"
-            },{
+            }, {
                 'id': 'port3',
-                'url': "http://www.sonimei.cn/?url=",
-                'title': "综合线路4"
+                'url': "yun.baiyug.cn/vip/?url=",
+                'title': "综合线路3"
             },
             {
                 'id': 'port4',
                 'url': "https://1717ty.duapp.com/ty.php?url=",
-                'title': "综合线路5"
+                'title': "综合线路4"
             },
-             {
+            {
                 'id': 'port5',
                 'url': "http://www.sonimei.cn/?url=",
-                'title': "综合线路6"
+                'title': "综合线路5"
             }, {
                 'id': 'port6',
                 'url': "http://pupudy.com/url.php?url=",
-                'title': "综合线路7"
+                'title': "综合线路6"
             },  {
                 'id': 'port8',
                 'url': "http://ku.kuuhui.com/plje/?id=",
-                'title': "综合线路8"
+                'title': "综合线路7"
             }, {
                 'id': 'port10',
                 'url': "https://jiexi.071811.cc/jx.php?url=",
-                'title': "综合线路9，不太稳定"
+                'title': "综合线路8，不太稳定"
             }, {
                 'id': 'port11',
                 'url': "http://www.sfsft.com/admin.php?url=",
-                'title': "综合线路10，不太稳定"
-            },{
+                'title': "综合线路9，不太稳定"
+            }, {
                 'id': 'port15',
                 'url': "http://www.82190555.com/video.php?url=",
-                'title': "综合线路11，不太稳定"
+                'title': "综合线路10，不太稳定"
             }, {
                 'id': 'port16',
                 'url': "https://api.daidaitv.com/index/?url=",
-                'title': "综合线路12"
+                'title': "综合线路11"
             }, {
                 'id': 'port17',
                 'url': "http://jx.598110.com/zuida.php?url=",
@@ -74,10 +71,12 @@ class Port(object):
                 'id': 'port20',
                 'url': "https://jx.biaoge.tv/?url=",
                 'title': "综合线路16"
-            }, ]
+            }, {
+                'id': 'port21',
+                'url': "http://api.51ckm.com/jx.php?url=",
+                'title': "综合线路17，腾讯清晰度不错，速度有点慢"
+             },]
 
-            
-            
 
 def getVideo(videoUrl, portId):
     ports = Port().ports

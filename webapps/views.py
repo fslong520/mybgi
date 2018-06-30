@@ -30,7 +30,7 @@ def getBingPicUrl(request):
 
 def getVideo(request):
     url = request.GET.get('url', '')
-    portId = request.GET.get('port', 'port0')
+    portId = request.GET.get('port', 'port1')
     videoUrl = video.getVideo(url, portId)
     if videoUrl != False:
         return HttpResponse(videoUrl)
