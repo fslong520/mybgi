@@ -9,90 +9,75 @@ class Port(object):
     def __init__(self):
         self.ports = [
             {'id': 'port0',
-                'url': "https://api.daidaitv.com/index/?url=",
-                'title': "综合线路"
+                'url': "http://api.51ckm.com/jx.php?url=",
+                'title': "综合线路，清晰度不错，所以作为默认"
              }, {
                 'id': 'port1',
                 'url': "http://xlyy100.com/xlyy.php?url=",
                 'title': "综合线路1"
-            }, {
+            },
+             {
                 'id': 'port2',
-                'url': "http://api.baiyug.cn/vip/index.php?url=",
-                'title': "综合线路2"
-            }, {
+                'url': "http://youkus.baiyug.cn:3647/vip_all/index.php?url=",
+                'title': "综合线路2，支持网盘"
+            },{
                 'id': 'port3',
                 'url': "http://www.sonimei.cn/?url=",
-                'title': "综合线路3"
-            }, {
+                'title': "综合线路4"
+            },
+            {
                 'id': 'port4',
-                'url': "https://api.varse.org/?url=",
-                'title': "腾讯接口1"
-            }, {
+                'url': "https://1717ty.duapp.com/ty.php?url=",
+                'title': "综合线路5"
+            },
+             {
                 'id': 'port5',
-                'url': "https://jx.maoyun.tv/index.php?id=",
-                'title': "腾讯接口2"
+                'url': "http://www.sonimei.cn/?url=",
+                'title': "综合线路6"
             }, {
                 'id': 'port6',
-                'url': "http://pupudy.com/play?make=url&id=",
-                'title': "综合线路4"
-            }, {
-                'id': 'port7',
-                'url': "http://www.qxyingyuan.vip/play?make=url&id=",
-                'title': "优酷接口1"
-            }, {
+                'url': "http://pupudy.com/url.php?url=",
+                'title': "综合线路7"
+            },  {
                 'id': 'port8',
-                'url': "http://appapi.svipv.kuuhui.com/svipjx/liulanqichajian/browserplugin/qhjx/qhjx.php?id=",
-                'title': "综合线路5"
-            }, {
-                'id': 'port9',
-                'url': "http://api.xfsub.com/index.php?url=",
-                'title': "1905优先接口"
+                'url': "ku.kuuhui.com/plje/?id=",
+                'title': "综合线路8"
             }, {
                 'id': 'port10',
                 'url': "https://jiexi.071811.cc/jx.php?url=",
-                'title': "综合线路6"
+                'title': "综合线路9"
             }, {
                 'id': 'port11',
                 'url': "http://www.sfsft.com/admin.php?url=",
-                'title': "综合线路7"
-            }, {
-                'id': 'port12',
-                'url': "http://q.z.vip.totv.72du.com/?url=",
-                'title': "综合线路8"
-            }, {
-                'id': 'port13',
-                'url': "http://aikan-tv.com/?url=",
-                'title': "综合线路9(不太稳定)"
-            }, {
-                'id': 'port14',
-                'url': "http://jx.api.163ren.com/vod.php?url=",
-                'title': "腾讯接口3"
-            }, {
-                'id': 'port15',
-                'url': "http://www.wmxz.wang/video.php?url=",
                 'title': "综合线路10"
+            },{
+                'id': 'port15',
+                'url': "http://www.82190555.com/video.php?url=",
+                'title': "综合线路11"
             }, {
                 'id': 'port16',
-                'url': "http://v.renrenfabu.com/jiexi.php?url=",
-                'title': "综合线路11"
+                'url': "https://api.daidaitv.com/index/?url=",
+                'title': "综合线路12"
             }, {
                 'id': 'port17',
                 'url': "http://jx.598110.com/zuida.php?url=",
-                'title': "综合线路12"
+                'title': "598110系列接口1"
             }, {
                 'id': 'port18',
                 'url': "http://jx.598110.com/duo/index.php?url=",
-                'title': "综合线路13"
+                'title': "598110系列接口2"
             }, {
                 'id': 'port19',
                 'url': "http://jx.598110.com/index.php?url=",
-                'title': "综合线路14"
+                'title': "598110系列接口3"
             }, {
                 'id': 'port20',
                 'url': "https://jx.biaoge.tv/?url=",
-                'title': "综合线路15"
+                'title': "综合线路16"
             }, ]
 
+            
+            
 
 def getVideo(videoUrl, portId):
     ports = Port().ports
