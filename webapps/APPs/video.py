@@ -40,20 +40,20 @@ class Port(object):
                 'title': "综合线路7"
             },  {
                 'id': 'port8',
-                'url': "ku.kuuhui.com/plje/?id=",
+                'url': "http://ku.kuuhui.com/plje/?id=",
                 'title': "综合线路8"
             }, {
                 'id': 'port10',
                 'url': "https://jiexi.071811.cc/jx.php?url=",
-                'title': "综合线路9"
+                'title': "综合线路9，不太稳定"
             }, {
                 'id': 'port11',
                 'url': "http://www.sfsft.com/admin.php?url=",
-                'title': "综合线路10"
+                'title': "综合线路10，不太稳定"
             },{
                 'id': 'port15',
                 'url': "http://www.82190555.com/video.php?url=",
-                'title': "综合线路11"
+                'title': "综合线路11，不太稳定"
             }, {
                 'id': 'port16',
                 'url': "https://api.daidaitv.com/index/?url=",
