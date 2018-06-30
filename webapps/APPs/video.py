@@ -10,7 +10,7 @@ class Port(object):
         self.ports = [
             {
                 'id': 'port1',
-                'url': "yun.baiyug.cn/vip/index.php?url=",
+                'url': "http://yun.baiyug.cn/vip/index.php?url=",
                 'title': "综合线路1"
             },
             {
@@ -19,7 +19,7 @@ class Port(object):
                 'title': "综合线路2，支持网盘"
             }, {
                 'id': 'port3',
-                'url': "yun.baiyug.cn/vip/?url=",
+                'url': "http://yun.baiyug.cn/vip/?url=",
                 'title': "综合线路3"
             },
             {
