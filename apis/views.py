@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 from webapps.APPs import bingPic
 from webapps.APPs import getWeather as weather
+from spiders.kgbook import kgbook
 
 
 # Create your views here.
@@ -20,3 +21,10 @@ def getWeather(request):
 
 def test(request):
     return render(request, 'apis/testApis.html')
+
+def searchBooks(request):
+    bookName=request.GET.get('bookName')
+    if bookName=='':
+        return HttpResponse('好像没输入要查询的电子书的名称呀！')
+    else:
+        return JsonResponse(kgbook.searchBooks(bookName))

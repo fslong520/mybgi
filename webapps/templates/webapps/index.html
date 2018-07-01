@@ -93,11 +93,7 @@
     </div>
 
     <div style="padding-left: 20px;padding-right: 20px; padding-top: 20px; margin-top: 80px;">
-        <div>
-            功能列表
-        </div>
-
-        <div class="uk-child-width-1-1@s" uk-grid style="overflow: hidden;">
+        <div class="uk-child-width-1-1@s uk-grid-divider" uk-grid style="overflow: hidden;">
             <div id="videoDiv" class="uk-grid-item-match">
                 <!--视频解析-->
                 {% include 'webapps/video.html' %}
@@ -106,17 +102,15 @@
                 <!--天气-->
                 {% include 'webapps/weather.html' %}
             </div>
-            <div class="uk-grid-item-match" style="max-height: 520px;" id="bingPicDiv">
+            <div class="uk-grid-item-match" id="bingPicDiv">
                 <!--必应美图-->
                 {% include 'webapps/bingPic.html' %}
             </div>
             <div class="uk-grid-item-match" id="byte2strDiv">
-                <div class="uk-card uk-card-default uk-card-body">
-                    <h3>byte转string</h3>
-                    <div class="uk-width-1-1 uk-text-center">
-                        。。。。
-                    </div>
-                </div>
+                {% include 'webapps/transformStr.html' %}
+            </div>
+            <div class="uk-grid-item-match" id="byte2strDiv">
+                {% include 'webapps/books.html' %}
             </div>
 
         </div>

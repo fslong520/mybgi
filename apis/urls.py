@@ -4,6 +4,7 @@ from apis import views
 
 urlpatterns = [
     path('bingpic', views.getBingPic),
-    path('getweather', views.getWeather),
-    path('test',views.test)
+    path('getWeather', views.getWeather),
+    path('test',views.test),
+    path('searchBooks',views.searchBooks),
 ]

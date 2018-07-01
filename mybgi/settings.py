@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'blog',
     'webapps',
     'apis',
-    'spider',
+    'spiders',
 ]
 
 MIDDLEWARE = [

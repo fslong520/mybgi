@@ -159,7 +159,6 @@ def getWether(cityName='北京'):
 
 def getWttr(cityName=''):
     if cityName == '':
-        city = ''
         url = 'http://wttr.in/'
     else:
         '''

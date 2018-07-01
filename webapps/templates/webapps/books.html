@@ -1,0 +1,56 @@
+<div class="uk-card uk-card-default uk-card-body">
+    <h3>书籍搜索</h3>
+    <hr class="uk-divider-small">
+    <div>
+        <ul class="uk-list" id="bookList">
+        </ul>
+    </div>
+    <div uk-grid class="uk-width-1-1">
+        <div class="uk-width-4-5@s">
+            <input type="text" name="" id="bookName" placeholder="在这里输入要搜索的书籍名称：" class="uk-input">
+        </div>
+        <div class="uk-width-1-5@s" uk-grid style="margin: 0px;">
+            <div class="uk-width-3-5@s" style="padding: 0px;">
+                <select name="" id="接口" class="uk-select">
+                    <option value="kgbook">苦瓜</option>
+                </select>
+            </div>
+            <div class="uk-width-2-5@s">
+                <button class="uk-button-primary" id="search">
+                    <span uk-icon="icon: search"></span>搜索</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $("#search").click(function () {
+                let bookName = $("#bookName").val();
+                $.ajax({
+                    url: "/apis/searchBooks",
+                    type: 'GET',
+                    data: {
+                        'bookName': bookName,
+                    },
+                    success: function (data) {
+                        if(data["len"]==0){
+                            alert("没有查询到你要的结果。")
+                            return false
+                        }
+                        for (let i = 1; i <= data["len"]; i++) {
+                            bookId = "book" + i;
+                            book = data[bookId];
+                            bookLi = "<li id='"+bookId+"' style='display:none;'><h3 class='uk-h3'><a href='" + book['url'] +
+                                "'><strong>" + book["bookName"] +
+                                "</strong></a></h3><span>　　" + book["intro"] +
+                                "</span><span>" + book["date"] + "</span><span><a href='" +
+                                book["url"] + "'>" + book["url"] + "</a></span></li>"
+                            $("#bookList").append(bookLi);
+                            $("#"+bookId+"").fadeIn("slow");
+                        }
+                    }
+                });
+
+            });
+        });
+    </script>
+</div>

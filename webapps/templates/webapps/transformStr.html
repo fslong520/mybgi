@@ -1,0 +1,60 @@
+<div class="uk-card uk-card-default uk-card-body">
+    <h3>字符串转换与序列化（待修复）</h3>
+    <hr class="uk-divider-small">
+    <div class="uk-width-1-1 uk-text-center" uk-grid>
+        <div class="uk-width-2-5@s">
+            <p>在此处输入要操作的数据：</p>
+            <textarea name="" id="c1t" cols="60" rows="10" class="uk-textarea"></textarea>
+        </div>
+        <div class="uk-width-1-5@s" style="height: 100%;">
+            <p>选择要执行的操作：</p>
+            <select name="" id="c1" class="uk-select" style="width: 110px;">
+                <option value="str">Str</option>
+                <option value="bytes">Bytes</option>
+                <option value="picking">序列化</option>
+                <option value="unpickling">反序列化</option>
+            </select>
+            <button class="uk-button-large uk-button-primary" id="changeButton">
+                转换
+            </button>
+        </div>
+        <div class="uk-width-2-5@s">
+            <p>这里会显示转换结果：</p>
+            <textarea name="" id="c2t" cols="60" rows="10" class="uk-textarea"></textarea>
+        </div>
+    </div>
+    <script>
+        $.ajaxSetup({
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+        });
+        $(function () {
+            $("#changeButton").click(function () {
+                alert("还没写好，有问题！")
+                var c1 = $("#c1").val();
+                var c1t = $("#c1t").val();
+                if (c1t == "") {
+                    alert("快输入内容啦！")
+                } else {
+                    $.ajax({
+                        url: "/webapps/getString",
+                        type: "POST",
+                        data: {
+                            "string": c1t,
+                            "method": c1,
+                        },
+                        success: function (data1) {
+                            if (data1) {
+                                $("#c2t").val(data1)
+                            } else {}
+                        }
+
+                    })
+                }
+
+            })
+
+        })
+    </script>
+</div>
