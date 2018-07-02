@@ -160,26 +160,29 @@ def bookSpider():
             return False
 
     def saveBook2Json(column, dicts):
-        with open('book.json', 'wb') as f:
-            try:
-                bookDicts = json.load(f)                
-            except:
-                bookDicts = {}
-                bookDicts[column] = {}
-        try:
-            bookDicts[column][dicts['bookId']] = dicts
-        except:
+        if os.path.isfile(column+'.json'):
+            with open(column+'.json', 'rb') as f:
+                try:
+                    bookDicts = json.load(f)
+                except:
+                    bookDicts = {}
+                    bookDicts[column] = {}
+        else:
+            bookDicts = {}
             bookDicts[column] = {}
-            bookDicts[column][dicts['bookId']] = dicts
-        with open('book.json', 'w', encoding='utf-8') as f:
+        bookDicts[column][dicts['bookId']] = dicts
+        with open(column+'.json', 'w', encoding='utf-8') as f:
             json.dump(bookDicts, f, ensure_ascii=False)
     columns = getColumn()
+    print(columns)
     for j in columns:
         bookDefaultNum = 0
         bookDefaultDicts = {}
         print('开始查找“%s”栏目的图书' % columns[j]['name'])
         bookDicts = getBooksByColumnUrl(columns[j]['url'])
         bookRandomList = randomList(bookDicts['len'])
+        with open('columndata.txt', 'a', encoding='utf-8') as f:
+            f.write('%s栏目一共%s本书\n'%(columns[j]['name'], bookDicts['len'])) 
         for i in bookRandomList:
             bookId = 'book'+str(i)
             book = getBookContent(bookId, bookDicts[bookId]['url'])
@@ -187,11 +190,15 @@ def bookSpider():
                 bookDicts[bookId]['bookId'] = bookId
                 bookDicts[bookId]['badData'] = True
                 saveBook2Json(columns[j]['name'], bookDicts[bookId])
-                print('    《%s》的数据获取完毕!' % bookDicts[bookId]['bookName'])
+                try:
+                    print('    《%s》的数据获取完毕!' % bookDicts[bookId]['bookName'])
+                except:
+                    pass
             else:
                 saveBook2Json(columns[j]['name'], book)
                 print('    《%s》的数据获取完毕!' % book['bookName'])
         print('----------------------------------------------------')
+    print('下载完毕')
 
 
 if __name__ == '__main__':
