@@ -1,10 +1,6 @@
-<div class="uk-card uk-card-default uk-card-body">
-    <h3>书籍搜索</h3>
+<div class="uk-card uk-card-default uk-card-body" style="padding-right: 0px;">
+    <h3 class="uk-h3">书籍搜索</h3>
     <hr class="uk-divider-small">
-    <div>
-        <ul class="uk-list" id="bookList">
-        </ul>
-    </div>
     <div uk-grid class="uk-width-1-1">
         <div class="uk-width-4-5@s">
             <input type="text" name="" id="bookName" placeholder="在这里输入要搜索的书籍名称：" class="uk-input">
@@ -20,11 +16,271 @@
                     <span uk-icon="icon: search"></span>搜索</button>
             </div>
         </div>
+        <br>
     </div>
+    <div>
+        <ul class="uk-list" id="bookList">
+        </ul>
+    </div>
+    <hr class="uk-table-divider">
+    <div style="height: 400px; overflow: auto">
+        <h4 class="uk-h4">kgbook书籍统计（截至2018.7.3）</h4>
+        <table class="uk-table uk-text-left">
+            <thead></thead>
+            <tbody>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>现代文学：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="83.43949044585987" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计131本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>古典文学：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="33.12101910828026" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计52本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>武侠小说：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="15.286624203821656" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计24本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>网络小说：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="15.286624203821656" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计24本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>言情小说：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="19.10828025477707" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计30本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>职场小说：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="8.9171974522293" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计14本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>科幻玄幻：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="85.98726114649682" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计135本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>推理惊悚：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="49.681528662420384" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计78本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>人文社科：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="73.2484076433121" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计115本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>人物传记：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="42.67515923566879" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计67本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>外国文学：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="100.0" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计157本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>金融投资：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="23.56687898089172" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计37本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>管理书籍：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="12.101910828025478" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计19本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>励志成功：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="22.29299363057325" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计35本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>历史地理：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="31.21019108280255" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计49本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>战争军事：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="7.643312101910828" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计12本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>哲学宗教：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="43.94904458598726" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计69本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>儿童文学：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="13.375796178343949" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计21本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>诗歌散文：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="14.64968152866242" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计23本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>自然科学：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="12.738853503184714" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计20本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>教育学习：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="7.006369426751593" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计11本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>电脑网络：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="10.828025477707007" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计17本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>保健养生：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="19.10828025477707" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计30本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>生活休闲：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="13.375796178343949" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计21本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>期刊杂志：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="8.9171974522293" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计14本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>工具书：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="1.910828025477707" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计3本书。</td>
+                </tr>
+                <tr>
+                    <td style="width: 100px">
+                        <strong>电子书制作：</strong>
+                    </td>
+                    <td>
+                        <progress class="uk-progress" value="2.5477707006369426" max="100" style="margin-top: 5px"></progress>
+                    </td>
+                    <td style="width: 150px">合计4本书。</td>
+                </tr>                
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+
     <script>
         $(function () {
             $("#search").click(function () {
                 let bookName = $("#bookName").val();
+                $("#bookList").html("<div><ul class='uk-list' id='bookList'></ul></div>")
                 $.ajax({
                     url: "/apis/searchBooks",
                     type: 'GET',
@@ -32,20 +288,23 @@
                         'bookName': bookName,
                     },
                     success: function (data) {
-                        if(data["len"]==0){
+                        if (data["len"] == 0) {
                             alert("没有查询到你要的结果。")
                             return false
                         }
+                        $("#bookList").append("<h5 class='uk-h5'>共搜索到<strong>"+data["len"]+"</strong>本书。</h5>");
                         for (let i = 1; i <= data["len"]; i++) {
                             bookId = "book" + i;
                             book = data[bookId];
-                            bookLi = "<li id='"+bookId+"' style='display:none;'><h3 class='uk-h3'><a href='" + book['url'] +
+                            bookLi = "<li id='" + bookId +
+                                "' style='display:none;'><h4 class='uk-h4'><a href='" +
+                                book['url'] +
                                 "'><strong>" + book["bookName"] +
-                                "</strong></a></h3><span>　　" + book["intro"] +
+                                "</strong></a></h4><span>　　" + book["intro"] +
                                 "</span><span>" + book["date"] + "</span><span><a href='" +
                                 book["url"] + "'>" + book["url"] + "</a></span></li>"
                             $("#bookList").append(bookLi);
-                            $("#"+bookId+"").fadeIn("slow");
+                            $("#" + bookId + "").fadeIn("slow");
                         }
                     }
                 });

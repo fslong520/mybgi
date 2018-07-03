@@ -75,16 +75,19 @@
                 <li class="uk-parent">
                     <ul class="uk-nav-sub">
                         <li>
-                            <a href="#videoDiv" style="color: darkslategrey">1、播放视频</a>
+                            <a href="#videoDiv" style="color: darkslategrey" uk-scroll>1、播放视频</a>
                         </li>
                         <li>
-                            <a href="#weatherDiv" style="color: darkslategrey">2、天气</a>
+                            <a href="#weatherDiv" style="color: darkslategrey" uk-scroll>2、天气</a>
                         </li>
                         <li>
-                            <a href="#bingPicDiv" style="color: darkslategrey">3、必应美图</a>
+                            <a href="#bingPicDiv" style="color: darkslategrey" uk-scroll>3、必应美图</a>
                         </li>
                         <li>
-                            <a href="#byte2strDiv" style="color: darkslategrey">4、byte转string</a>
+                            <a href="#byte2strDiv" style="color: darkslategrey" uk-scroll>4、字符串操作（待续）</a>
+                        </li>
+                        <li>
+                            <a href="#bookDiv" style="color: darkslategrey" uk-scroll>5、书籍搜索</a>
                         </li>
                     </ul>
                 </li>
@@ -107,9 +110,11 @@
                 {% include 'webapps/bingPic.html' %}
             </div>
             <div class="uk-grid-item-match" id="byte2strDiv">
+                <!--字符串操作-->
                 {% include 'webapps/transformStr.html' %}
             </div>
-            <div class="uk-grid-item-match" id="byte2strDiv">
+            <div class="uk-grid-item-match" id="bookDiv">
+                <!--书籍搜索-->
                 {% include 'webapps/books.html' %}
             </div>
 
