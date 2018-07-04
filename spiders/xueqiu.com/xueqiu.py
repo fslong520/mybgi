@@ -26,4 +26,4 @@ for people in peoples:
     reqPeoplePQ=pyquery.PyQuery(reqPeople.text)
     print(people('img').attr('title'))
     print('个人简介：%s'%reqPeoplePQ('.profiles__hd__info p').text())
-    time.sleep(120*random.random())
+    time.sleep(30*random.random())

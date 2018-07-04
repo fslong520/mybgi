@@ -36,11 +36,11 @@ def searchBooks(bookName):
     bookDicts = {}
     j = 0
     for i in bookListsHtml:
-        bookName=''
+        bookName = ''
         j += 1
         bookName = i('strong').text()
-        if bookName=='':
-            bookName=i('h1 a').text()
+        if bookName == '':
+            bookName = i('h1 a').text()
         intro = i('.text').text()
         url = i('.url').text()
         date = i('.t').text()
@@ -178,17 +178,17 @@ def bookSpider():
             json.dump(bookDicts, f, ensure_ascii=False)
     columns = getColumn()
     print(columns)
-    a=0
-    b=27
+    a = 0
+    b = 27
     for j in columns:
         bookDefaultNum = 0
         bookDefaultDicts = {}
         print('开始查找“%s”栏目的图书' % columns[j]['name'])
         bookDicts = getBooksByColumnUrl(columns[j]['url'])
-        a+=bookDicts['len']
+        a += bookDicts['len']
         bookRandomList = randomList(bookDicts['len'])
         with open('columndata.txt', 'a', encoding='utf-8') as f:
-            f.write('%s栏目一共%s本书\n'%(columns[j]['name'], bookDicts['len'])) 
+            f.write('%s栏目一共%s本书\n' % (columns[j]['name'], bookDicts['len']))
         for i in bookRandomList:
             bookId = 'book'+str(i)
             book = getBookContent(bookId, bookDicts[bookId]['url'])
@@ -204,7 +204,8 @@ def bookSpider():
                 saveBook2Json(columns[j]['name'], book)
                 print('    《%s》的数据获取完毕!' % book['bookName'])
         print('----------------------------------------------------')
-    print('下载完毕,%s个栏目%s本书')%(b,a)
+    print('下载完毕,%s个栏目%s本书') % (b, a)
+
 
 
 if __name__ == '__main__':

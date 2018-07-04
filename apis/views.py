@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 from webapps.APPs import bingPic
 from webapps.APPs import getWeather as weather
-from spiders.kgbook import kgbook
+from spiders.book import kgbook
 
 
 # Create your views here.

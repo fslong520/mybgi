@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
+<!-- eric6 tasks file for project mybgi -->
+<!-- Saved: 2018-07-04, 20:17:19 -->
+<Tasks version="6.0">
+  <ProjectScanFilter></ProjectScanFilter>
+  <Task priority="1" completed="False" type="1" uid="{02089d87-168b-410b-a80b-c0c67ce7a120}">
+    <Summary>TODO: Implement the remaining registers.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:30</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>14</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{baac82bf-3604-4bf8-93af-9f720e5d3140}">
+    <Summary>TODO: Implement the remaining special marks. They have more complex</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:30</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>17</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{6a41fc89-d782-4fef-9fb5-21c4eeaf03a4}">
+    <Summary>TODO: Current bindings expect the character to be lower case, but</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>370</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{7e911d64-2a26-468a-a0bd-815760448418}">
+    <Summary>TODO: Convert keymap into dictionary format for fast lookup.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>717</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{294acb53-a658-4a96-be58-ab7c75c8a3f7}">
+    <Summary>TODO: Expose setOption and getOption as instance methods. Need to decide how to namespace</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>745</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{c980b85f-cc44-4aeb-8592-5660a01cf633}">
+    <Summary>TODO: prevent infinite recursion.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>803</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{44d60635-aeea-47e9-a509-c057b4b65330}">
+    <Summary>TODO: Look into using CodeMirror's multi-key handling.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>876</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{6f11aaaa-e821-494e-b498-660048f139ce}">
+    <Summary>TODO: Make sure cm and vim selections are identical outside visual mode.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>1451</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{1fb30042-2381-42d9-b822-b90c19e7d1c2}">
+    <Summary>TODO: Handle null returns from motion commands better.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>1505</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{9bc30a81-ac78-46d5-8eca-5bbe6a157a88}">
+    <Summary>TODO: lots of possible exceptions that can be thrown here. Try da(</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>1922</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{95113117-a6fb-4fa8-b649-2a1183b61a8d}">
+    <Summary>TODO: adding &lt;&gt; &gt;&lt; to this map doesn't work, presumably because</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>1925</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{a842da3a-33f3-4945-9a8b-9ef7cd16e2e5}">
+    <Summary>TODO: Instead of using the additional text object map to perform text</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>1942</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{a25b6b7b-fc7d-4558-b60e-0f63a6a3cd69}">
+    <Summary>TODO: The repeat should actually select number of characters/lines</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>2330</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{53e31bfe-107a-4a2b-9118-9a9302d4489d}">
+    <Summary>TODO: The original Vim implementation only operates on level 1 and 2.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>3225</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{ee136a44-91de-401b-8c3a-f269963c7b89}">
+    <Summary>TODO: perhaps this finagling of start and end positions belonds</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>3719</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{b807cf9f-f7ce-4b8e-a9ed-8a5176000d1a}">
+    <Summary>TODO: override navigation keys so that Esc will cancel automatic</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>5110</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{47dc2ada-4eec-4f4e-b047-b79046f2565c}">
+    <Summary>TODO: fix to be CommonMark-compliant</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/markdown/test.js</Filename>
+      <Linenumber>262</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{a8b972d5-538b-49e8-a966-c51f21eedd4c}">
+    <Summary>TODO: fix to be CommonMark-compliant</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/markdown/test.js</Filename>
+      <Linenumber>447</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{7fa1ff6b-e770-47a3-beb7-737d1fad7ba7}">
+    <Summary>TODO: fix to be CommonMark-compliant</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/markdown/test.js</Filename>
+      <Linenumber>452</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{66d38769-21a0-46f3-99e9-448001a0910b}">
+    <Summary>TODO: non-CommonMark-compliant)</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/markdown/test.js</Filename>
+      <Linenumber>524</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="3" uid="{d6a015a2-2c9b-4a1c-962a-f8d31ab66346}">
+    <Summary>NOTE: &quot;m&quot;, &quot;s&quot;, &quot;y&quot; and &quot;tr&quot; need to correct real modifiers for each regexp type</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/perl/perl.js</Filename>
+      <Linenumber>481</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="3" uid="{626d7589-e6f0-4489-a69b-8846786dd95b}">
+    <Summary>NOTE: chain.length &gt; 2 is not working now (it's for s[...][...]geos;)</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/perl/perl.js</Filename>
+      <Linenumber>483</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="3" uid="{86f3e030-6811-4777-8dd8-bc39df4a3faa}">
+    <Summary>NOTE: &lt;&lt;SOMETHING\n...\nSOMETHING\n</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/perl/perl.js</Filename>
+      <Linenumber>519</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="3" uid="{327d0047-8204-4136-812d-4a97349729e6}">
+    <Summary>NOTE: \n=item...\n=cut\n</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/perl/perl.js</Filename>
+      <Linenumber>522</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="3" uid="{eb37b5e6-17cf-401c-8f5c-c24d30286601}">
+    <Summary>NOTE: ' or &quot; or &lt;&lt;'SOMETHING'\n...\nSOMETHING\n or &lt;&lt;&quot;SOMETHING&quot;\n...\nSOMETHING\n</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/perl/perl.js</Filename>
+      <Linenumber>525</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{b203d2dd-a22a-4b44-98bf-0482eaf584b3}">
+    <Summary>TODO: Include bash script sub-parser (CodeMirror supports that)</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/rpm/rpm.js</Filename>
+      <Linenumber>100</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{bbca64d4-bd45-4f03-aad6-a060e03bd8cb}">
+    <Summary>TODO: add multi line support</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/slim/slim.js</Filename>
+      <Linenumber>139</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{4be3333a-a305-40c7-81e1-026b3407cb67}">
+    <Summary>TODO: correctly identify when multiple variables are being declared</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/swift/test.js</Filename>
+      <Linenumber>152</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{47290280-7e14-4a16-bf8c-ae8b642ce69b}">
+    <Summary>TODO: correctly identify when variables are being declared in a tuple.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/swift/test.js</Filename>
+      <Linenumber>154</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{30f84eba-50a4-47a0-adca-00b7c4c8b50c}">
+    <Summary>TODO: identify protocols as types when used before an extension?</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/swift/test.js</Filename>
+      <Linenumber>155</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{7b7819b6-0079-4fdd-b308-3c9a14d87de1}">
+    <Summary>TODO: Pass this in instead.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/mode/verilog/verilog.js</Filename>
+      <Linenumber>450</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{163a2133-d672-4796-91d3-93cf96575481}">
+    <Summary>TODO: Make the test code long enough to test Ctrl-F and Ctrl-B.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/test/vim_test.js</Filename>
+      <Linenumber>359</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{33834515-8840-438f-b61c-e084a9925937}">
+    <Summary>TODO: support gUgU guu</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:31</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/test/vim_test.js</Filename>
+      <Linenumber>1148</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{5581508f-1a4a-487a-af59-a6ee6301d4d8}">
+    <Summary>TODO: Reset key maps after each test.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>blog/static/blog/codemirror/test/vim_test.js</Filename>
+      <Linenumber>4143</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{cddc2040-a840-42dd-ab9c-41d4672ae0f7}">
+    <Summary>TODO: remove 'name' arg after deprecation is removed</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>blog/static/blog/js/components/datepicker.js</Filename>
+      <Linenumber>877</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{d3887970-e3d6-42f3-bfdb-91db8a75f272}">
+    <Summary>TODO: We need to take the current isoWeekYear, but that depends on</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>blog/static/blog/js/components/datepicker.js</Filename>
+      <Linenumber>1625</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{d442a920-4efb-4d06-a5ba-8a6693d87ad4}">
+    <Summary>TODO: Move this out of here!</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>blog/static/blog/js/components/datepicker.js</Filename>
+      <Linenumber>2850</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{8b561ecf-a582-4b84-b872-d60a96224ee0}">
+    <Summary>TODO: Another silent failure?</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>blog/static/blog/js/components/datepicker.js</Filename>
+      <Linenumber>2853</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{7b5fe2d0-89b4-4d4d-ad1a-b716bc8d9a64}">
+    <Summary>TODO: trigger on right element?</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>blog/static/blog/js/components/sortable.js</Filename>
+      <Linenumber>452</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="2" uid="{b691b928-c928-4dcf-8267-15badae5145a}">
+    <Summary>WARNING: keep the secret key used in production secret!</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>mybgi/settings.py</Filename>
+      <Linenumber>22</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="2" uid="{5daeeffb-d816-4f72-96dd-e935cc80d858}">
+    <Summary>WARNING: don't run with debug turned on in production!</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>mybgi/settings.py</Filename>
+      <Linenumber>25</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{acae462d-a530-487e-953d-8acc0f67d80b}">
+    <Summary>TODO: IE returns wrong value for findPosX when in rtl mode</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>static/admin/js/admin/DateTimeShortcuts.js</Filename>
+      <Linenumber>209</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{1539e375-0a9c-494e-9d8e-e170b5af02ce}">
+    <Summary>TODO: IE returns wrong value for findPosX when in rtl mode</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>static/admin/js/admin/DateTimeShortcuts.js</Filename>
+      <Linenumber>382</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{e7a99dda-9b95-4401-b8c0-0b9ef1a04412}">
+    <Summary>TODO: identify versions</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>static/admin/js/vendor/jquery/jquery.js</Filename>
+      <Linenumber>776</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{fe948d40-186c-4f88-aeb0-17e73e286091}">
+    <Summary>TODO: identify versions</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>static/admin/js/vendor/jquery/jquery.js</Filename>
+      <Linenumber>790</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="3" uid="{5c4a930e-d54c-49f9-9bea-ec1dc30b3f4b}">
+    <Summary>NOTE: This can be skipped if there are no unmatched elements (i.e., `matchedCount`</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>static/admin/js/vendor/jquery/jquery.js</Filename>
+      <Linenumber>2453</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{c9ec44df-72f8-40e1-853b-040b044d7029}">
+    <Summary>TODO: Drop _data, _removeData)</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>static/admin/js/vendor/jquery/jquery.js</Filename>
+      <Linenumber>3863</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{d5758e2c-e4ac-4929-8021-535bf90b2e62}">
+    <Summary>TODO: Now that all calls to _data and _removeData have been replaced</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:32</Created>
+    <Resource>
+      <Filename>static/admin/js/vendor/jquery/jquery.js</Filename>
+      <Linenumber>3913</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{7ce29f38-27d3-4d02-8645-8d7a3116558f}">
+    <Summary>TODO: Implement the remaining registers.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>14</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{f37edbf5-65e7-4de3-9771-fdf5bf731873}">
+    <Summary>TODO: Implement the remaining special marks. They have more complex</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>17</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{80fea95f-2002-4129-99a6-a4fec23ef7d5}">
+    <Summary>TODO: Current bindings expect the character to be lower case, but</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>370</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{01758ef5-a4e1-4ab1-84ea-41bf98ee046d}">
+    <Summary>TODO: Convert keymap into dictionary format for fast lookup.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>717</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{96a485ad-e301-44c3-8943-70f191ac03ba}">
+    <Summary>TODO: Expose setOption and getOption as instance methods. Need to decide how to namespace</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>745</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{ed77b162-ab1c-497f-b6b0-6cdffe51ec74}">
+    <Summary>TODO: prevent infinite recursion.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>803</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{012cd357-8a55-4654-b097-fd51b3b33b99}">
+    <Summary>TODO: Look into using CodeMirror's multi-key handling.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>876</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{f3497c98-c92f-4d0a-87ae-3084219b65ac}">
+    <Summary>TODO: Make sure cm and vim selections are identical outside visual mode.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>1451</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{93c0312e-39f2-43a0-968d-68899fb3c20f}">
+    <Summary>TODO: Handle null returns from motion commands better.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>1505</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{17a4b7ab-8c0a-45ba-8d43-e6a2b8c62b91}">
+    <Summary>TODO: lots of possible exceptions that can be thrown here. Try da(</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>1922</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{dd29386d-df5f-439a-9f65-3c4787f13846}">
+    <Summary>TODO: adding &lt;&gt; &gt;&lt; to this map doesn't work, presumably because</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>1925</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{42fd7263-d846-4a7e-aac1-8993adb09d03}">
+    <Summary>TODO: Instead of using the additional text object map to perform text</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>1942</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{9ac4bab6-8463-4908-aa9a-71ebafac59fc}">
+    <Summary>TODO: The repeat should actually select number of characters/lines</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>2330</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{f8560a37-7124-40fa-9cf2-1ec236f3c401}">
+    <Summary>TODO: The original Vim implementation only operates on level 1 and 2.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>3225</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{11c4cac2-46b7-435e-b047-fb6520bf0647}">
+    <Summary>TODO: perhaps this finagling of start and end positions belonds</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>3719</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{eb3a66a9-b046-4f5d-a4e7-68875f5caa83}">
+    <Summary>TODO: override navigation keys so that Esc will cancel automatic</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/keymap/vim.js</Filename>
+      <Linenumber>5110</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{d8f1011a-b6d6-4f1f-8c91-354dfad51188}">
+    <Summary>TODO: fix to be CommonMark-compliant</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/markdown/test.js</Filename>
+      <Linenumber>262</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{75ee5c72-1f31-4c5f-a6f6-ddbc1d0bcf0f}">
+    <Summary>TODO: fix to be CommonMark-compliant</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/markdown/test.js</Filename>
+      <Linenumber>447</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{5835629b-1bde-4a15-b156-053120f88dd9}">
+    <Summary>TODO: fix to be CommonMark-compliant</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/markdown/test.js</Filename>
+      <Linenumber>452</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{3e863bee-53c0-4618-90d0-49cc7b4d7a68}">
+    <Summary>TODO: non-CommonMark-compliant)</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/markdown/test.js</Filename>
+      <Linenumber>524</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="3" uid="{c018e39c-a0c1-48bf-b35f-79589a813a1b}">
+    <Summary>NOTE: &quot;m&quot;, &quot;s&quot;, &quot;y&quot; and &quot;tr&quot; need to correct real modifiers for each regexp type</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/perl/perl.js</Filename>
+      <Linenumber>481</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="3" uid="{58b99b4d-4d1d-4265-9257-44fde50bb378}">
+    <Summary>NOTE: chain.length &gt; 2 is not working now (it's for s[...][...]geos;)</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:33</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/perl/perl.js</Filename>
+      <Linenumber>483</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="3" uid="{f5357ae4-5612-4520-9a81-2fccd1888ce7}">
+    <Summary>NOTE: &lt;&lt;SOMETHING\n...\nSOMETHING\n</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:34</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/perl/perl.js</Filename>
+      <Linenumber>519</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="3" uid="{3e0c2b20-ac2d-4084-8e86-7e57eabedb0a}">
+    <Summary>NOTE: \n=item...\n=cut\n</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:34</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/perl/perl.js</Filename>
+      <Linenumber>522</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="3" uid="{2677b54e-4cc9-42ee-bbdf-faf5a48e4674}">
+    <Summary>NOTE: ' or &quot; or &lt;&lt;'SOMETHING'\n...\nSOMETHING\n or &lt;&lt;&quot;SOMETHING&quot;\n...\nSOMETHING\n</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:34</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/perl/perl.js</Filename>
+      <Linenumber>525</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{298f9105-da93-4a2a-8dfc-33ff2b550a25}">
+    <Summary>TODO: Include bash script sub-parser (CodeMirror supports that)</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:34</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/rpm/rpm.js</Filename>
+      <Linenumber>100</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{1baf62e3-be5c-47bd-b961-6e7e6d6004fb}">
+    <Summary>TODO: add multi line support</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:34</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/slim/slim.js</Filename>
+      <Linenumber>139</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{f9f0ad9f-9a1c-4988-9fe7-653c7b3c18ac}">
+    <Summary>TODO: correctly identify when multiple variables are being declared</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:34</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/swift/test.js</Filename>
+      <Linenumber>152</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{7ce177e3-2d6f-409d-805a-89feee3bc5e3}">
+    <Summary>TODO: correctly identify when variables are being declared in a tuple.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:34</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/swift/test.js</Filename>
+      <Linenumber>154</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{b4a9ec13-05a5-4aca-a89f-1c60a520ff14}">
+    <Summary>TODO: identify protocols as types when used before an extension?</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:34</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/swift/test.js</Filename>
+      <Linenumber>155</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{ac9eecd1-c5bd-48e9-9cf7-e5ee440fb827}">
+    <Summary>TODO: Pass this in instead.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:34</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/mode/verilog/verilog.js</Filename>
+      <Linenumber>450</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{740ec29a-51c2-470e-a225-e384d8d3e0c3}">
+    <Summary>TODO: Make the test code long enough to test Ctrl-F and Ctrl-B.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:34</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/test/vim_test.js</Filename>
+      <Linenumber>359</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{8c154324-455f-4b01-93d1-b35668a4a938}">
+    <Summary>TODO: support gUgU guu</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:34</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/test/vim_test.js</Filename>
+      <Linenumber>1148</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{3645a334-5552-4b6a-a17b-b8fb55f233a7}">
+    <Summary>TODO: Reset key maps after each test.</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:34</Created>
+    <Resource>
+      <Filename>static/blog/codemirror/test/vim_test.js</Filename>
+      <Linenumber>4143</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{b3242fef-9c2c-4976-9fd4-4cd1b2df21f6}">
+    <Summary>TODO: remove 'name' arg after deprecation is removed</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:35</Created>
+    <Resource>
+      <Filename>static/blog/js/components/datepicker.js</Filename>
+      <Linenumber>877</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{ac95efae-a34d-45e0-8c83-162eca74df07}">
+    <Summary>TODO: We need to take the current isoWeekYear, but that depends on</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:35</Created>
+    <Resource>
+      <Filename>static/blog/js/components/datepicker.js</Filename>
+      <Linenumber>1625</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{6064426e-89b1-4e67-bc1e-724c8f4c795d}">
+    <Summary>TODO: Move this out of here!</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:35</Created>
+    <Resource>
+      <Filename>static/blog/js/components/datepicker.js</Filename>
+      <Linenumber>2850</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{6851c516-dabb-4710-af48-a93bfb4f312a}">
+    <Summary>TODO: Another silent failure?</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:35</Created>
+    <Resource>
+      <Filename>static/blog/js/components/datepicker.js</Filename>
+      <Linenumber>2853</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{962bc7a8-b3f9-47f4-b662-ae83109fef68}">
+    <Summary>TODO: trigger on right element?</Summary>
+    <Description></Description>
+    <Created>2018-07-04, 20:05:35</Created>
+    <Resource>
+      <Filename>static/blog/js/components/sortable.js</Filename>
+      <Linenumber>452</Linenumber>
+    </Resource>
+  </Task>
+</Tasks>

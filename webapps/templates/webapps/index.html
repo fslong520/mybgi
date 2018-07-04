@@ -20,21 +20,51 @@
 
 <body style=" width: 100%;height: 100%; padding: 0px;margin: 0px;">
 
-    <div class="uk-grid uk-text-center uk-width-1-1" id="navbar" style="position: fixed;left: 0px;top: 0px; z-index: 1000;margin-left: 0px">
-        <nav class="uk-width-1-1 uk-navbar-container" uk-navbar>
+    <div class="uk-grid uk-text-center uk-width-1-1 " id="navbar" style="position: fixed;left: 0px;top: 0px; z-index: 1000;margin-left: 0px">
+        <nav class="uk-width-1-1 uk-navbar-container boundary-align" uk-navbar style="background-color: grey;height: 58px;">
             <div class="uk-navbar-left">
                 <ul class="uk-navbar-nav">
                     <li class="uk-active">
-                        <a href="#">
+                        <a href="#" style="height: 58px;">
                             <span class="uk-text-bold" style="font-size: 1.5em;">WebAPPs</span>
                         </a>
+                    </li>
+                    <li>
+                        <a href="#" style="color: white; height: 58px;">
+                            <span class="uk-text-bold">首页</span>
+                        </a>
+                    </li>
+                    <li class="uk-inline">
+                        <a href="#" style="color: white;height: 58px;" type="button">
+                            <span class="uk-text-bold">导航</span>
+                            <span class="uk-text-middle" uk-icon="icon:  triangle-down;"></span>
+                        </a>
+                        <div uk-dropdown="pos: bottom-justify; boundary: .boundary-align; boundary-align: true" style="margin-top: 0px">
+                            <ul class="uk-nav uk-dropdown-nav uk-text-left" style="width: 100%;background-color: white">
+                                <li>
+                                    <a href="#videoDiv" style="color: darkslategrey" uk-scroll>1、播放视频</a>
+                                </li>
+                                <li>
+                                    <a href="#weatherDiv" style="color: darkslategrey" uk-scroll>2、天气</a>
+                                </li>
+                                <li>
+                                    <a href="#bingPicDiv" style="color: darkslategrey" uk-scroll>3、必应美图</a>
+                                </li>
+                                <li>
+                                    <a href="#byte2strDiv" style="color: darkslategrey" uk-scroll>4、字符串操作（待续）</a>
+                                </li>
+                                <li>
+                                    <a href="#bookDiv" style="color: darkslategrey" uk-scroll>5、书籍搜索</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>
             <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav">
                     <li>
-                        <a style="color: black" uk-toggle="target: #menuDiv">
+                        <a style="color: white;height: 58px;" uk-toggle="target: #menuDiv">
                             <span uk-icon="icon: menu ;"></span>
                         </a>
                     </li>
@@ -71,31 +101,11 @@
                 <li>
                     <a id="showIntro" style="color: darkslategrey">简要说明</a>
                 </li>
-                <li style="color: black">应用目录</li>
-                <li class="uk-parent">
-                    <ul class="uk-nav-sub">
-                        <li>
-                            <a href="#videoDiv" style="color: darkslategrey" uk-scroll>1、播放视频</a>
-                        </li>
-                        <li>
-                            <a href="#weatherDiv" style="color: darkslategrey" uk-scroll>2、天气</a>
-                        </li>
-                        <li>
-                            <a href="#bingPicDiv" style="color: darkslategrey" uk-scroll>3、必应美图</a>
-                        </li>
-                        <li>
-                            <a href="#byte2strDiv" style="color: darkslategrey" uk-scroll>4、字符串操作（待续）</a>
-                        </li>
-                        <li>
-                            <a href="#bookDiv" style="color: darkslategrey" uk-scroll>5、书籍搜索</a>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </div>
     </div>
 
-    <div style="padding-left: 20px;padding-right: 20px; padding-top: 20px; margin-top: 80px;">
+    <div style="padding-left: 20px;padding-right: 20px; padding-top: 20px; margin-top: 58px;">
         <div class="uk-child-width-1-1@s uk-grid-divider" uk-grid style="overflow: hidden;">
             <div id="videoDiv" class="uk-grid-item-match">
                 <!--视频解析-->
