@@ -12,7 +12,6 @@ class KgbookSpider(scrapy.Spider):
     allowed_domains = ['kgbook.com']
     start_urls = ['https://kgbook.com/list']
     bookId = 0
-
     url = 'https://kgbook.com/list'
     userAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1'
     headers = {'User-Agent': userAgent, 'Connection': 'close', }
