@@ -22,3 +22,12 @@ class xueqiuItem(scrapy.Item):
     intro=scrapy.Field()
     link=scrapy.Field()
     zuhe=scrapy.Field()
+
+class kgBookItem(scrapy.Item):
+    bookId=scrapy.Field()
+    bookName = scrapy.Field()
+    author = scrapy.Field()
+    intro = scrapy.Field()
+    column = scrapy.Field()
+    link = scrapy.Field()
+
