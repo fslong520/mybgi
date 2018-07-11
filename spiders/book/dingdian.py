@@ -21,6 +21,7 @@ class Book(object):
         headers = {'User-Agent': userAgent, 'Connection': 'close', }
         req = requests.post(url, data=data, headers=headers, timeout=8)
         PQreq = pyquery.PyQuery(req.text)('.novelslist2 ul li').items()
+        print(req.text)
         for i in PQreq:
             print(i)
             if i.text() == '':

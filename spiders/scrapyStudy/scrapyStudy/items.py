@@ -17,17 +17,26 @@ class ScrapystudyItem(scrapy.Item):
     column = scrapy.Field()
     link = scrapy.Field()
 
+
 class xueqiuItem(scrapy.Item):
-    peopleName=scrapy.Field()
-    intro=scrapy.Field()
-    link=scrapy.Field()
-    zuhe=scrapy.Field()
+    peopleName = scrapy.Field()
+    intro = scrapy.Field()
+    link = scrapy.Field()
+    zuhe = scrapy.Field()
+
 
 class kgBookItem(scrapy.Item):
-    bookId=scrapy.Field()
+    bookId = scrapy.Field()
     bookName = scrapy.Field()
     author = scrapy.Field()
     intro = scrapy.Field()
     column = scrapy.Field()
     link = scrapy.Field()
 
+
+class DingDian(scrapy.Item):
+    bookName = scrapy.Field()
+    author = scrapy.Field()
+    intro = scrapy.Field()
+    column = scrapy.Field()
+    link = scrapy.Field()
