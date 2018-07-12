@@ -87,8 +87,20 @@
                     <!-- 触发模态对话框的锚 -->
                     <a href="#aboutMe" data-uk-modal>关于我</a>
                 </p>
+                <div class="uk-margin">
+                    <form class="uk-search uk-search-default " onsubmit="return changeArticleDiv()">
+                        <div class="uk-grid">
+                            <div class="uk-width-1-1">
+                                <input id="searcher1" oninput="changeVale(this.value)" onpropertychange="changeVale(this.value)" class="uk-search-input"
+                                    type="text" placeholder="搜索...">
+                            </div>
+                            <div class="uk-width-1-5" style="margin-left:-70px; margin-top: 9.5px;">
+                                <a class="uk-icon-hover uk-icon-search uk-icon-small" type="submit" style="color:cadetblue"></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <br>
             <br>
             <div class="uk-container-center uk-text-center">
                 <p>
@@ -160,13 +172,31 @@
 
             </ul>
             <div class="uk-navbar-center uk-navbar-content uk-text-large">{{ config.0 }}</div>
-        </nav>
-        {% include 'reference.html'%}
+            <div class="uk-margin uk-navbar-right">
+                <form class="uk-search uk-search-default " onsubmit="return changeArticleDiv()" style="width: 100px;">
+                    <div class="uk-grid" style="margin-top:-20px;">
+                        <div class="uk-width-1-1">
+                            <input id="searcher2" oninput="changeVale(this.value)" onpropertychange="changeVale(this.value)" class="uk-input" style="border:none"
+                                type="text" placeholder="搜索...">
+                        </div>
+                        <div class="uk-width-1-5" style="margin-left:-70px; margin-top: 9.5px;">
+                            <a class="uk-icon-hover uk-icon-search uk-icon-small" type="submit" style="color:cadetblue"></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </nav>{% include 'reference.html'%}
         <div class="uk-width-medium-3-4" style="padding-left: 20px;" id="contentDiv">
+            <div id="messageForSearch">
+
+            </div>
             {% if message %}
             <div class="uk-alert uk-alert-success uk-text-center" style="margin-right: 20px;margin-top: 20px" data-uk-alert="">
                 <a class="uk-alert-close uk-close " style="margin-top: -10px"></a>{{ message }} </div>
-            {% endif %} {% block content %} {# 正文部分 #} {% endblock %}
+            {% endif %}
+            <div id="articlesDiv">
+                {% block content %} {# 正文部分 #} {% endblock %}
+            </div>            
         </div>
         <!-- 模态对话框 -->
         <div id="aboutMe" class="uk-modal" style="z-index: 10000000;">
@@ -180,16 +210,58 @@
         </div>
     </div>
     <script>
-        $(function () {
+        var articleDiv = "";
+        function changeVale(keyWords) {
+            getArticleDivByAjax(keyWords);
+        }
+        function getArticleDivByAjax(keyWords) {
+            $.ajax({
+                url: "/blog/search",
+                method: "GET",
+                data: { "keyWords": keyWords },
+                success: function (data) {
+                    articleDiv = data;
+
+                }
+            });
+        }
+        function changeArticleDiv() {
+            if (articleDiv != "") {
+                if (articleDiv == "抱歉，未能查找到你搜索的内容!") {
+                    let searchMessage = '<div class="uk-alert uk-alert-warning uk-text-center" style="margin-right:20px;margin-top: 20px" data-uk-alert=""><a class="uk-alert-close uk-close " style="margin-top: -10px"></a>抱歉，未能查找到你搜索的内容!</div>';
+                    $("#messageForSearch").html(searchMessage);
+                }
+                else {
+                    if ($("#searcher1").val() == '') {
+                        if ($("#searcher2").val() == '') {
+                            alert("不输入关键字怎么搜索！")
+                        }
+                        else {
+                            let searchMessage = '<div class="uk-alert uk-alert-success uk-text-center" style="margin-right:20px;margin-top: 20px" data-uk-alert=""><a class="uk-alert-close uk-close " style="margin-top: -10px"></a>搜索成功，详见下文！</div>';
+                            $("#messageForSearch").html(searchMessage);
+                            $("#articlesDiv").html(articleDiv);
+                        }
+                    }
+                    else {
+                        let searchMessage = '<div class="uk-alert uk-alert-success uk-text-center" style="margin-right:20px;margin-top: 20px" data-uk-alert=""><a class="uk-alert-close uk-close " style="margin-top: -10px"></a>搜索成功，详见下文！</div>';
+                        $("#messageForSearch").html(searchMessage);
+                        $("#articlesDiv").html(articleDiv);
+                    }
+                }
+            }
+            return false;
+        }
+        $(document).ready(function () {
             $("#showReference").click(function () {
                 $("#reference").slideToggle()
                 $("#contentDiv").slideToggle()
-            })
+            });
             $("#showReference2").click(function () {
                 $("#reference").slideToggle()
                 $("#contentDiv").slideToggle()
-            })
-        })
+            });
+
+        });
 
     </script>
 </body>

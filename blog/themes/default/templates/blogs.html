@@ -162,7 +162,8 @@
                 <li>
                     <article class="uk-comment">
                         <header class="uk-comment-header">
-                            <img class="uk-comment-avatar" style="max-width: 100px; max-height: 100px" src="{{ comment.user.avatar }}{{ comment.user.profilePhoto }}" alt="头像">
+                            <img class="uk-comment-avatar" style="max-width: 100px; max-height: 100px" src="{{ comment.user.avatar }}{{ comment.user.profilePhoto }}"
+                                alt="头像">
                             <div class="uk-comment-meta uk-grid">
                                 <div class="uk-text-left uk-width-medium-1-2" style="padding: 0px">{{ comment.user.name }}发表于{{ comment.pubTime }}</div>
                                 <div class="uk-text-right uk-width-medium-1-2">{{ comment.floor }}#</div>
@@ -177,5 +178,31 @@
         </article>
     </div>
 </div>
-
-{% endfor %}{% endblock %}
+{% endfor %}
+<div class="uk-text-center">
+    <p>
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+            <img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+        </a>本作品采用
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议
+        </a>进行许可。
+        <ul class="uk-pagination" hidden="hidden">
+            <li>
+                <a href="">
+                    <i class="uk-icon-angle-double-left"></i>
+                </a>
+            </li>
+            <li class="uk-active">
+                <span>1</span>
+            </li>
+            <li class="uk-disabled">
+                <span>2</span>
+            </li>
+            <li>
+                <a href="">
+                    <i class="uk-icon-angle-double-right"></i>
+                </a>
+            </li>
+        </ul>
+    </p>
+</div>{% endblock %}

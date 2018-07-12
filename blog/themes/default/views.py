@@ -1,11 +1,12 @@
 import configparser
 import os
+import re
 
 import markdown
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from blog.models import Article, Column, Comment, User
-from django.http.response import HttpResponseRedirect, HttpResponse
 
 # Create your views here.
 
@@ -485,3 +486,37 @@ def getArticleByColumn(request):
     articles = mdToHtml(articles)
     context = {'config': configList, 'articles': articles}
     return render(request, 'index.html', context=context)
+
+
+def getArticleByKeyWords(request):
+    keyWords = request.GET.get('keyWords', '')
+    if keyWords == '':
+        return HttpResponse(False)
+    allArticle = getAllArticle()
+    articles = []
+
+    # 生成html代码的函数：
+
+    def createAritcleHtml(articles):
+        html = ''
+        for article in articles:
+            html += '<div class="uk-panel uk-panel-box uk-panel-box-primary-hover" style="margin-top: 20px;"><article class="uk-article"><h1 class="uk-article-title uk-panel-title"><a href="/blog/'+str(article.id)+'" style="font-size: 80%">'+article.title+'</a></h1><p class="uk-article-meta">由管理员<a><strong>' + \
+                article.user.name+'</strong><a href="blogsByColumn?column='+article.column.name+'"></a>栏目中。</p><p>'+article.content + \
+                    '</p><div class="uk-text-right"><a style="color:cornflowerblue" href="/blog/' + \
+                str(article.id) + \
+                '"><i class="uk-text-large">继续阅读</i></a></div></article></div>'
+        return html
+
+    for article in allArticle:
+        # 忽略大小写查找标题中是否存在：
+        if re.search(keyWords, article.title, re.IGNORECASE) or re.search(keyWords, article.content, re.IGNORECASE):
+            if len(article.content) > 300:
+                article.content = article.content[0:300]+'...'
+            articles.append(article)
+    if articles:
+        articles = articles[::-1]
+        articles = mdToHtml(articles)
+        html = createAritcleHtml(articles)
+        return HttpResponse(html)
+    else:
+        return HttpResponse('抱歉，未能查找到你搜索的内容!')

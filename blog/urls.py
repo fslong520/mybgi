@@ -34,5 +34,6 @@ urlpatterns = [
     path('changePassword', themesViews.changePassword),
     path('changeProfilePhoto', themesViews.changeProfilePhoto),
     path('blogsByColumn', themesViews.getArticleByColumn),
+    path('search',themesViews.getArticleByKeyWords),
 
 ]
