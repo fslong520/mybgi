@@ -5,13 +5,14 @@
     border-width: 3px;
     border-style: solid;
     border-radius: 35px;}
-.large-profilePhoto{    
+.large-profilePhoto {
     height: 100px;
     width: 100px;
     border-color: rgb(247, 232, 205);
     border-width: 5px;
     border-style: solid;
-    border-radius: 50px;}
+    border-radius: 50px;
+}
 a {
     color: gray;
 }

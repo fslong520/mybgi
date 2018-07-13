@@ -21,7 +21,9 @@
 ▢ 5. 增加导入一键markdown文件功能；   
 ▢ 6. WebAPPs的开发；  
 ▢ 6. 未完待续...  
-## 二、以下是开发日志，倒序书写：  
+## 二、以下是开发日志，倒序书写：
+### 2018.07.12
+1. 这两天忙着写简历（另外一个坑[An online resume frame by Pyrhon+jQuery+UIkit. ](https://github.com/fslong520/pju-resume)）以及考科目四，可能更新不及时，见谅！  
 ### 2018.07.12
 #### (二)、博客开发
 1. 新增博文一篇(其实是昨天的)；

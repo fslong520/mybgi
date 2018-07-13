@@ -13,4 +13,5 @@ build
 __pycache__
 
 # My configurations:
-db.sqlite3
+*.sqlite3
+*.db
