@@ -85,7 +85,10 @@
                     <a href="{{ article.get_absolute_url }}/blog/">所有文章&ensp;</a>
                     <a id="showReference">友联&ensp;</a>
                     <!-- 触发模态对话框的锚 -->
+                    <!--
                     <a href="#aboutMe" data-uk-modal>关于我</a>
+                    -->
+                    <a href="//fslong.xyz/pju-resume/index.html" >关于我</a>
                 </p>
                 <div class="uk-margin">
                     <form class="uk-search uk-search-default " onsubmit="return changeArticleDiv()">
@@ -162,7 +165,10 @@
                                     </li>
                                     <li>
                                         <!-- 触发模态对话框的锚 -->
+                                        <!--
                                         <a href="#aboutMe" data-uk-modal>关于我</a>
+                                        -->
+                                        <a href="//fslong.xyz/pju-resume/index.html" >关于我</a>
                                     </li>
                                 </ul>
                             </li>
@@ -196,7 +202,7 @@
             {% endif %}
             <div id="articlesDiv">
                 {% block content %} {# 正文部分 #} {% endblock %}
-            </div>            
+            </div>
         </div>
         <!-- 模态对话框 -->
         <div id="aboutMe" class="uk-modal" style="z-index: 10000000;">
