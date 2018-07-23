@@ -40,3 +40,14 @@ class DingDian(scrapy.Item):
     intro = scrapy.Field()
     column = scrapy.Field()
     link = scrapy.Field()
+
+class NetbianItems(scrapy.Item):
+    picId=scrapy.Field()
+    clumnName=scrapy.Field()
+    picName=scrapy.Field()
+    picPreview=scrapy.Field()
+    picSize=scrapy.Field()
+    picUrl=scrapy.Field()
+    picUpdateTime=scrapy.Field()
+    picPage=scrapy.Field()
+    

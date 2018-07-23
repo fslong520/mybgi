@@ -38,3 +38,8 @@ def render(url):
     htmlPage = Render(url).html
     PQPage = pyquery.PyQuery(htmlPage)
     return PQPage
+if __name__=='__main__':
+    a=render('https://xueqiu.com/')
+    b=a('.home__timeline__item').items()
+    for i in b:
+        print('%s\n%s\n'%(i('a').text(),i('p').text()))
