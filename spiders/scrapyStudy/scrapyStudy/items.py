@@ -50,4 +50,16 @@ class NetbianItems(scrapy.Item):
     picUrl=scrapy.Field()
     picUpdateTime=scrapy.Field()
     picPage=scrapy.Field()
-    
+
+
+class Win4000Items(scrapy.Item):
+    className=scrapy.Field()
+    picId=scrapy.Field()
+    clumnName=scrapy.Field()
+    picName=scrapy.Field()
+    picPreview=scrapy.Field()
+    picSize=scrapy.Field()
+    picNum=scrapy.Field()
+    picUrl=scrapy.Field()
+    picUpdateTime=scrapy.Field()
+    allPicNum=scrapy.Field()
