@@ -4,8 +4,9 @@
 # Project: enterdesk
 
 import json
-import traceback
+import os
 import re
+import traceback
 
 from pyspider.libs.base_handler import *
 
@@ -26,14 +27,14 @@ class Handler(BaseHandler):
 
     @every(minutes=24 * 60)
     def on_start(self):
-        while self.pageNum <= 2:
+        while self.pageNum <= 770:
             self.crawl(self.baseUrlPC+str(self.pageNum) +
                        '.html', callback=self.index_page)
             self.crawl(self.baseUrlMM+str(self.pageNum) +
                        '.html', callback=self.index_page)
             self.crawl(self.baseUrlMobile+str(self.pageNum) +
                        '.html', callback=self.index_page)
-            self.pageNum+=1
+            self.pageNum += 1
 
     @config(age=10 * 24 * 60 * 60)
     def index_page(self, response):
@@ -58,22 +59,23 @@ class Handler(BaseHandler):
             picNum = 0
             print('当前网址是：%s' % response.url)
             if 'https://sj.enterdesk.com' in response.url:
-                
+
                 url = response.doc('.arc_main_pic > img').attr.src
-                
+
                 picPreview.append(url)
-                
-                url = 'https://up.enterdesk.com/edpic_source/' +  url.split('https://up.enterdesk.com/edpic/')[-1]
+
+                url = 'https://up.enterdesk.com/edpic_source/' + \
+                    url.split('https://up.enterdesk.com/edpic/')[-1]
                 picNum += 1
-                
+
                 self.allPicNum += picNum
                 picUrl.append(url)
-                
+
                 picSize = response.doc(
                     '.arc_top > .myarc_intro_span2 > a').text()
-                
+
                 picIntro = response.doc('.myarc_intro').text().split('内容简介')[1]
-                print('匹配成功%s'%url)
+                print('匹配成功%s' % url)
                 self.pic['mobile'].append({'picId': self.picId, 'picName': picName, 'picIntro': picIntro, 'picSize': picSize,
                                            'picUrl': picUrl, 'picPreview': picPreview, 'picColumn': column, 'picTag': tag, 'picNum': picNum, })
             else:
@@ -116,3 +118,32 @@ class Handler(BaseHandler):
             "title": response.doc('title').text(),
         }
     '''
+
+
+if __name__ == '__main__':
+    path = os.path.dirname(__file__)
+    # 用于处理pyspider导出的json
+    with open(os.path.join(path, 'enterdesk12.json'), 'r', encoding='utf-8') as f:
+        lines = f.read().split('{"taskid"')
+        jsonStr = '['
+        for line in lines:
+            if line == '':
+                pass
+            else:
+                jsonStr += '{"taskid"'+line+','
+        # 去除一些没用的字符串
+        jsonStr = jsonStr[0:-1]+']'
+        jsonStr = jsonStr.replace(' ', '')
+        jsonStr = jsonStr.replace('\n', '')
+        jsonStr = jsonStr.replace('\t', '')
+        jsonStr = jsonStr.replace('\r', '')
+        # print(jsonStr)
+        picDict = json.loads(jsonStr, encoding='utf-8')
+        allPicNum = 0
+        for i in picDict:
+            i['result']['picSize'] = i['result']['picSize'].split('查看')[0]
+            i['result'].pop('allPicNum')
+            allPicNum += i['result']['picNum']
+
+    with open(os.path.join(path, 'enterdesk123.json'), 'w', encoding='utf-8') as f:
+        json.dump(picDict, f, ensure_ascii=False)

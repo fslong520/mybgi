@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'webapps',
     'apis',
     'spiders',
+    'stockAnalysis',
 ]
 
 MIDDLEWARE = [
