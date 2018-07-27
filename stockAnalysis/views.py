@@ -30,7 +30,7 @@ class Stock(object):
         path = self.path
         print('当前文件所在文件夹：%s' % path)
         cookies = {'Cookie': 'login_sid_t=39d73e11482817bc85e3c441df5cd59b; cross_origin_proto=SSL; _s_tentry=-; Apache=4641919282416.988.1532569713780; UOR=,,www.jijidown.com; SINAGLOBAL=4743551653952.5625.1525937284248; ALF=1564105865; SCF=Aszz_unMZy149N0itsldsDVLmecrGtJIU-LomtUrpjDgLx9LYXammBVQbU9pVNwoI-6Z9zRGDzvRiMH-ZVg7fn0.; ULV=1532569713811:31:7:2:4641919282416.988.1532569713780:1532488658134; SUHB=0gHUi7TXrXOuK9; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9Wh5vzMP3YnB8Uzr47E95MNf5JpX5K2hUgL.Fo27ehnXShzXS0e2dJLoIEXLxK-L1h-LB-eLxK-LB-BL1K5LxKML1h-LBKMLxKqL1KnL12-LxKML1hML1hnt; SUB=_2A252XVleDeRhGedO61oV9CzIzD-IHXVVK82WrDV8PUNbmtBeLUTEkW9NIfGZgFD3mdt1t2kXkAcAOgy_ubzhF3e3; SSOLoginState=1532569870; wvr=6'}
-        url = self.url['weibo']
+        #url = self.url['weibo']
         stockAll = []
 
         def pageInpage(n, m):
