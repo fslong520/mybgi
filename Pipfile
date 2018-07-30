@@ -8,6 +8,8 @@ requests = "*"
 pyquery = "*"
 jieba = "*"
 django = "*"
+matplotlib = "*"
+wordcloud = "*"
 
 [dev-packages]
 

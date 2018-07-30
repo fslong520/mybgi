@@ -22,6 +22,9 @@ import requests
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
 
+import matplotlib.pyplot as plt
+from wordcloud import STOPWORDS, ImageColorGenerator, WordCloud
+
 
 class BaiduSearch(object):
     def __init__(self):
@@ -106,7 +109,7 @@ class BaiduSearch(object):
 
 def chirldProcess(key, baiduSearch):
     baiduSearchIn = BaiduSearch()
-    baiduSearchIn.getWebsiteDate('week', 'xueqiu', key[0])
+    baiduSearchIn.getWebsiteDate('day', 'xueqiu', key[0])
     if baiduSearchIn.num > 0:
         baiduSearch[key[0]] = {'num': baiduSearchIn.num,
                                'news': baiduSearchIn.news, }
@@ -179,7 +182,58 @@ if __name__ == '__main__':
         except:
             traceback.print_exc()
     elif a == 'a':
-        pass
+        # 首先读取数据：
+        with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static/stockAnalysis/json/baidu.json'), 'r', encoding='utf-8')as f:
+            textDict = json.load(f)
+        textFreq = {}
+        backgroudImagePath = os.path.join(os.path.join(os.path.dirname(
+            os.path.dirname(__file__))), 'static/stockAnalysis/img/back.png')
+        backgroudImage = plt.imread(backgroudImagePath)
+
+        def loop1(textDict):
+            for i in textDict:
+                textFreq[i] = int(textDict[i]['num'])
+        t = threading.Thread(target=loop1, name='LoopThread', args=(textDict,))
+        t.start()
+        t.join()
+        j = 0
+        for i in textDict:
+            j += 1
+            news = ''
+            for k in textDict[i]['news']:
+                news += '\n    '+k['news']+'\n'+'    '+k['url']
+            with open(os.path.join(os.path.join(os.path.dirname(os.path.dirname(__file__))), 'static/stockAnalysis/json/baiduAnalysis.txt'), 'a', encoding='utf-8') as f:
+                f.write('第%s支热点股票<%s>：\n  新闻频次：%s\n  新闻：%s\n' %
+                        (j,i,textDict[i]['num'], news))
+        '''设置词云样式'''
+        wc = WordCloud(
+            background_color='white',  # 设置背景颜色
+            mask=backgroudImage,  # 设置背景图片
+            font_path='C:\Windows\Fonts\STZHONGS.TTF',  # 若是有中文的话，这句代码必须添加，不然会出现方框，不出现汉字
+            max_words=2000,  # 设置最大现实的字数
+            stopwords=STOPWORDS,  # 设置停用词
+            max_font_size=80,  # 设置字体最大值
+            random_state=100  # 设置有多少种随机生成状态，即有多少种配色方案
+        )
+        with open(os.path.join(os.path.join(os.path.dirname(os.path.dirname(__file__))), 'static/stockAnalysis/json/baiduAnalysis.json'), 'w', encoding='utf-8') as f:
+            json.dump(textFreq, f, ensure_ascii=False)
+        # 加载文本
+        wc.generate_from_frequencies(textFreq)
+        print('开始加载文本')
+        # 改变字体颜色
+        img_colors = ImageColorGenerator(backgroudImage)
+        # 字体颜色为背景图片的颜色
+        wc.recolor(color_func=img_colors)
+        # 显示词云图
+        plt.imshow(wc)
+        # 是否显示x轴、y轴下标
+        plt.axis('off')
+        # plt.show()
+        # os.path.join()：  将多个路径组合后返回
+        wc.to_file(os.path.join(os.path.join(os.path.dirname(
+            os.path.dirname(__file__))), 'static/stockAnalysis/img/baiduAnalysis.jpg'))
+        print('生成词云成功!')
+
     else:
         print('感谢使用')
     print('%0.2f' % time.time())
