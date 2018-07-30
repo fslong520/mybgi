@@ -82,8 +82,8 @@ class Stock(object):
         return tj
 
     def getStockList(self):
-        if os.path.isfile(os.path.join(self.path, 'static/stockAnalysis/json/stocklist.json')):
-            with open(os.path.join(self.path, 'static/stockAnalysis/json/stocklist.json'), 'r', encoding='utf-8') as f:
+        if os.path.isfile(os.path.join(self.path, 'static/stockAnalysis/json/stocklistTest.json')):
+            with open(os.path.join(self.path, 'static/stockAnalysis/json/stocklistTest.json'), 'r', encoding='utf-8') as f:
                 stocklistDict = json.load(f)
         else:
             try:
