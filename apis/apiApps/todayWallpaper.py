@@ -4,6 +4,7 @@
 ' 每日图片api '
 
 __author__ = 'fslong'
+__version__ = '0.0.1'
 
 import asyncio
 import base64
@@ -148,10 +149,20 @@ class MySQLConnection(object):
 def wallpaper(picType=0, num=1, transfer=0):
     pics = []
     types = ('pc', 'mobile', 'girls')
+    allData = (39664, 10088, 5271)
+    '''# 暂时先可以提供负值
+    if picType < 0:
+        picType = 0
+    if num < 0:
+        num = 1
+    if transfer < 0:
+        transfer = 0
+    '''
     for i in range(num):
         date = datetime.datetime.now()
-        date0 = datetime.datetime(2018, 8, 3)
+        date0 = datetime.datetime(2000, 1, 1)
         dayTransfer = int((date - date0).days) - i - transfer
+        dayTransfer = dayTransfer % allData[picType % 3]
         if dayTransfer > 0:
             try:
                 mysql = MySQLConnection(
