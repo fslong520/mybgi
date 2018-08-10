@@ -7,4 +7,5 @@ urlpatterns = [
     path('getWeather', views.getWeather),
     path('test',views.test),
     path('searchBooks',views.searchBooks),
+    path('wallpaper',views.getTodayWallpaper)
 ]
