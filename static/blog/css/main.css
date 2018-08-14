@@ -23,10 +23,12 @@ table {
     /*边框会合并为一个单一的边框*/
 }
 
-table,
-table tr th,
-table tr td {
-    border: 1px solid #12665c;
+thead {
+    border-bottom: 1px solid #03352f;
+    margin: 2px;
+}
+td{
+    min-width:50px;
 }
 
 /*设置边框的*/
