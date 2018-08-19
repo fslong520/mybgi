@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'webapps',
     'apis',
     'spiders',
+    'photos'
 ]
 
 MIDDLEWARE = [
