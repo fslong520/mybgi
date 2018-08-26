@@ -15,6 +15,9 @@
     border-style: solid;
     border-radius: 50px;
 }
+p{
+    line-height: 200%;
+}
 
 table {
     width: 100%;
