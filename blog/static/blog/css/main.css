@@ -18,6 +18,9 @@
 p{
     line-height: 200%;
 }
+img{
+    max-width: 500px;
+}
 
 table {
     width: 100%;
