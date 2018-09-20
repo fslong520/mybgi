@@ -17,9 +17,7 @@ def getAdressByIP(ip='112.103.201.146'):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17692'}
     data = {}
-    req = requests.get(url, data=data, headers=headers, timeout=8).text
-    req = re.match(r'(.*\()(.*)(\)\;)', req)
-    reqDict = json.loads(req.group(2))
+    reqDict = requests.get(url, data=data, headers=headers, timeout=8).json()    
     cityName = reqDict['data'][0]['location'].split(' ')[0]
     cityName1 = re.match(r'(.*)(省)(.*)', cityName[0:-1])
     cityName2 = re.match(r'(.*)(自治区)(.*)', cityName[0:-1])
