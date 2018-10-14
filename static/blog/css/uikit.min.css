@@ -304,11 +304,13 @@ pre {
     border: 1px solid #e5e5e5;
     border-radius: 3px;
     background: #fff
+    
 }
 
 pre code {
     font-family: Consolas, monaco, monospace;
     width: 100%;
+    word-wrap: break-word;
 }
 
 ::-moz-selection {

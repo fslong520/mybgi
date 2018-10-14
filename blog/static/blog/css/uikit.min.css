@@ -309,6 +309,7 @@ pre {
 pre code {
     font-family: Consolas, monaco, monospace;
     width: 100%;
+    word-wrap: break-word;
 }
 
 ::-moz-selection {
