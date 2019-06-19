@@ -29,8 +29,6 @@ def saveIp(request,name):
         ip = request.META['HTTP_X_FORWARDED_FOR']
     else:
         ip = request.META.get('REMOTE_ADDR', '')
-    if ip == '127.0.0.1' or ip == None or ip == '':
-        ip = '127.0.0.1'    
     allIp=IP.objects.all()
     context = {'ip': ip, 'name': name,'allIp':allIp}
     try:
