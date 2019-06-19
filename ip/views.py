@@ -18,7 +18,7 @@ def index(request):
     except:
         ip=IP()
     ip.name = name
-    ip.ip = ip.save()
+    ip.save()
     return render(request, 'ip/index.html', context=context)
     
 # 存储IP地址：
@@ -38,5 +38,5 @@ def saveIp(request,name):
     except:
         ip=IP()
     ip.name = name
-    ip.ip = ip.save()
+    ip.save()
     return render(request, 'ip/index.html', context=context)
