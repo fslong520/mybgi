@@ -10,7 +10,8 @@
 
 <body>
     {% if name %}
-    <p>欢迎<font color="red"><b>{{ name }}</b>/font>，您的ip是：<font color="red"><b>{{ ip }}</b></font>
+    <p>欢迎<font color="red">
+            <b>{{ name }}</b></font>，您的ip是：<font color="red"><b>{{ ip }}</b></font>
     </p>
     {% else %}
     <p>欢迎访问,您的ip是：{{ ip }}</p>
