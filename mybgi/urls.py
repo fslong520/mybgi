@@ -21,4 +21,5 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('webapps/', include('webapps.urls')),
     path('apis/', include('apis.urls')),
+    path('ip/', include('ip.urls')),
 ]

@@ -7,7 +7,7 @@ class User(models.Model):
     objects = models.Manager()
     name = models.CharField('姓名', max_length=255, default='匿名')
     email = models.EmailField('Email', max_length=255,
-                              default='test@example.cpm')
+                              default='test@example.com')
     password = models.CharField('密码', max_length=255, default='admin')
     profilePhoto = models.TextField(
         '头像', default='//tva1.sinaimg.cn/crop.318.608.1137.1137.180/3c1b9c69jw8f1ptze8k4hj21kw1ekakh.jpg')

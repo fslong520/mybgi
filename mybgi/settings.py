@@ -25,7 +25,7 @@ SECRET_KEY = 'z9&@8-gkjm2!t2njpch-$^t)lnk^xm2hcud4g11jpndpie491z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['47.106.197.182', 'fslong.xyz', 'localhost']
+ALLOWED_HOSTS = ['47.106.197.182', 'fslong.xyz', 'localhost','127.0.0.1']
 
 
 # Application definition
@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'webapps',
     'apis',
     'spiders',
-    'photos'
+    'photos',
+    'ip'
 ]
 
 MIDDLEWARE = [

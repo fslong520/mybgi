@@ -2,7 +2,7 @@ from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 import pickle
-from .APPs import address, bingPic, getWeather, video,transformStr
+from .APPs import address, bingPic, getWeather, video, transformStr
 
 # Create your views here.
 
@@ -42,9 +42,8 @@ def getVideo(request):
 def getString(request):
     string = request.POST.get('string', '')
     stringMethod = request.POST.get('method', '')
-    result=transformStr.transformStr(string,stringMethod)
-    if result==False:
+    result = transformStr.transformStr(string, stringMethod)
+    if result == False:
         return HttpResponse('抱歉，转换失败！')
     else:
         return HttpResponse(result)
-    

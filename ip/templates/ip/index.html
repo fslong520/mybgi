@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>欢迎访问IP测试</title>
+</head>
+
+<body>
+    {% if name %}
+    <p>欢迎{{ name }},您的ip是：{{ ip }}</p>
+    {% else %}
+    <p>欢迎访问,您的ip是：{{ ip }}</p>
+    {% endif %}
+    {% for ip in allIp %}
+    <p>姓名：{{ ip.name }}&emsp;<font color='red'>|</font>&emsp;IP:{{ ip.ip }}&emsp;<font color='red'>|</font>&emsp;注册时间：{{ ip.regTime }}</p>
+
+    {% endfor %}
+</body>
+
+</html>
