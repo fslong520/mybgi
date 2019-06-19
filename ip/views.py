@@ -7,18 +7,18 @@ import pickle
 
 def index(request):
     if request.META.get('HTTP_X_FORWARDED_FOR', '') != '':
-        ip = request.META['HTTP_X_FORWARDED_FOR']
+        nowIp = request.META['HTTP_X_FORWARDED_FOR']
     else:
-        ip = request.META.get('REMOTE_ADDR', '')
-    name='匿名'
-    allIp=IP.objects.all()
-    context = {'ip': ip, 'name': name,'allIp':allIp}
+        nowIp = request.META.get('REMOTE_ADDR', '')
+    name='匿名'    
     try:
         ip = IP.objects.get(name=name)
     except:
         ip=IP()
     ip.name = name
-    ip.ip=context['ip']
+    ip.ip=nowIp
+    allIp=IP.objects.all()
+    context = {'ip': ip, 'name': name,'allIp':allIp}
     ip.save()
     return render(request, 'ip/index.html', context=context)
     
@@ -27,16 +27,16 @@ def index(request):
 
 def saveIp(request,name):
     if request.META.get('HTTP_X_FORWARDED_FOR', '') != '':
-        ip = request.META['HTTP_X_FORWARDED_FOR']
+        nowIp = request.META['HTTP_X_FORWARDED_FOR']
     else:
-        ip = request.META.get('REMOTE_ADDR', '')
-    allIp=IP.objects.all()
-    context = {'ip': ip, 'name': name,'allIp':allIp}
+        nowIp = request.META.get('REMOTE_ADDR', '')
     try:
         ip = IP.objects.get(name=name)
     except:
         ip=IP()
     ip.name = name
-    ip.ip=context['ip']
+    ip.ip=nowIp
+    allIp=IP.objects.all()
+    context = {'ip': ip, 'name': name,'allIp':allIp}
     ip.save()
     return render(request, 'ip/index.html', context=context)
