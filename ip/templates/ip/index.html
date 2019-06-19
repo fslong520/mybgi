@@ -10,12 +10,13 @@
 
 <body>
     {% if name %}
-    <p>欢迎{{ name }},您的ip是：{{ ip }}</p>
+    <p>欢迎<font color="red">{{ name }}</font>,您的ip是：{{ ip }}</p>
     {% else %}
     <p>欢迎访问,您的ip是：{{ ip }}</p>
     {% endif %}
     {% for ip in allIp %}
-    <p>姓名：{{ ip.name }}&emsp;<font color='red'>|</font>&emsp;IP:{{ ip.ip }}&emsp;<font color='red'>|</font>&emsp;注册时间：{{ ip.regTime }}</p>
+    <p>姓名：{{ ip.name }}&emsp;<font color='red'>|</font>&emsp;IP:{{ ip.ip }}&emsp;<font color='red'>|</font>
+        &emsp;注册时间：{{ ip.regTime }}</p>
 
     {% endfor %}
 </body>
