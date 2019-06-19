@@ -18,6 +18,7 @@ def index(request):
     except:
         ip=IP()
     ip.name = name
+    ip.ip=context['ip']
     ip.save()
     return render(request, 'ip/index.html', context=context)
     
@@ -36,5 +37,6 @@ def saveIp(request,name):
     except:
         ip=IP()
     ip.name = name
+    ip.ip=context['ip']
     ip.save()
     return render(request, 'ip/index.html', context=context)
