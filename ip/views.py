@@ -12,9 +12,17 @@ def index(request):
         ip = request.META.get('REMOTE_ADDR', '')
     if ip == '127.0.0.1' or ip == None or ip == '':
         ip = '127.0.0.1'    
+    name='匿名'
     allIp=IP.objects.all()
-    context = {'ip': ip,'allIp':allIp}
+    context = {'ip': ip, 'name': name,'allIp':allIp}
+    try:
+        ip = IP.objects.get(name=name)
+    except:
+        ip=IP()
+    ip.name = name
+    ip.ip = ip.save()
     return render(request, 'ip/index.html', context=context)
+    
 # 存储IP地址：
 
 
