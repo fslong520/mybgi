@@ -18,7 +18,7 @@ def index(request):
     ip.name = name
     ip.ip=nowIp
     allIp=IP.objects.all()
-    context = {'ip': ip, 'name': nowIp,'allIp':allIp}
+    context = {'ip': nowIp, 'name': name,'allIp':allIp}
     ip.save()
     return render(request, 'ip/index.html', context=context)
     
@@ -37,6 +37,6 @@ def saveIp(request,name):
     ip.name = name
     ip.ip=nowIp
     allIp=IP.objects.all()
-    context = {'ip': ip, 'name': nowIp,'allIp':allIp}
+    context = {'ip': nowIp, 'name': name,'allIp':allIp}
     ip.save()
     return render(request, 'ip/index.html', context=context)
